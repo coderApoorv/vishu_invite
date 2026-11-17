@@ -6,65 +6,150 @@
   <title>Save The Date | Shreya & Shubham</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Great+Vibes&family=Outfit:wght@400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Schoolbell&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Great+Vibes&family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Schoolbell&display=swap');
 
     .font-heading { font-family: 'Outfit', sans-serif; }
     .font-editorial { font-family: 'Playfair Display', serif; }
     .font-script { font-family: 'Caveat', 'Great Vibes', cursive; }
     .font-chalk { font-family: 'Schoolbell', 'Caveat', cursive; }
 
-    /* Animated Heart Sway */
+    /* ======================================================== */
+    /* EXACT INSTAGRAM REEL ANIMATIONS                          */
+    /* ======================================================== */
+
+    /* 1. Vespa Ride-In Animation */
+    @keyframes vespaDriveIn {
+      0% {
+        transform: translate(-320px, 135px);
+        opacity: 0;
+      }
+      20% {
+        opacity: 1;
+      }
+      75% {
+        transform: translate(120px, 133px);
+      }
+      88% {
+        transform: translate(105px, 137px) rotate(-1.5deg);
+      }
+      100% {
+        transform: translate(110px, 135px) rotate(0deg);
+      }
+    }
+    .anim-vespa-drive {
+      animation: vespaDriveIn 2.2s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+    }
+
+    /* Idle engine vibration after driving in */
+    @keyframes scooterEngineIdle {
+      0%, 100% { transform: translate(110px, 135px); }
+      50% { transform: translate(110px, 132px); }
+    }
+    .anim-vespa-idle {
+      animation: scooterEngineIdle 2.2s ease-in-out infinite;
+    }
+
+    /* 2. Exhaust Smoke Puffs */
+    @keyframes exhaustSmoke {
+      0% { opacity: 0; transform: scale(0.3) translate(0, 0); }
+      40% { opacity: 0.9; }
+      100% { opacity: 0; transform: scale(1.6) translate(-45px, -20px); }
+    }
+    .smoke-puff-1 { animation: exhaustSmoke 1.8s ease-out 0.8s infinite; }
+    .smoke-puff-2 { animation: exhaustSmoke 1.8s ease-out 1.4s infinite; }
+
+    /* 3. Swaying Heart Balloons */
     @keyframes swayBalloons {
-      0%, 100% { transform: rotate(-4deg) translateY(0); }
-      50% { transform: rotate(5deg) translateY(-8px); }
+      0%, 100% { transform: rotate(-5deg) translateY(0); }
+      50% { transform: rotate(6deg) translateY(-8px); }
     }
     .animate-balloons {
       transform-origin: bottom center;
-      animation: swayBalloons 4s ease-in-out infinite;
+      animation: swayBalloons 3.8s ease-in-out infinite;
     }
 
-    /* Scooter Engine Idle Vibration */
-    @keyframes scooterIdle {
-      0%, 100% { transform: translateY(0); }
-      50% { transform: translateY(-3px); }
-    }
-    .animate-scooter {
-      animation: scooterIdle 2.5s ease-in-out infinite;
-    }
-
-    /* Bird Tail & Head Wiggle */
+    /* 4. Angry Bird Hop & Chirp */
     @keyframes birdHop {
-      0%, 85%, 100% { transform: translateY(0) rotate(0); }
-      90% { transform: translateY(-4px) rotate(-6deg); }
-      95% { transform: translateY(-2px) rotate(4deg); }
+      0%, 82%, 100% { transform: translateY(0) rotate(0); }
+      86% { transform: translateY(-5px) rotate(-8deg); }
+      92% { transform: translateY(-2px) rotate(6deg); }
     }
     .animate-bird {
       transform-origin: bottom center;
-      animation: birdHop 4s ease-in-out infinite;
+      animation: birdHop 3.5s ease-in-out infinite;
     }
 
-    /* Heart Pop on Click */
-    @keyframes floatHeart {
-      0% { opacity: 1; transform: scale(0.6) translateY(0); }
-      100% { opacity: 0; transform: scale(1.4) translateY(-80px); }
+    /* 5. Cursive "Save our Date" Handwriting Reveal */
+    @keyframes cursiveDrawIn {
+      0% {
+        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+        opacity: 0;
+        transform: scale(0.92) rotate(-3deg);
+      }
+      30% {
+        opacity: 1;
+      }
+      100% {
+        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+        opacity: 1;
+        transform: scale(1) rotate(-2deg);
+      }
+    }
+    .anim-cursive-write {
+      animation: cursiveDrawIn 1.6s cubic-bezier(0.4, 0, 0.2, 1) 1.2s forwards;
+      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
+      opacity: 0;
+    }
+
+    /* 6. Top Warning Dropdown with Bounce */
+    @keyframes warningDrop {
+      0% {
+        opacity: 0;
+        transform: translateY(-25px) scale(0.92);
+      }
+      60% {
+        opacity: 1;
+        transform: translateY(3px) scale(1.02);
+      }
+      100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+    }
+    .anim-warning-drop {
+      animation: warningDrop 1s cubic-bezier(0.34, 1.56, 0.64, 1) 0.3s forwards;
+      opacity: 0;
+    }
+
+    /* 7. Chalkboards Appear */
+    @keyframes chalkFade {
+      0% { opacity: 0; transform: scale(0.85); }
+      100% { opacity: 1; transform: scale(1); }
+    }
+    .anim-chalk-appear {
+      animation: chalkFade 0.9s cubic-bezier(0.34, 1.56, 0.64, 1) 1.4s forwards;
+      opacity: 0;
+    }
+
+    /* 8. Pout Steam Bubble */
+    @keyframes steamPuff {
+      0%, 100% { opacity: 0.3; transform: scale(0.9) translateY(0); }
+      50% { opacity: 1; transform: scale(1.15) translateY(-3px); }
+    }
+    .anim-steam {
+      animation: steamPuff 2s ease-in-out infinite;
+    }
+
+    /* 9. Floating Heart Burst */
+    @keyframes floatHeartBurst {
+      0% { opacity: 1; transform: scale(0.5) translateY(0); }
+      100% { opacity: 0; transform: scale(1.5) translateY(-80px) rotate(15deg); }
     }
     .floating-heart {
       position: absolute;
       pointer-events: none;
-      animation: floatHeart 1.4s ease-out forwards;
+      animation: floatHeartBurst 1.3s ease-out forwards;
       z-index: 50;
-    }
-
-    /* Vinyl spin */
-    @keyframes spinVinyl {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    .spin-slow {
-      animation: spinVinyl 5s linear infinite;
-    }
-    .spin-paused {
-      animation-play-state: paused;
     }
 
     /* Soft Paper Texture Background */
@@ -80,61 +165,58 @@
 </head>
 <body class="paper-texture text-[#2b2523] min-h-screen flex flex-col justify-between selection:bg-rose-200 selection:text-rose-900 overflow-x-hidden">
 
-  <!-- Top Navigation Bar -->
+  <!-- Top Header Controls -->
   <header class="w-full max-w-md mx-auto pt-4 px-4 flex justify-between items-center z-30">
-    <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-[#d6c4b2] text-xs font-heading font-semibold text-[#6e202e] hover:bg-[#6e202e] hover:text-white transition shadow-xs">
+    <a href="index.html" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-[#d6c4b2] text-xs font-heading font-semibold text-[#6e202e] hover:bg-[#6e202e] hover:text-white transition shadow-xs">
       <span>📜</span> Main Wedding Card
     </a>
 
-    <div class="flex items-center gap-2">
-      <!-- Music toggle -->
-      <button id="musicToggleBtn" onclick="toggleCuteMusic()" class="p-1.5 px-3 rounded-full bg-white/80 backdrop-blur-md border border-[#d6c4b2] text-xs font-heading font-semibold text-[#6e202e] hover:bg-rose-50 transition shadow-xs flex items-center gap-1.5">
+    <div class="flex items-center gap-1.5">
+      <!-- Replay Animation Button -->
+      <button onclick="replayReelAnimation()" title="Replay Animation" class="px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-[#d6c4b2] text-xs font-heading font-semibold text-[#6e202e] hover:bg-rose-50 transition shadow-xs flex items-center gap-1">
+        <span>🔁</span> <span class="hidden sm:inline text-[11px]">Replay</span>
+      </button>
+
+      <!-- Music Toggle Button (Ali Zafar - Voh Dekhnay Mein vibe) -->
+      <button id="musicToggleBtn" onclick="toggleCuteMusic()" class="px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-[#d6c4b2] text-xs font-heading font-semibold text-[#6e202e] hover:bg-rose-50 transition shadow-xs flex items-center gap-1.5">
         <span id="musicNoteIcon">🎵</span>
-        <span class="text-[11px]" id="musicBtnLabel">Voh Dekhnay Mein</span>
+        <span class="text-[11px]" id="musicBtnLabel">Play Song</span>
       </button>
     </div>
   </header>
 
-  <!-- Main Animated Card Container (Mobile-first Storybook Format) -->
+  <!-- Main Card Container -->
   <main class="w-full max-w-[440px] mx-auto px-4 py-3 flex-1 flex flex-col items-center justify-center relative">
     
     <div id="cardFrame" class="w-full bg-[#FFFDF9] rounded-3xl p-5 shadow-[0_20px_60px_rgba(110,32,46,0.12)] border-2 border-[#E8DCCF] relative overflow-hidden text-center flex flex-col items-center">
       
-      <!-- Top Whimsical Warning Banner -->
-      <div class="space-y-1 mb-2 relative z-10 w-full">
-        <div class="inline-block px-3 py-0.5 rounded-full bg-rose-50 border border-rose-200 text-rose-700 text-[11px] font-heading font-bold uppercase tracking-wider">
-          ⚠️ Wedding Notice 💍
-        </div>
-        
-        <h1 class="text-lg md:text-xl font-heading font-extrabold text-[#231E1C] leading-snug px-2">
+      <!-- Headline (Clean, no wedding notice badge) -->
+      <div id="headerSection" class="space-y-1 mb-2 relative z-10 w-full anim-warning-drop">
+        <h1 class="text-xl md:text-2xl font-heading font-extrabold text-[#231E1C] leading-snug px-2">
           Warning: My <span class="text-[#A32A29] underline decoration-wavy decoration-[#e59883]">angry bird</span> is becoming my wife this January!
         </h1>
 
-        <div class="pt-1">
-          <span class="font-script text-3xl md:text-4xl text-[#A32A29] font-bold block transform -rotate-2">
+        <div class="pt-0.5">
+          <span id="saveDateScript" class="font-script text-4xl md:text-5xl text-[#A32A29] font-bold block anim-cursive-write">
             Save our Date ❤️
           </span>
         </div>
       </div>
 
-      <!-- Whimsical European Bistro & Vespa Scene (SVG Illustration) -->
-      <div class="relative w-full h-[320px] my-1 rounded-2xl overflow-hidden bg-gradient-to-b from-[#EBF2F7] via-[#FFF9F2] to-[#F5ECE0] border border-[#ECDCCB] shadow-inner select-none flex items-center justify-center">
+      <!-- Whimsical European Bistro & Animated Vespa Scene -->
+      <div class="relative w-full h-[330px] my-1 rounded-2xl overflow-hidden bg-gradient-to-b from-[#EBF2F7] via-[#FFF9F2] to-[#F5ECE0] border border-[#ECDCCB] shadow-inner select-none flex items-center justify-center">
 
-        <!-- Terracotta Roof & Wall Backdrop -->
         <svg viewBox="0 0 400 320" class="w-full h-full">
           <defs>
-            <!-- Gradient for Wall -->
             <linearGradient id="wallGrad" x1="0" y1="0" x2="0" y2="1">
               <stop offset="0%" stop-color="#FCF8F2"/>
               <stop offset="100%" stop-color="#F2E6D8"/>
             </linearGradient>
-            <!-- Gradient for Roof -->
             <linearGradient id="roofGrad" x1="0" y1="0" x2="1" y2="0">
               <stop offset="0%" stop-color="#C86446"/>
               <stop offset="50%" stop-color="#B55135"/>
               <stop offset="100%" stop-color="#8F3720"/>
             </linearGradient>
-            <!-- Shadow Filter -->
             <filter id="softShadow" x="-10%" y="-10%" width="130%" height="130%">
               <feDropShadow dx="0" dy="3" stdDeviation="3" flood-opacity="0.15"/>
             </filter>
@@ -145,25 +227,20 @@
 
           <!-- 2nd Floor Sage Green Window with Flower Box -->
           <g transform="translate(145, 12)">
-            <!-- Window Arch Frame -->
             <rect x="0" y="0" width="110" height="75" rx="50" fill="#6B8E7D" filter="url(#softShadow)"/>
             <rect x="4" y="4" width="102" height="67" rx="46" fill="#3A4D44"/>
-            <!-- Glass panes -->
             <rect x="10" y="10" width="42" height="55" fill="#E8F4F8" opacity="0.85"/>
             <rect x="58" y="10" width="42" height="55" fill="#E8F4F8" opacity="0.85"/>
-            <!-- Window Muntins -->
             <line x1="10" y1="36" x2="52" y2="36" stroke="#6B8E7D" stroke-width="2.5"/>
             <line x1="58" y1="36" x2="100" y2="36" stroke="#6B8E7D" stroke-width="2.5"/>
-            <!-- Balcony Flower Box -->
+            <!-- Flower Box -->
             <rect x="-6" y="58" width="122" height="22" rx="4" fill="#8C5338" filter="url(#softShadow)"/>
-            <!-- Blooming Tulips & Petals in Box -->
             <circle cx="10" cy="56" r="7" fill="#E55971"/>
             <circle cx="28" cy="54" r="8" fill="#F48FB1"/>
             <circle cx="48" cy="55" r="7" fill="#E55971"/>
             <circle cx="68" cy="53" r="8" fill="#FFFFFF"/>
             <circle cx="88" cy="55" r="7" fill="#F48FB1"/>
             <circle cx="106" cy="56" r="6" fill="#E55971"/>
-            <!-- Foliage leaves -->
             <ellipse cx="20" cy="62" rx="10" ry="4" fill="#4E6E5D"/>
             <ellipse cx="58" cy="62" rx="12" ry="5" fill="#4E6E5D"/>
             <ellipse cx="98" cy="62" rx="10" ry="4" fill="#4E6E5D"/>
@@ -171,41 +248,29 @@
 
           <!-- Hanging French Cafe Oval Sign -->
           <g transform="translate(30, 35)">
-            <!-- Iron Bracket -->
             <path d="M-10,0 L35,0 Q45,0 45,15 L45,22" fill="none" stroke="#2B2523" stroke-width="2.5"/>
             <line x1="8" y1="0" x2="8" y2="16" stroke="#2B2523" stroke-width="1.5"/>
             <line x1="32" y1="0" x2="32" y2="16" stroke="#2B2523" stroke-width="1.5"/>
-            <!-- Oval Board -->
             <ellipse cx="20" cy="30" rx="26" ry="16" fill="#FFFDF9" stroke="#A32A29" stroke-width="2" filter="url(#softShadow)"/>
             <text x="20" y="32" font-family="'Caveat', cursive" font-size="12" font-weight="bold" fill="#6E202E" text-anchor="middle">J'adore ❤️</text>
           </g>
 
-          <!-- Terracotta Roof Left Corner with Angry Bird -->
+          <!-- Terracotta Roof Corner with Red Angry Bird -->
           <g transform="translate(-10, -5)">
             <polygon points="0,0 120,0 80,45 0,45" fill="url(#roofGrad)" filter="url(#softShadow)"/>
-            <!-- Roof Tile Lines -->
             <line x1="20" y1="0" x2="10" y2="45" stroke="#752915" stroke-width="2"/>
             <line x1="50" y1="0" x2="35" y2="45" stroke="#752915" stroke-width="2"/>
             <line x1="80" y1="0" x2="60" y2="45" stroke="#752915" stroke-width="2"/>
             
-            <!-- Cute Little Red Angry Bird perched on roof -->
+            <!-- The Red Angry Bird perched on roof peak -->
             <g class="animate-bird" transform="translate(68, 25) scale(0.85)">
-              <!-- Body -->
               <ellipse cx="0" cy="0" rx="13" ry="11" fill="#D32F2F"/>
-              <!-- White chest belly -->
               <ellipse cx="-2" cy="4" rx="7" ry="6" fill="#FFEBEE"/>
-              <!-- Angry Eyebrows -->
               <path d="M-8,-4 L0,-1 L8,-4" fill="none" stroke="#212121" stroke-width="3" stroke-linecap="round"/>
-              <!-- Eyes -->
-              <circle cx="-3" cy="-1" r="2.5" fill="#FFFFFF"/>
-              <circle cx="-3" cy="-1" r="1.2" fill="#000000"/>
-              <circle cx="3" cy="-1" r="2.5" fill="#FFFFFF"/>
-              <circle cx="3" cy="-1" r="1.2" fill="#000000"/>
-              <!-- Yellow Beak -->
+              <circle cx="-3" cy="-1" r="2.5" fill="#FFFFFF"/><circle cx="-3" cy="-1" r="1.2" fill="#000000"/>
+              <circle cx="3" cy="-1" r="2.5" fill="#FFFFFF"/><circle cx="3" cy="-1" r="1.2" fill="#000000"/>
               <polygon points="-2,1 2,1 0,6" fill="#FFB300"/>
-              <!-- Crest feathers -->
               <path d="M-2,-10 Q0,-15 4,-12 Q2,-9 0,-10" fill="#D32F2F"/>
-              <!-- Little Feet -->
               <line x1="-3" y1="10" x2="-3" y2="15" stroke="#FF9800" stroke-width="2"/>
               <line x1="3" y1="10" x2="3" y2="15" stroke="#FF9800" stroke-width="2"/>
             </g>
@@ -213,28 +278,21 @@
 
           <!-- Swaying Red Heart Balloons tied to Roof -->
           <g class="animate-balloons" transform="translate(325, 60)">
-            <!-- Balloon Strings -->
             <path d="M0,0 Q-15,-30 -8,-70" fill="none" stroke="#A32A29" stroke-width="1.2" opacity="0.7"/>
             <path d="M0,0 Q10,-35 18,-65" fill="none" stroke="#A32A29" stroke-width="1.2" opacity="0.7"/>
-            
-            <!-- Left Heart Balloon -->
             <g transform="translate(-10, -75) scale(0.7)">
               <path d="M0,0 C-20,-20 -40,10 0,40 C40,10 20,-20 0,0 Z" fill="#D32F2F" filter="url(#softShadow)" transform="rotate(-15)"/>
               <circle cx="-6" cy="10" r="3" fill="#FFFFFF" opacity="0.5"/>
             </g>
-
-            <!-- Right Heart Balloon -->
             <g transform="translate(18, -68) scale(0.65)">
               <path d="M0,0 C-20,-20 -40,10 0,40 C40,10 20,-20 0,0 Z" fill="#E53935" filter="url(#softShadow)" transform="rotate(12)"/>
               <circle cx="-4" cy="8" r="2.5" fill="#FFFFFF" opacity="0.5"/>
             </g>
           </g>
 
-          <!-- French Scalloped Bistro Awning (Red & Cream Stripes) -->
+          <!-- French Scalloped Awning -->
           <g transform="translate(0, 95)">
-            <!-- Scalloped Awning Body -->
             <path d="M10,0 L390,0 L380,32 Q365,42 350,32 Q335,42 320,32 Q305,42 290,32 Q275,42 260,32 Q245,42 230,32 Q215,42 200,32 Q185,42 170,32 Q155,42 140,32 Q125,42 110,32 Q95,42 80,32 Q65,42 50,32 Q35,42 20,32 Z" fill="#A32A29" filter="url(#softShadow)"/>
-            <!-- White/Cream Stripes Overlay -->
             <path d="M40,0 L70,0 L65,32 Q50,42 35,32 Z M100,0 L130,0 L125,32 Q110,42 95,32 Z M160,0 L190,0 L185,32 Q170,42 155,32 Z M220,0 L250,0 L245,32 Q230,42 215,32 Z M280,0 L310,0 L305,32 Q290,42 275,32 Z M340,0 L370,0 L365,32 Q350,42 335,32 Z" fill="#FFFBF5"/>
           </g>
 
@@ -243,8 +301,8 @@
           <path d="M10,285 Q30,282 50,285 Q70,288 90,285 M120,285 Q140,282 160,285 M200,285 Q220,282 240,285 M300,285 Q320,282 340,285" stroke="#C4B09B" stroke-width="1.5" fill="none"/>
           <path d="M40,305 Q60,302 80,305 M150,305 Q170,302 190,305 M260,305 Q280,302 300,305" stroke="#C4B09B" stroke-width="1.5" fill="none"/>
 
-          <!-- Wall Chalkboard Menu with Couple's Names: Shreya & Shubham -->
-          <g transform="translate(20, 150)">
+          <!-- Wall Chalkboard Menu: Shreya & Shubham -->
+          <g id="wallBoard" class="anim-chalk-appear" transform="translate(20, 150)">
             <rect x="0" y="0" width="75" height="95" rx="5" fill="#4A3427" stroke="#2B1D16" stroke-width="2" filter="url(#softShadow)"/>
             <rect x="4" y="4" width="67" height="87" rx="3" fill="#24332C"/>
             <text x="37" y="24" font-family="'Caveat', cursive" font-size="14" font-weight="bold" fill="#F8E5A8" text-anchor="middle">Forever</text>
@@ -253,60 +311,53 @@
             <text x="37" y="78" font-family="'Schoolbell', cursive" font-size="13" font-weight="bold" fill="#FFFFFF" text-anchor="middle">Shubham</text>
           </g>
 
-          <!-- Sidewalk Easel A-Frame Chalkboard with Wedding Date: 29.01.27 -->
-          <g id="dateEaselSign" transform="translate(305, 175)" class="cursor-pointer group" onclick="revealDateDetails()">
-            <!-- Wooden legs of Easel -->
+          <!-- Sidewalk Easel Chalkboard: 29.01.27 -->
+          <g id="dateEaselSign" class="anim-chalk-appear" transform="translate(305, 175)">
             <polygon points="12,0 20,0 5,100 -2,100" fill="#754326"/>
             <polygon points="68,0 76,0 83,100 76,100" fill="#754326"/>
             <polygon points="40,5 48,5 44,105 37,105" fill="#5A321B"/>
-            <!-- Chalkboard Plaque -->
             <rect x="10" y="15" width="68" height="75" rx="4" fill="#3D2619" filter="url(#softShadow)"/>
             <rect x="14" y="19" width="60" height="67" rx="2" fill="#1C2E24"/>
-            <!-- Chalk Date Text -->
             <text x="44" y="36" font-family="'Caveat', cursive" font-size="11" fill="#FCE4B8" text-anchor="middle">SAVE DATE</text>
             <text x="44" y="58" font-family="'Outfit', sans-serif" font-size="16" font-weight="900" fill="#FFFFFF" text-anchor="middle">29.01</text>
             <text x="44" y="76" font-family="'Outfit', sans-serif" font-size="14" font-weight="bold" fill="#FFCDD2" text-anchor="middle">2027</text>
           </g>
 
-          <!-- ============================================== -->
-          <!-- RETRO CREAM SCOOTER & COUPLE (SHUBHAM & SHREYA) -->
-          <!-- ============================================== -->
-          <g id="scooterCoupleGroup" class="animate-scooter cursor-pointer" transform="translate(110, 135)" onclick="triggerScooterInteraction(event)">
+          <!-- ======================================================== -->
+          <!-- ANIMATED VESPA SCOOTER & COUPLE (DRIVES IN FROM LEFT)    -->
+          <!-- ======================================================== -->
+          <g id="scooterCoupleGroup" class="anim-vespa-drive cursor-pointer" onclick="triggerScooterInteraction(event)">
             
+            <!-- Exhaust Smoke & Heart Puffs -->
+            <g transform="translate(10, 130)">
+              <circle cx="-10" cy="-5" r="5" fill="#E0D4C5" class="smoke-puff-1"/>
+              <text x="-25" y="-12" font-size="12" class="smoke-puff-2">❤️</text>
+              <circle cx="-20" cy="-15" r="7" fill="#E8DDD0" class="smoke-puff-1"/>
+            </g>
+
             <!-- SCOOTER WHEELS -->
-            <!-- Front Wheel -->
             <circle cx="165" cy="140" r="19" fill="#2B2B2B"/>
             <circle cx="165" cy="140" r="11" fill="#EAEAEA" stroke="#9E9E9E" stroke-width="2"/>
             <circle cx="165" cy="140" r="4" fill="#616161"/>
             
-            <!-- Back Wheel -->
             <circle cx="28" cy="140" r="19" fill="#2B2B2B"/>
             <circle cx="28" cy="140" r="11" fill="#EAEAEA" stroke="#9E9E9E" stroke-width="2"/>
             <circle cx="28" cy="140" r="4" fill="#616161"/>
 
-            <!-- SCOOTER BODY (Retro Cream / Ivory Vespa) -->
-            <!-- Back Mudguard / Engine Cowl -->
+            <!-- SCOOTER RETRO CREAM BODY -->
             <path d="M10,130 C10,95 55,95 65,120 L75,135 L20,135 Z" fill="#FBF7EE" stroke="#D1BEA8" stroke-width="2" filter="url(#softShadow)"/>
-            <!-- Chrome Engine Vent -->
             <line x1="30" y1="114" x2="48" y2="114" stroke="#B0A190" stroke-width="2"/>
             <line x1="32" y1="119" x2="46" y2="119" stroke="#B0A190" stroke-width="2"/>
 
-            <!-- Footboard / Floor -->
             <path d="M60,132 L130,132 L132,125 L65,125 Z" fill="#424242"/>
 
-            <!-- Front Legshield & Steering Column -->
             <path d="M125,125 L145,75 Q150,65 158,68 L155,130 L135,130 Z" fill="#FBF7EE" stroke="#D1BEA8" stroke-width="2" filter="url(#softShadow)"/>
-            <!-- Front Mudguard -->
             <path d="M152,125 Q165,110 178,125 L175,132 L150,132 Z" fill="#FBF7EE" stroke="#D1BEA8" stroke-width="1.5"/>
 
-            <!-- Vespa Dual Tan Seat -->
             <path d="M25,98 Q75,90 100,98 L98,105 Q65,100 25,105 Z" fill="#6D4C41" filter="url(#softShadow)"/>
 
-            <!-- Chrome Handlebar & Headlight -->
             <line x1="148" y1="68" x2="162" y2="60" stroke="#757575" stroke-width="3"/>
-            <!-- Headlight with beam -->
             <circle cx="164" cy="58" r="8" fill="#FFF9C4" stroke="#BDBDBD" stroke-width="2"/>
-            <!-- Rearview Mirror -->
             <line x1="156" y1="62" x2="162" y2="48" stroke="#757575" stroke-width="1.5"/>
             <circle cx="163" cy="46" r="4" fill="#E0E0E0" stroke="#9E9E9E" stroke-width="1"/>
 
@@ -314,44 +365,36 @@
             <!-- BRIDE: SHREYA ("THE ANGRY BIRD")   -->
             <!-- ================================== -->
             <g id="brideCharacter" transform="translate(25, 20)">
-              <!-- Crossed Arms (Pouting posture) -->
-              <!-- Coral / Peach T-shirt Body -->
+              <!-- Pout steam icon -->
+              <g class="anim-steam" transform="translate(42, 6)">
+                <text x="0" y="0" font-size="14">💢</text>
+              </g>
+
               <path d="M18,50 Q30,46 42,50 L40,82 Q30,85 18,82 Z" fill="#E59883" filter="url(#softShadow)"/>
-              
-              <!-- Legs sitting sideways/pillion -->
-              <path d="M28,82 L35,110 L45,110 L40,82 Z" fill="#455A64"/> <!-- Denim Shorts -->
-              <path d="M30,110 L30,130 L38,130 L37,110 Z" fill="#F8D8C4"/> <!-- Legs -->
-              <!-- White sneakers -->
+              <path d="M28,82 L35,110 L45,110 L40,82 Z" fill="#455A64"/>
+              <path d="M30,110 L30,130 L38,130 L37,110 Z" fill="#F8D8C4"/>
               <ellipse cx="36" cy="132" rx="7" ry="4" fill="#FFFFFF" stroke="#CFD8DC" stroke-width="1"/>
 
-              <!-- Crossed Arms in front -->
+              <!-- Crossed Arms -->
               <path d="M18,55 Q30,70 42,58" fill="none" stroke="#E59883" stroke-width="7" stroke-linecap="round"/>
-              <ellipse cx="30" cy="64" rx="6" ry="4" fill="#F8D8C4"/> <!-- Hands -->
+              <ellipse cx="30" cy="64" rx="6" ry="4" fill="#F8D8C4"/>
 
-              <!-- Neck -->
               <rect x="26" y="42" width="8" height="10" fill="#F8D8C4"/>
 
-              <!-- Pouting Face -->
+              <!-- Face -->
               <circle cx="30" cy="32" r="13" fill="#F8D8C4"/>
-              
-              <!-- Pouting Puffed Cheeks (Blushing) -->
               <circle cx="21" cy="36" r="3.5" fill="#FF8A80" opacity="0.6"/>
               <circle cx="39" cy="36" r="3.5" fill="#FF8A80" opacity="0.6"/>
 
-              <!-- Feisty "Angry Bird" Eyes & Eyebrows -->
               <line x1="22" y1="26" x2="27" y2="28" stroke="#3E2723" stroke-width="1.8" stroke-linecap="round"/>
               <line x1="38" y1="26" x2="33" y2="28" stroke="#3E2723" stroke-width="1.8" stroke-linecap="round"/>
               <circle cx="25" cy="31" r="1.8" fill="#3E2723"/>
               <circle cx="35" cy="31" r="1.8" fill="#3E2723"/>
 
-              <!-- Cute Little Pout Mouth -->
               <ellipse cx="30" cy="38" rx="2.2" ry="1.4" fill="#D32F2F"/>
 
-              <!-- Retro Ivory Helmet -->
               <path d="M16,32 C16,14 44,14 44,32 Q44,36 30,36 Q16,36 16,32 Z" fill="#FAF6EE" stroke="#C5A059" stroke-width="1.5" filter="url(#softShadow)"/>
-              <!-- Helmet Strap -->
               <path d="M18,32 Q30,44 42,32" fill="none" stroke="#8D6E63" stroke-width="1.5"/>
-              <!-- Side hair strands -->
               <path d="M16,33 Q12,45 15,50" fill="none" stroke="#2D1B14" stroke-width="2.5" stroke-linecap="round"/>
               <path d="M44,33 Q48,45 45,50" fill="none" stroke="#2D1B14" stroke-width="2.5" stroke-linecap="round"/>
             </g>
@@ -360,30 +403,20 @@
             <!-- GROOM: SHUBHAM (SMILING HAPPY)     -->
             <!-- ================================== -->
             <g id="groomCharacter" transform="translate(80, 10)">
-              <!-- Pastel Sky Blue T-shirt Body -->
               <path d="M16,55 Q32,50 48,55 L46,90 Q32,92 16,90 Z" fill="#8FB8DE" filter="url(#softShadow)"/>
-              
-              <!-- Navy shorts & legs driving scooter -->
               <path d="M22,90 L32,120 L44,120 L40,90 Z" fill="#1A237E"/>
               <path d="M34,118 L48,126 L42,130 L30,122 Z" fill="#F5CBA7"/>
               <ellipse cx="48" cy="130" rx="7" ry="3.5" fill="#424242"/>
 
-              <!-- Arms extending forward to scooter handles -->
               <path d="M40,62 L68,64" fill="none" stroke="#8FB8DE" stroke-width="7" stroke-linecap="round"/>
-              <ellipse cx="68" cy="64" rx="4" ry="4" fill="#F5CBA7"/> <!-- Hand on grip -->
+              <ellipse cx="68" cy="64" rx="4" ry="4" fill="#F5CBA7"/>
 
-              <!-- Neck -->
               <rect x="28" y="44" width="8" height="12" fill="#F5CBA7"/>
 
-              <!-- Face looking back towards Shreya with proud smile -->
               <circle cx="32" cy="34" r="14" fill="#F5CBA7"/>
-              
-              <!-- Happy Smiling Eyes & Smile -->
               <path d="M26,30 Q30,27 34,30" fill="none" stroke="#3E2723" stroke-width="1.8" stroke-linecap="round"/>
-              <!-- Broad joyful smile -->
               <path d="M25,38 Q32,46 39,38" fill="none" stroke="#B71C1C" stroke-width="2" stroke-linecap="round"/>
               
-              <!-- Retro Ivory Helmet -->
               <path d="M17,32 C17,14 47,14 47,32 Q47,36 32,36 Q17,36 17,32 Z" fill="#FAF6EE" stroke="#C5A059" stroke-width="1.5" filter="url(#softShadow)"/>
               <path d="M20,32 Q32,46 44,32" fill="none" stroke="#8D6E63" stroke-width="1.5"/>
             </g>
@@ -392,84 +425,30 @@
 
         </svg>
 
-        <!-- Tap Tip Overlay (Auto fades) -->
+        <!-- Tap Tip Overlay -->
         <div class="absolute bottom-2 inset-x-0 flex justify-center pointer-events-none">
           <span class="text-[10px] bg-black/60 backdrop-blur-sm text-white px-2.5 py-0.5 rounded-full font-heading">
-            💡 Tap on Scooter or Chalkboard for cute surprises!
+            💡 Tap Scooter to Honk Horn 🛵💨
           </span>
         </div>
 
       </div>
 
-      <!-- Wedding Details & Date Badge -->
-      <div class="w-full mt-3 space-y-2">
-        
-        <!-- Couple & Location -->
-        <div class="space-y-0.5">
-          <div class="text-xl md:text-2xl font-editorial font-bold text-[#6e202e] tracking-wide">
-            Shreya & Shubham
-          </div>
-          <div class="text-xs font-heading font-medium text-[#7a5e4d]">
-            Are getting married in <span class="font-bold text-[#6e202e]">Varanasi</span>!
-          </div>
+      <!-- Couple Names & Date (Clean & Elegant Typography) -->
+      <div class="w-full mt-3 space-y-1">
+        <div class="text-2xl md:text-3xl font-editorial font-bold text-[#6e202e] tracking-wide">
+          Shreya & Shubham
         </div>
-
-        <!-- Auspicious Date Callout -->
-        <div class="py-2.5 px-4 rounded-xl bg-[#FAF4EA] border border-[#E0D0BE] flex items-center justify-between">
-          <div class="text-left">
-            <div class="text-[10px] uppercase tracking-wider text-[#966b47] font-heading font-bold">Auspicious Day</div>
-            <div class="text-sm md:text-base font-heading font-extrabold text-[#6e202e]">Friday, 29th January, 2027</div>
-          </div>
-          <div class="text-right">
-            <span class="inline-block px-2 py-1 rounded-md bg-[#6e202e] text-white text-[11px] font-heading font-bold">
-              Mark Calendar
-            </span>
-          </div>
+        <div class="text-sm md:text-base font-heading font-extrabold text-[#3a2c26]">
+          Friday, 29th January, 2027 &bull; Varanasi
         </div>
-
-        <!-- Live Countdown Ticker -->
-        <div class="pt-1">
-          <div class="text-[10px] uppercase tracking-widest text-[#8c654b] font-heading font-bold mb-1.5">Countdown to the Big Day</div>
-          <div class="grid grid-cols-4 gap-1.5 max-w-xs mx-auto">
-            <div class="bg-white p-1.5 rounded-lg border border-[#e5d8c8] text-center shadow-2xs">
-              <div id="saveDays" class="text-base font-heading font-bold text-[#6e202e]">--</div>
-              <div class="text-[8px] uppercase text-[#8c654b] font-bold">Days</div>
-            </div>
-            <div class="bg-white p-1.5 rounded-lg border border-[#e5d8c8] text-center shadow-2xs">
-              <div id="saveHours" class="text-base font-heading font-bold text-[#6e202e]">--</div>
-              <div class="text-[8px] uppercase text-[#8c654b] font-bold">Hours</div>
-            </div>
-            <div class="bg-white p-1.5 rounded-lg border border-[#e5d8c8] text-center shadow-2xs">
-              <div id="saveMins" class="text-base font-heading font-bold text-[#6e202e]">--</div>
-              <div class="text-[8px] uppercase text-[#8c654b] font-bold">Mins</div>
-            </div>
-            <div class="bg-white p-1.5 rounded-lg border border-[#e5d8c8] text-center shadow-2xs">
-              <div id="saveSecs" class="text-base font-heading font-bold text-[#6e202e]">--</div>
-              <div class="text-[8px] uppercase text-[#8c654b] font-bold">Secs</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Action Buttons -->
-        <div class="pt-2 flex flex-col sm:flex-row gap-2 justify-center">
-          <!-- Add to Calendar -->
-          <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+of+Shreya+%26+Shubham&dates=20270129T103000Z/20270129T183000Z&details=Save+the+Date+for+the+Wedding+of+Shreya+and+Shubham!+Friday,+29th+January+2027+at+The+Clarks,+Varanasi.&location=The+Clarks,+Mall+Road,+Cantonment,+Varanasi+-+221002" target="_blank" rel="noopener noreferrer" class="flex-1 py-2.5 px-4 rounded-xl bg-[#6e202e] hover:bg-[#521520] text-white font-heading font-bold text-xs shadow-sm flex items-center justify-center gap-1.5 transition">
-            <span>📅</span> Add to Calendar
-          </a>
-
-          <!-- Share on WhatsApp -->
-          <button onclick="shareSaveDateWhatsApp()" class="flex-1 py-2.5 px-4 rounded-xl bg-emerald-700 hover:bg-emerald-800 text-white font-heading font-bold text-xs shadow-sm flex items-center justify-center gap-1.5 transition">
-            <span>💬</span> Share with Friends
-          </button>
-        </div>
-
       </div>
 
     </div>
 
   </main>
 
-  <!-- Bottom Mini Footer with Link to Full Invitation -->
+  <!-- Bottom Link to Full Invitation -->
   <footer class="w-full max-w-md mx-auto py-3 px-4 text-center z-20">
     <div class="flex items-center justify-center gap-2 text-xs text-[#705649] font-heading">
       <span>Looking for ceremonies & venue details?</span>
@@ -479,14 +458,44 @@
     </div>
   </footer>
 
-  <!-- Notification Toast -->
-  <div id="saveToast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#29171b] text-white px-5 py-2 rounded-full text-xs shadow-2xl opacity-0 pointer-events-none transition-opacity duration-300 border border-rose-300">
-    Save the Date copied!
-  </div>
-
-  <!-- Sound & Audio Synthesizer (Voh Dekhnay Mein / Romantic Acoustic Vibe) -->
+  <!-- JavaScript for Exact Reel Animation Control & Audio -->
   <script>
-    // 1. Audio Context & Romantic Melody Synthesizer
+    function replayReelAnimation() {
+      const scooter = document.getElementById('scooterCoupleGroup');
+      const header = document.getElementById('headerSection');
+      const scriptText = document.getElementById('saveDateScript');
+      const wallBoard = document.getElementById('wallBoard');
+      const dateEasel = document.getElementById('dateEaselSign');
+
+      scooter.classList.remove('anim-vespa-drive', 'anim-vespa-idle');
+      header.classList.remove('anim-warning-drop');
+      scriptText.classList.remove('anim-cursive-write');
+      wallBoard.classList.remove('anim-chalk-appear');
+      dateEasel.classList.remove('anim-chalk-appear');
+
+      void scooter.offsetWidth;
+
+      scooter.classList.add('anim-vespa-drive');
+      header.classList.add('anim-warning-drop');
+      scriptText.classList.add('anim-cursive-write');
+      wallBoard.classList.add('anim-chalk-appear');
+      dateEasel.classList.add('anim-chalk-appear');
+
+      playScooterHorn();
+      if (!isPlaying) {
+        toggleCuteMusic();
+      }
+    }
+
+    setTimeout(() => {
+      const scooter = document.getElementById('scooterCoupleGroup');
+      if (scooter) {
+        scooter.classList.remove('anim-vespa-drive');
+        scooter.classList.add('anim-vespa-idle');
+      }
+    }, 2400);
+
+    // Audio Context & Romantic Acoustic Melody Synthesizer (Voh Dekhnay Mein Guitar Chords)
     let audioCtx = null;
     let isPlaying = false;
     let melodyLoop = null;
@@ -522,7 +531,6 @@
       } catch (e) {}
     }
 
-    // Playful Horn Honk sound
     function playScooterHorn() {
       try {
         const ctx = getAudio();
@@ -549,17 +557,6 @@
       } catch (e) {}
     }
 
-    // Playful Pout / Heart Chime sound
-    function playPoutChime() {
-      try {
-        const ctx = getAudio();
-        const notes = [659.25, 880, 1046.50];
-        notes.forEach((n, idx) => {
-          setTimeout(() => playAcousticPluck(n, 0, 0.4), idx * 80);
-        });
-      } catch (e) {}
-    }
-
     function toggleCuteMusic() {
       const btnLabel = document.getElementById('musicBtnLabel');
       const icon = document.getElementById('musicNoteIcon');
@@ -569,19 +566,16 @@
         clearInterval(melodyLoop);
         icon.innerText = '🔇';
         btnLabel.innerText = 'Music Off';
-        showToast('Music Muted');
       } else {
         isPlaying = true;
         icon.innerText = '🎵';
-        btnLabel.innerText = 'Playing Melody';
-        showToast('Playing Romantic Acoustic Melody 🎸');
+        btnLabel.innerText = 'Playing';
 
-        // Whimsical acoustic riff (Inspired by Ali Zafar's Voh Dekhnay Mein / Acoustic Guitar waltz)
         const chords = [
-          [261.63, 329.63, 392.00], // C
-          [293.66, 369.99, 440.00], // D
-          [329.63, 392.00, 493.88], // Em
-          [261.63, 329.63, 392.00]  // C
+          [261.63, 329.63, 392.00],
+          [293.66, 369.99, 440.00],
+          [329.63, 392.00, 493.88],
+          [261.63, 329.63, 392.00]
         ];
         let step = 0;
 
@@ -599,16 +593,9 @@
       }
     }
 
-    // 2. Interactive Click Handlers (Scooter & Easel)
     function triggerScooterInteraction(e) {
       playScooterHorn();
       spawnHearts(e.clientX || window.innerWidth / 2, e.clientY || window.innerHeight / 2);
-      showToast("🛵 Beep Beep! Shubham & his cute angry bird are on the way! ❤️");
-    }
-
-    function revealDateDetails() {
-      playPoutChime();
-      showToast("📅 Save the Date: Friday, 29th January, 2027 in Varanasi!");
     }
 
     function spawnHearts(x, y) {
@@ -628,48 +615,6 @@
 
         setTimeout(() => heart.remove(), 1400);
       }
-    }
-
-    // 3. Countdown Timer
-    function updateCountdown() {
-      const target = new Date('2027-01-29T16:00:00+05:30').getTime();
-      const now = new Date().getTime();
-      const diff = target - now;
-
-      if (diff <= 0) return;
-      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const s = Math.floor((diff % (1000 * 60)) / 1000);
-
-      document.getElementById('saveDays').innerText = String(d).padStart(2, '0');
-      document.getElementById('saveHours').innerText = String(h).padStart(2, '0');
-      document.getElementById('saveMins').innerText = String(m).padStart(2, '0');
-      document.getElementById('saveSecs').innerText = String(s).padStart(2, '0');
-    }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-
-    // 4. Toast Helper
-    function showToast(msg) {
-      const toast = document.getElementById('saveToast');
-      toast.innerText = msg;
-      toast.style.opacity = '1';
-      setTimeout(() => toast.style.opacity = '0', 2500);
-    }
-
-    // 5. WhatsApp Share
-    function shareSaveDateWhatsApp() {
-      const text = `⚠️ *WARNING:* My angry bird is becoming my wife this January! 💍🐦❤️\n\n` +
-        `🛵 *SHREYA & SHUBHAM* are getting married!\n\n` +
-        `🗓️ *SAVE THE DATE:* Friday, 29th January, 2027\n` +
-        `📍 *CITY:* Varanasi\n\n` +
-        `Join us to celebrate our love story!\n` +
-        `👉 View our wedding invitation & details: https://coderapoorv.github.io/Vishu-invite/`;
-
-      navigator.clipboard.writeText(text).then(() => {
-        showToast("Save the Date WhatsApp message copied!");
-      });
     }
   </script>
 </body>
