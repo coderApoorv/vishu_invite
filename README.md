@@ -1,25 +1,35 @@
-# 💍 Royal Wedding Invitation | Shreya & Shubham
+# 💍 Shreya & Shubham — Wedding & Save the Date Invitations
 
-A luxury digital wedding invitation web app inspired by Wedvo's royal designs (*Palace Door, Royal Envelope, Blush & Gold*).
+A luxury suite of digital wedding cards created for **Shreya & Shubham** (Friday, 29th January, 2027 in Varanasi).
 
-## ✨ Features
-- **3D Palace Doors & Royal Wax Envelope**: Interactive opening sequences with swinging doors, bells, torans, and wax seal unboxing.
-- **Light Theme Luxury Stationery**: Ivory linen, champagne gold filigree borders, and royal crimson calligraphy.
-- **Sanskrit Shlokas in Devanagari**: *॥ श्री गणेशाय नमः ॥* & *सर्वमङ्गलमाङ्गल्ये शिवे सर्वार्थसाधिके...*
-- **Interactive Scratch-to-Reveal Card**: Canvas-based gold foil scratch card to reveal the wedding date (*29 Jan 2027*).
-- **Saptapadi (The 7 Sacred Vows)**: Interactive glowing diyas 1–7 revealing each sacred vow with English meanings.
-- **Live Countdown Timer**: Real-time ticker counting down to the wedding muhurat.
-- **Wedding Timeline & Venue**:
-  - Baraat Swagat (04:00 PM)
-  - Sacred Phere (06:00 PM)
-  - Reception & Gala Feast
-  - Venue: The Clarks, Mall Road, Cantonment, Varanasi - 221002 (with Google Maps integration)
-- **RSVP Direct Triggers**: One-tap Call and WhatsApp buttons for family coordinators.
-- **Music & Ambient Effects**: Floating spinning vinyl record playing Indian classical wedding raag melodies (Web Audio API), plus floating rose petals and golden sparkle dust.
+---
 
-## 🚀 Live Hosting via GitHub Pages
-1. Go to your repository settings on GitHub: **Settings > Pages**.
-2. Under **Build and deployment > Source**, select **Deploy from a branch**.
-3. Choose branch `main` and folder `/ (root)`, then click **Save**.
-4. Your wedding invite will be live at:
-   `https://coderapoorv.github.io/Vishu-invite/`
+## 💌 1. Playful "Save the Date" Card (`save-the-date.html`)
+Inspired by the viral romantic-comedy European bistro couple concept (*"Warning: My angry bird is becoming my wife this January!"*):
+* **Storybook Watercolor Setting**: Quaint Parisian street corner, terracotta roof with perched angry bird, French awning, and cobblestone sidewalk.
+* **Retro Cream Vespa Couple**:
+  * Groom (**Shubham**) happily driving the scooter and looking back.
+  * Bride (**Shreya**) sitting pillion with adorable pouting cheeks & crossed arms ("the cute angry bird").
+* **Interactive Elements**:
+  * Tap on the scooter to sound the horn (`beep beep! 🛵`) and burst floating love hearts!
+  * Tap on the sidewalk chalkboard (`29.01.2027`) to highlight the auspicious date.
+  * Floating vinyl record playing upbeat romantic acoustic melody (*Voh Dekhnay Mein* vibe).
+* **Direct Link**: [Save the Date Card](https://coderapoorv.github.io/Vishu-invite/save-the-date.html)
+
+---
+
+## 🏛️ 2. Royal Wedding Invitation Card (`index.html`)
+Inspired by luxury royal wedding invitations (*Palace Door, Royal Envelope, Blush & Gold*):
+* **Dual 3D Opening Modes**: White marble palace double doors or pearlescent blush envelope with wax seal.
+* **Light Theme Luxury Stationery**: Ivory linen, champagne gold filigree borders, and royal crimson calligraphy.
+* **Authentic Sanskrit Shlokas**: *॥ श्री गणेशाय नमः ॥* & *सर्वमङ्गलमाङ्गल्ये शिवे सर्वार्थसाधिके...*
+* **Interactive Gold Foil Scratch Card**: Scratch with finger or mouse to reveal the wedding date.
+* **Saptapadi (7 Sacred Vows)**: Interactive glowing golden diyas.
+* **Venue & RSVP**: The Clarks, Varanasi with one-tap Google Maps and WhatsApp/Call buttons.
+* **Direct Link**: [Royal Wedding Card](https://coderapoorv.github.io/Vishu-invite/)
+
+---
+
+## 🌐 Live URLs on GitHub Pages
+* 🛵 **Save the Date Card**: `https://coderapoorv.github.io/Vishu-invite/save-the-date.html`
+* 📜 **Full Wedding Invitation**: `https://coderapoorv.github.io/Vishu-invite/`
