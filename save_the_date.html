@@ -5,33 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Save The Date | Shreya & Shubham</title>
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Great+Vibes&family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Schoolbell&family=Outfit:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Great+Vibes&family=Outfit:wght@400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,600;0,800;1,600&family=Schoolbell&display=swap');
-
     .font-heading { font-family: 'Outfit', sans-serif; }
     .font-editorial { font-family: 'Playfair Display', serif; }
     .font-script { font-family: 'Caveat', 'Great Vibes', cursive; }
-    .font-chalk { font-family: 'Schoolbell', 'Caveat', cursive; }
-
-    /* Animated cursive handwriting draw-in */
-    @keyframes cursiveDrawIn {
-      0% {
-        clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-        opacity: 0;
-      }
-      30% {
-        opacity: 1;
-      }
-      100% {
-        clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
-        opacity: 1;
-      }
-    }
-    .anim-cursive-write {
-      animation: cursiveDrawIn 2.2s cubic-bezier(0.4, 0, 0.2, 1) 3.5s forwards;
-      clip-path: polygon(0 0, 0 0, 0 100%, 0 100%);
-      opacity: 0;
-    }
+    .font-chalk { font-family: 'Caveat', 'Schoolbell', cursive; }
 
     /* Soft Paper Texture Background */
     .paper-texture {
@@ -42,13 +23,20 @@
       background-size: 24px 24px;
       background-position: 0 0, 12px 12px;
     }
+
+    #renderCanvas {
+      max-width: 100%;
+      height: auto;
+      aspect-ratio: 504 / 868;
+      display: block;
+      border-radius: 1rem;
+    }
   </style>
 </head>
 <body class="paper-texture text-[#2b2523] min-h-screen flex flex-col justify-between selection:bg-rose-200 selection:text-rose-900 overflow-x-hidden">
 
   <!-- Top Controls Bar -->
   <header class="w-full max-w-md mx-auto pt-4 px-4 flex justify-between items-center z-30">
-    <!-- Back to Royal Wedding Card -->
     <a href="index.html" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-[#d6c4b2] text-xs font-heading font-semibold text-[#6e202e] hover:bg-[#6e202e] hover:text-white transition shadow-xs">
       <span>📜</span> Main Wedding Card
     </a>
@@ -67,46 +55,17 @@
     </div>
   </header>
 
-  <!-- Main Card Container -->
+  <!-- Main Video Canvas Card Container -->
   <main class="w-full max-w-[420px] mx-auto px-4 py-3 flex-1 flex flex-col items-center justify-center relative">
     
-    <div class="w-full bg-[#FFFDF9] rounded-3xl p-3.5 shadow-[0_20px_60px_rgba(110,32,46,0.14)] border-2 border-[#E8DCCF] relative overflow-hidden flex flex-col items-center">
+    <div class="w-full bg-[#FFFDF9] rounded-3xl p-3 shadow-[0_20px_60px_rgba(110,32,46,0.14)] border-2 border-[#E8DCCF] relative overflow-hidden flex flex-col items-center">
       
-      <!-- Reel Frame Container with exact 9:16 aspect ratio -->
-      <div id="videoContainer" class="relative w-full rounded-2xl overflow-hidden bg-black shadow-inner aspect-[9/16] select-none">
-        
-        <!-- The Original High-Definition Reel Video -->
-        <video id="reelVideo" src="assets/reel.mp4" autoplay loop playsinline class="w-full h-full object-cover"></video>
+      <!-- Hidden Original Video Element -->
+      <video id="sourceVideo" src="assets/reel.mp4" playsinline loop crossorigin="anonymous" class="hidden"></video>
 
-        <!-- ========================================================================= -->
-        <!-- SEAMLESS PERSONALIZED OVERLAYS (SHREYA & SHUBHAM & JANUARY 2027)          -->
-        <!-- ========================================================================= -->
-
-        <!-- 1. TOP TEXT OVERLAY (Replaces "November" with "January") -->
-        <div class="absolute top-[4.2%] inset-x-[8%] h-[15.8%] flex flex-col items-center justify-center text-center pointer-events-none z-10" style="background: linear-gradient(to bottom, #FFFFFF 0%, #FFFFFF 85%, rgba(255,255,255,0) 100%);">
-          <div class="text-[13px] sm:text-[14px] font-heading font-medium text-[#1A1A1A] leading-[1.35] tracking-wide">
-            Warning:<br>
-            My angry bird is becoming my<br>
-            wife this January.
-          </div>
-          <div class="font-script text-[32px] sm:text-[38px] font-bold text-[#A32A29] -mt-1 leading-none anim-cursive-write">
-            Save our month
-          </div>
-        </div>
-
-        <!-- 2. MOUNTED CHALKBOARD OVERLAY (Replaces "Nehal & Parth" with "Shreya & Shubham") -->
-        <div class="absolute top-[67.2%] left-[64.2%] w-[8.6%] h-[9.8%] rounded-[2px] bg-[#222D24] border-[1.5px] border-[#3D291F] flex flex-col items-center justify-center text-center p-0.5 shadow-xs pointer-events-none z-10 overflow-hidden">
-          <span class="font-chalk text-[8px] sm:text-[9px] font-bold text-white leading-tight">Shreya</span>
-          <span class="font-script text-[8.5px] sm:text-[9.5px] text-[#E59883] leading-none my-0.5">&</span>
-          <span class="font-chalk text-[8px] sm:text-[9px] font-bold text-white leading-tight">Shubham</span>
-        </div>
-
-        <!-- 3. SIDEWALK EASEL OVERLAY (Replaces "29.11.26" with "29.01.27") -->
-        <div class="absolute top-[88.3%] left-[68.8%] w-[8.2%] h-[6.5%] rounded-[2px] bg-[#1C261F] flex flex-col items-center justify-center text-center pointer-events-none z-10">
-          <span class="font-heading font-black text-[9px] sm:text-[10px] text-white tracking-tighter leading-none">29.01</span>
-          <span class="font-heading font-bold text-[8px] sm:text-[9px] text-[#FFCDD2] tracking-tighter leading-none mt-0.5">27</span>
-        </div>
-
+      <!-- The Seamless Real-Time Pixel-Blended Canvas (NO HTML OVERLAY BOXES) -->
+      <div class="relative w-full rounded-2xl overflow-hidden shadow-inner bg-black select-none">
+        <canvas id="renderCanvas" width="504" height="868" class="w-full h-full object-cover"></canvas>
       </div>
 
       <!-- Clean Couple Names & Date Footer -->
@@ -133,13 +92,17 @@
     </div>
   </footer>
 
+  <!-- Seamless Canvas Inpainting Engine -->
   <script>
-    const video = document.getElementById('reelVideo');
+    const video = document.getElementById('sourceVideo');
+    const canvas = document.getElementById('renderCanvas');
+    const ctx = canvas.getContext('2d');
+
     const soundBtn = document.getElementById('soundBtn');
     const soundIcon = document.getElementById('soundIcon');
     const soundText = document.getElementById('soundText');
 
-    // Start with sound enabled if user has interacted, or muted autoplay fallback
+    // Start video playback
     video.muted = false;
     video.play().catch(() => {
       video.muted = true;
@@ -163,15 +126,113 @@
     function replayVideo() {
       video.currentTime = 0;
       video.play();
-      
-      // Re-trigger handwriting animation
-      const script = document.querySelector('.anim-cursive-write');
-      if (script) {
-        script.classList.remove('anim-cursive-write');
-        void script.offsetWidth;
-        script.classList.add('anim-cursive-write');
-      }
     }
+
+    // Main 60fps Real-Time Seamless Rendering Loop
+    function renderFrame() {
+      if (video.readyState >= 2) {
+        // 1. Draw raw video frame onto canvas
+        ctx.drawImage(video, 0, 0, 504, 868);
+
+        // =========================================================================
+        // A. SEAMLESS INPAINT: "November." -> "January."
+        // =========================================================================
+        const skyGrad = ctx.createLinearGradient(0, 88, 0, 114);
+        skyGrad.addColorStop(0, 'rgb(210, 212, 214)');
+        skyGrad.addColorStop(0.5, 'rgb(214, 218, 217)');
+        skyGrad.addColorStop(1, 'rgb(223, 224, 224)');
+
+        ctx.save();
+        ctx.fillStyle = skyGrad;
+        ctx.fillRect(238, 88, 112, 24);
+
+        // Render "January." in matching font and color
+        ctx.font = '500 13px "Outfit", -apple-system, sans-serif';
+        ctx.fillStyle = '#1e303f';
+        ctx.textBaseline = 'alphabetic';
+        ctx.fillText('January.', 240, 105.5);
+        ctx.restore();
+
+        // =========================================================================
+        // B. SEAMLESS INPAINT: Mounted Blackboard -> "Shreya & Shubham"
+        // =========================================================================
+        ctx.save();
+        const slateGrad = ctx.createLinearGradient(343, 620, 382, 686);
+        slateGrad.addColorStop(0, '#1c2420');
+        slateGrad.addColorStop(0.4, '#212a24');
+        slateGrad.addColorStop(1, '#1a221d');
+
+        ctx.fillStyle = slateGrad;
+        ctx.fillRect(343, 620, 39, 66);
+
+        // Soft chalk dust grain
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.04)';
+        for (let i = 0; i < 70; i++) {
+          const rx = 343 + Math.random() * 39;
+          const ry = 620 + Math.random() * 66;
+          ctx.fillRect(rx, ry, 1, 1);
+        }
+
+        // Draw chalk text
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        ctx.shadowColor = 'rgba(255, 255, 255, 0.65)';
+        ctx.shadowBlur = 1.2;
+
+        // "Shreya"
+        ctx.font = 'bold 9.5px "Caveat", "Schoolbell", cursive';
+        ctx.fillStyle = '#FAFAFA';
+        ctx.fillText('Shreya', 362.5, 638);
+
+        // "&"
+        ctx.font = 'italic 10.5px "Playfair Display", serif';
+        ctx.fillStyle = '#E59883';
+        ctx.fillText('&', 362.5, 653);
+
+        // "Shubham"
+        ctx.font = 'bold 9.5px "Caveat", "Schoolbell", cursive';
+        ctx.fillStyle = '#FAFAFA';
+        ctx.fillText('Shubham', 362.5, 668);
+        ctx.restore();
+
+        // =========================================================================
+        // C. SEAMLESS INPAINT: Sidewalk Easel -> "29.01.27"
+        // =========================================================================
+        ctx.save();
+        const easelGrad = ctx.createLinearGradient(346, 756, 382, 786);
+        easelGrad.addColorStop(0, '#161d18');
+        easelGrad.addColorStop(1, '#111713');
+
+        ctx.fillStyle = easelGrad;
+        ctx.fillRect(346, 756, 36, 30);
+
+        // Micro dust
+        ctx.fillStyle = 'rgba(255, 255, 255, 0.04)';
+        for (let i = 0; i < 30; i++) {
+          const rx = 346 + Math.random() * 36;
+          const ry = 756 + Math.random() * 30;
+          ctx.fillRect(rx, ry, 1, 1);
+        }
+
+        // Draw "29.01" and "27"
+        ctx.textAlign = 'center';
+        ctx.shadowColor = 'rgba(255, 255, 255, 0.55)';
+        ctx.shadowBlur = 1;
+
+        ctx.font = 'bold 8.5px "Outfit", sans-serif';
+        ctx.fillStyle = '#FFFFFF';
+        ctx.fillText('29.01', 364, 768);
+
+        ctx.font = 'bold 7.5px "Outfit", sans-serif';
+        ctx.fillStyle = '#FFCDD2';
+        ctx.fillText('27', 364, 778);
+        ctx.restore();
+      }
+
+      requestAnimationFrame(renderFrame);
+    }
+
+    requestAnimationFrame(renderFrame);
   </script>
 </body>
 </html>
