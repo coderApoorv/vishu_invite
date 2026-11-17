@@ -49,8 +49,8 @@
 
       <!-- Sound Toggle Button -->
       <button id="soundBtn" onclick="toggleAudio()" class="px-3 py-1.5 rounded-full bg-white/90 backdrop-blur-md border border-[#d6c4b2] text-xs font-heading font-semibold text-[#6e202e] hover:bg-rose-50 transition shadow-xs flex items-center gap-1.5">
-        <span id="soundIcon">🔊</span>
-        <span class="text-[11px]" id="soundText">Sound On</span>
+        <span id="soundIcon">🔇</span>
+        <span class="text-[11px]" id="soundText">Unmute</span>
       </button>
     </div>
   </header>
@@ -58,14 +58,24 @@
   <!-- Main Video Canvas Card Container -->
   <main class="w-full max-w-[420px] mx-auto px-4 py-3 flex-1 flex flex-col items-center justify-center relative">
     
-    <div class="w-full bg-[#FFFDF9] rounded-3xl p-3 shadow-[0_20px_60px_rgba(110,32,46,0.14)] border-2 border-[#E8DCCF] relative overflow-hidden flex flex-col items-center">
+    <div class="w-full bg-[#FFFDF9] rounded-3xl p-3 shadow-[0_20px_60px_rgba(110,32,46,0.14)] border-2 border-[#E8DCCF] relative overflow-hidden flex flex-col items-center cursor-pointer" onclick="togglePlayPause()">
       
-      <!-- Hidden Original Video Element -->
-      <video id="sourceVideo" src="assets/reel.mp4" playsinline loop crossorigin="anonymous" class="hidden"></video>
+      <!-- Video Element: playsinline, muted for 100% reliable autoplay -->
+      <video id="sourceVideo" src="assets/reel.mp4" playsinline muted autoplay loop style="position:fixed;top:-9999px;left:-9999px;width:10px;height:10px;opacity:0.01;pointer-events:none;"></video>
 
-      <!-- The Seamless Real-Time Pixel-Blended Canvas (NO HTML OVERLAY BOXES) -->
-      <div class="relative w-full rounded-2xl overflow-hidden shadow-inner bg-black select-none">
+      <!-- The Seamless Real-Time Pixel-Blended Canvas -->
+      <div class="relative w-full rounded-2xl overflow-hidden shadow-inner bg-[#FAF6F0] select-none">
         <canvas id="renderCanvas" width="504" height="868" class="w-full h-full object-cover"></canvas>
+        
+        <!-- Tap to Unmute / Play Prompt -->
+        <div id="playPrompt" class="absolute inset-0 bg-black/20 flex flex-col items-center justify-center transition opacity-0 pointer-events-none">
+          <div class="w-14 h-14 rounded-full bg-white/95 text-[#6e202e] flex items-center justify-center text-2xl shadow-xl border border-rose-200">
+            ▶
+          </div>
+          <span class="mt-2 text-xs font-bold text-white bg-black/60 px-3 py-1 rounded-full backdrop-blur-xs">
+            Tap to Play with Sound
+          </span>
+        </div>
       </div>
 
       <!-- Clean Couple Names & Date Footer -->
@@ -97,19 +107,44 @@
     const video = document.getElementById('sourceVideo');
     const canvas = document.getElementById('renderCanvas');
     const ctx = canvas.getContext('2d');
+    const playPrompt = document.getElementById('playPrompt');
 
     const soundBtn = document.getElementById('soundBtn');
     const soundIcon = document.getElementById('soundIcon');
     const soundText = document.getElementById('soundText');
 
-    // Start video playback
-    video.muted = false;
-    video.play().catch(() => {
-      video.muted = true;
-      video.play();
-      soundIcon.innerText = '🔇';
-      soundText.innerText = 'Unmute';
+    let isVideoPlaying = false;
+
+    // Start video playback safely (muted for autoplay policies)
+    video.muted = true;
+    const playPromise = video.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        isVideoPlaying = true;
+      }).catch(() => {
+        playPrompt.classList.remove('opacity-0');
+        playPrompt.classList.remove('pointer-events-none');
+      });
+    }
+
+    video.addEventListener('playing', () => {
+      isVideoPlaying = true;
+      playPrompt.classList.add('opacity-0');
+      playPrompt.classList.add('pointer-events-none');
     });
+
+    function togglePlayPause() {
+      if (video.paused) {
+        video.muted = false;
+        video.play();
+        soundIcon.innerText = '🔊';
+        soundText.innerText = 'Sound On';
+      } else if (video.muted) {
+        video.muted = false;
+        soundIcon.innerText = '🔊';
+        soundText.innerText = 'Sound On';
+      }
+    }
 
     function toggleAudio() {
       if (video.muted) {
@@ -128,109 +163,119 @@
       video.play();
     }
 
-    // Main 60fps Real-Time Seamless Rendering Loop
-    function renderFrame() {
-      if (video.readyState >= 2) {
-        // 1. Draw raw video frame onto canvas
-        ctx.drawImage(video, 0, 0, 504, 868);
+    // Inpainting core drawer
+    function drawSeamlessFrame(source) {
+      ctx.drawImage(source, 0, 0, 504, 868);
 
-        // =========================================================================
-        // A. SEAMLESS INPAINT: "November." -> "January."
-        // =========================================================================
-        const skyGrad = ctx.createLinearGradient(0, 88, 0, 114);
-        skyGrad.addColorStop(0, 'rgb(210, 212, 214)');
-        skyGrad.addColorStop(0.5, 'rgb(214, 218, 217)');
-        skyGrad.addColorStop(1, 'rgb(223, 224, 224)');
+      // =========================================================================
+      // A. SEAMLESS INPAINT: "November." -> "January."
+      // =========================================================================
+      const skyGrad = ctx.createLinearGradient(0, 88, 0, 114);
+      skyGrad.addColorStop(0, 'rgb(210, 212, 214)');
+      skyGrad.addColorStop(0.5, 'rgb(214, 218, 217)');
+      skyGrad.addColorStop(1, 'rgb(223, 224, 224)');
 
-        ctx.save();
-        ctx.fillStyle = skyGrad;
-        ctx.fillRect(238, 88, 112, 24);
+      ctx.save();
+      ctx.fillStyle = skyGrad;
+      ctx.fillRect(238, 88, 112, 24);
 
-        // Render "January." in matching font and color
-        ctx.font = '500 13px "Outfit", -apple-system, sans-serif';
-        ctx.fillStyle = '#1e303f';
-        ctx.textBaseline = 'alphabetic';
-        ctx.fillText('January.', 240, 105.5);
-        ctx.restore();
+      // Render "January." in matching font and color
+      ctx.font = '500 13px "Outfit", -apple-system, sans-serif';
+      ctx.fillStyle = '#1e303f';
+      ctx.textBaseline = 'alphabetic';
+      ctx.fillText('January.', 240, 105.5);
+      ctx.restore();
 
-        // =========================================================================
-        // B. SEAMLESS INPAINT: Mounted Blackboard -> "Shreya & Shubham"
-        // =========================================================================
-        ctx.save();
-        const slateGrad = ctx.createLinearGradient(343, 620, 382, 686);
-        slateGrad.addColorStop(0, '#1c2420');
-        slateGrad.addColorStop(0.4, '#212a24');
-        slateGrad.addColorStop(1, '#1a221d');
+      // =========================================================================
+      // B. SEAMLESS INPAINT: Mounted Blackboard -> "Shreya & Shubham"
+      // =========================================================================
+      ctx.save();
+      const slateGrad = ctx.createLinearGradient(343, 620, 382, 686);
+      slateGrad.addColorStop(0, '#1c2420');
+      slateGrad.addColorStop(0.4, '#212a24');
+      slateGrad.addColorStop(1, '#1a221d');
 
-        ctx.fillStyle = slateGrad;
-        ctx.fillRect(343, 620, 39, 66);
+      ctx.fillStyle = slateGrad;
+      ctx.fillRect(343, 620, 39, 66);
 
-        // Soft chalk dust grain
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.04)';
-        for (let i = 0; i < 70; i++) {
-          const rx = 343 + Math.random() * 39;
-          const ry = 620 + Math.random() * 66;
-          ctx.fillRect(rx, ry, 1, 1);
-        }
-
-        // Draw chalk text
-        ctx.textAlign = 'center';
-        ctx.textBaseline = 'middle';
-        ctx.shadowColor = 'rgba(255, 255, 255, 0.65)';
-        ctx.shadowBlur = 1.2;
-
-        // "Shreya"
-        ctx.font = 'bold 9.5px "Caveat", "Schoolbell", cursive';
-        ctx.fillStyle = '#FAFAFA';
-        ctx.fillText('Shreya', 362.5, 638);
-
-        // "&"
-        ctx.font = 'italic 10.5px "Playfair Display", serif';
-        ctx.fillStyle = '#E59883';
-        ctx.fillText('&', 362.5, 653);
-
-        // "Shubham"
-        ctx.font = 'bold 9.5px "Caveat", "Schoolbell", cursive';
-        ctx.fillStyle = '#FAFAFA';
-        ctx.fillText('Shubham', 362.5, 668);
-        ctx.restore();
-
-        // =========================================================================
-        // C. SEAMLESS INPAINT: Sidewalk Easel -> "29.01.27"
-        // =========================================================================
-        ctx.save();
-        const easelGrad = ctx.createLinearGradient(346, 756, 382, 786);
-        easelGrad.addColorStop(0, '#161d18');
-        easelGrad.addColorStop(1, '#111713');
-
-        ctx.fillStyle = easelGrad;
-        ctx.fillRect(346, 756, 36, 30);
-
-        // Micro dust
-        ctx.fillStyle = 'rgba(255, 255, 255, 0.04)';
-        for (let i = 0; i < 30; i++) {
-          const rx = 346 + Math.random() * 36;
-          const ry = 756 + Math.random() * 30;
-          ctx.fillRect(rx, ry, 1, 1);
-        }
-
-        // Draw "29.01" and "27"
-        ctx.textAlign = 'center';
-        ctx.shadowColor = 'rgba(255, 255, 255, 0.55)';
-        ctx.shadowBlur = 1;
-
-        ctx.font = 'bold 8.5px "Outfit", sans-serif';
-        ctx.fillStyle = '#FFFFFF';
-        ctx.fillText('29.01', 364, 768);
-
-        ctx.font = 'bold 7.5px "Outfit", sans-serif';
-        ctx.fillStyle = '#FFCDD2';
-        ctx.fillText('27', 364, 778);
-        ctx.restore();
+      // Soft chalk dust grain
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.04)';
+      for (let i = 0; i < 70; i++) {
+        const rx = 343 + (i * 7) % 39;
+        const ry = 620 + (i * 11) % 66;
+        ctx.fillRect(rx, ry, 1, 1);
       }
 
+      // Draw chalk text
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.shadowColor = 'rgba(255, 255, 255, 0.65)';
+      ctx.shadowBlur = 1.2;
+
+      // "Shreya"
+      ctx.font = 'bold 9.5px "Caveat", "Schoolbell", cursive';
+      ctx.fillStyle = '#FAFAFA';
+      ctx.fillText('Shreya', 362.5, 638);
+
+      // "&"
+      ctx.font = 'italic 10.5px "Playfair Display", serif';
+      ctx.fillStyle = '#E59883';
+      ctx.fillText('&', 362.5, 653);
+
+      // "Shubham"
+      ctx.font = 'bold 9.5px "Caveat", "Schoolbell", cursive';
+      ctx.fillStyle = '#FAFAFA';
+      ctx.fillText('Shubham', 362.5, 668);
+      ctx.restore();
+
+      // =========================================================================
+      // C. SEAMLESS INPAINT: Sidewalk Easel -> "29.01.27"
+      // =========================================================================
+      ctx.save();
+      const easelGrad = ctx.createLinearGradient(346, 756, 382, 786);
+      easelGrad.addColorStop(0, '#161d18');
+      easelGrad.addColorStop(1, '#111713');
+
+      ctx.fillStyle = easelGrad;
+      ctx.fillRect(346, 756, 36, 30);
+
+      // Micro dust
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.04)';
+      for (let i = 0; i < 30; i++) {
+        const rx = 346 + (i * 9) % 36;
+        const ry = 756 + (i * 13) % 30;
+        ctx.fillRect(rx, ry, 1, 1);
+      }
+
+      // Draw "29.01" and "27"
+      ctx.textAlign = 'center';
+      ctx.shadowColor = 'rgba(255, 255, 255, 0.55)';
+      ctx.shadowBlur = 1;
+
+      ctx.font = 'bold 8.5px "Outfit", sans-serif';
+      ctx.fillStyle = '#FFFFFF';
+      ctx.fillText('29.01', 364, 768);
+
+      ctx.font = 'bold 7.5px "Outfit", sans-serif';
+      ctx.fillStyle = '#FFCDD2';
+      ctx.fillText('27', 364, 778);
+      ctx.restore();
+    }
+
+    // Main 60fps Real-Time Seamless Rendering Loop
+    function renderFrame() {
+      if (video.readyState >= 2 && !video.paused) {
+        drawSeamlessFrame(video);
+      } else if (video.readyState >= 2 && video.paused) {
+        drawSeamlessFrame(video);
+      }
       requestAnimationFrame(renderFrame);
     }
+
+    // Immediate draw once metadata / frame ready
+    video.addEventListener('loadeddata', () => {
+      drawSeamlessFrame(video);
+    });
 
     requestAnimationFrame(renderFrame);
   </script>
