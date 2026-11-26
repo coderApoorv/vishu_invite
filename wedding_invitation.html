@@ -78,55 +78,39 @@
       pointer-events: none;
     }
 
-    /* 3D Semicircular Radial Carousel & Realistic Depth */
+    /* Horizontal Event Cards Carousel Track & Dynamic Pop-Out */
     .event-cards-track {
-      perspective: 1400px;
-      -webkit-perspective: 1400px;
-      perspective-origin: 50% 60%;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
-      padding-top: 2rem;
-      padding-bottom: 2.5rem;
-      padding-left: calc(50% - 120px);
-      padding-right: calc(50% - 120px);
-    }
-    @media (min-width: 640px) {
-      .event-cards-track {
-        padding-left: calc(50% - 130px);
-        padding-right: calc(50% - 130px);
-      }
+      padding-top: 1.5rem;
+      padding-bottom: 2rem;
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
     }
 
     .card-3d {
-      transform-style: preserve-3d;
-      -webkit-transform-style: preserve-3d;
-      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease, opacity 0.3s ease, border-color 0.3s ease;
       will-change: transform, box-shadow, opacity;
       border-radius: 1.75rem;
       cursor: pointer;
+      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.25s ease, opacity 0.25s ease;
     }
 
     .card-active {
-      box-shadow: 
-        0 30px 60px -12px rgba(97, 21, 34, 0.45),
-        0 16px 32px -8px rgba(196, 157, 104, 0.5),
-        0 0 0 2.5px rgba(212, 175, 55, 0.85) !important;
-      border-color: rgba(212, 175, 55, 0.9) !important;
-      z-index: 20;
+      box-shadow: 0 25px 50px -10px rgba(184, 77, 105, 0.38), 0 12px 24px -6px rgba(245, 185, 199, 0.55), 0 0 0 2px rgba(232, 140, 162, 0.95) !important;
+      border-color: rgba(232, 140, 162, 0.95) !important;
+      z-index: 10;
     }
 
     .card-inactive {
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.14) !important;
-      z-index: 10;
+      box-shadow: 0 8px 20px rgba(184, 77, 105, 0.12) !important;
+      z-index: 5;
     }
 
     /* Royal Parchment Scroll Paper Styling & Unfurling Animation */
     .scroll-parchment {
-      background: linear-gradient(180deg, #fbf4e8 0%, #f6ecd8 15%, #fdf8ef 50%, #f4e8d3 85%, #eddcc2 100%);
+      background: linear-gradient(180deg, #fff9fa 0%, #fef2f5 15%, #ffffff 50%, #fef2f5 85%, #fce9ee 100%);
       box-shadow: 
-        inset 0 0 40px rgba(180, 130, 80, 0.25),
-        inset 0 4px 10px rgba(139, 69, 19, 0.15),
-        0 15px 35px -5px rgba(80, 20, 35, 0.28);
+        inset 0 0 35px rgba(235, 170, 185, 0.25), inset 0 3px 8px rgba(184, 77, 105, 0.12), 0 15px 35px -5px rgba(168, 67, 93, 0.22);
     }
 
     .scroll-wood-rod {
@@ -202,7 +186,7 @@
     <!-- ========================================================================= -->
     <audio id="bgMusic" src="assets/template/music.mpeg" preload="auto" loop></audio>
 
-    <button id="audioToggleBtn" onclick="toggleAudio()" aria-label="Toggle Background Music" class="fixed top-4 right-4 z-50 flex items-center gap-1.5 bg-[#fffaf2]/90 backdrop-blur-md border border-[#e5c4b0]/80 shadow-md rounded-full px-3 py-1.5 text-[#964860] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer select-none">
+    <button id="audioToggleBtn" onclick="toggleAudio()" aria-label="Toggle Background Music" class="fixed top-4 right-4 z-50 flex items-center gap-1.5 bg-[#fff5f7]/90 backdrop-blur-md border border-[#f5cad4] shadow-md rounded-full px-3 py-1.5 text-[#a8435d] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer select-none">
       <svg id="audioIconMuted" class="w-3.5 h-3.5 text-[#a05267]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path>
@@ -214,7 +198,7 @@
     </button>
 
     <!-- Top Left Save the Date Quick Switcher -->
-    <a href="save-the-date.html" title="Open Save the Date Animation" class="fixed top-4 left-4 z-50 flex items-center gap-1.5 bg-[#fffaf2]/90 backdrop-blur-md border border-[#e5c4b0]/80 shadow-md rounded-full px-3 py-1.5 text-[#964860] hover:scale-105 active:scale-95 transition-all duration-300 text-[9.5px] font-cinzel font-semibold uppercase tracking-wider">
+    <a href="save-the-date.html" title="Open Save the Date Animation" class="fixed top-4 left-4 z-50 flex items-center gap-1.5 bg-[#fff5f7]/90 backdrop-blur-md border border-[#f5cad4] shadow-md rounded-full px-3 py-1.5 text-[#a8435d] hover:scale-105 active:scale-95 transition-all duration-300 text-[9.5px] font-cinzel font-semibold uppercase tracking-wider">
       <span>🎬</span> <span>Save The Date</span>
     </a>
 
@@ -266,12 +250,12 @@
         <div id="doorSealPrompt" class="door-center-seal gap-4 transition-all duration-700">
           <div class="relative group">
             <div class="absolute -inset-3 rounded-full bg-gradient-to-r from-[#d4af37] via-[#f3e0aa] to-[#d4af37] opacity-80 blur-md animate-gold-glow"></div>
-            <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-b from-[#611522] via-[#4a0d17] to-[#2d050c] border-[2.5px] border-[#d4af37] flex flex-col items-center justify-center shadow-[0_12px_40px_rgba(0,0,0,0.85)] text-[#f3e0aa]">
-              <span class="font-bikham text-4xl sm:text-5xl text-[#f3e0aa] leading-none mb-0.5 drop-shadow-sm font-normal">S and S</span>
+            <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-b from-[#9e3352] via-[#85253e] to-[#591223] border-[2.5px] border-[#d4af37] flex flex-col items-center justify-center shadow-[0_12px_40px_rgba(0,0,0,0.85)] text-[#fff0f4]">
+              <img src="assets/template/ganesh.png" alt="Royal Seal" class="w-9 h-9 sm:w-10 sm:h-10 object-contain drop-shadow-md mb-1 brightness-110"/>
               <span class="font-cinzel text-[9px] sm:text-[10px] tracking-[0.28em] uppercase text-[#d4af37] font-semibold">OPEN</span>
             </div>
           </div>
-          <div class="bg-[#611522]/95 backdrop-blur-md border border-[#c49d68] text-[#f3e0aa] font-cinzel text-[11px] sm:text-[12px] tracking-[0.25em] uppercase px-6 py-2.5 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.6)] text-center font-medium flex items-center gap-2">
+          <div class="bg-[#a8435d]/95 backdrop-blur-md border border-[#c49d68] text-[#fff0f4] font-cinzel text-[11px] sm:text-[12px] tracking-[0.25em] uppercase px-6 py-2.5 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.6)] text-center font-medium flex items-center gap-2">
             <span class="text-[#e2be79]">✨</span>
             <span>Tap to Open Invitation</span>
             <span class="text-[#e2be79]">✨</span>
@@ -292,7 +276,7 @@
       </div>
 
       <!-- Sacred Ganesh & Hero Text Content -->
-      <div class="w-full pt-[27%] sm:pt-[29%] px-6 flex flex-col items-center gap-3 sm:gap-4 z-10 text-[#af6078]">
+      <div class="w-full pt-[27%] sm:pt-[29%] px-6 flex flex-col items-center gap-3 sm:gap-4 z-10 text-[#b85a73]">
         
         <!-- Sacred Shloka & Ganesh Icon -->
         <div class="flex flex-col items-center gap-1 transition-all duration-1000 transform">
@@ -311,41 +295,36 @@
           <div class="w-14 h-[1px] bg-[#9c7653] opacity-85 mt-1"></div>
         </div>
 
-        <!-- Royal Couple Monogram Emblem -->
-        <div class="w-24 h-12 relative flex items-center justify-center text-[#9c7653] my-0.5">
-          <div class="font-bikham text-4xl text-[#964860] tracking-wider">S and S</div>
-        </div>
-
         <!-- Romantic Quote -->
-        <div class="font-cinzel italic text-base sm:text-lg leading-snug tracking-wide text-[#b05f77] font-normal">
+        <div class="font-cinzel italic text-base sm:text-lg leading-snug tracking-wide text-[#b85a73] font-normal">
           <p>Every love story is beautiful</p>
           <p>but ours is our favourite</p>
         </div>
 
         <!-- We're Getting Married Header -->
-        <p class="font-cinzel text-[12px] sm:text-[13px] tracking-[0.3em] uppercase text-[#b05f77] font-medium mt-1">
+        <p class="font-cinzel text-[12px] sm:text-[13px] tracking-[0.3em] uppercase text-[#b85a73] font-medium mt-1">
           WE’RE GETTING MARRIED
         </p>
 
         <!-- Grand Calligraphy Names: Shreya & Shubham -->
-        <h1 class="font-bikham text-6xl sm:text-7xl font-normal tracking-wide text-[#a04e67] my-1 sm:my-2 drop-shadow-sm leading-tight">
-          Shreya <span class="font-bikham font-light text-4xl sm:text-5xl text-[#b05f77] mx-1">and</span> Shubham
+        <h1 class="font-bikham text-6xl sm:text-7xl font-normal tracking-wide text-[#a8435d] my-1 sm:my-2 drop-shadow-sm leading-tight">
+          Shreya <span class="font-bikham font-light text-4xl sm:text-5xl text-[#b85a73] mx-1">and</span> Shubham
         </h1>
 
-        <p class="font-cinzel text-[11px] sm:text-[12px] tracking-[0.25em] uppercase text-[#b05f77] font-medium">
+        <p class="font-cinzel text-[11px] sm:text-[12px] tracking-[0.25em] uppercase text-[#b85a73] font-medium">
           TOGETHER, WE BEGIN OUR FOREVER
         </p>
 
         <!-- Parents' Blessing & Lineage -->
-        <div class="mt-2 text-center text-[#8b3a52] space-y-1 font-cinzel text-[9.5px] sm:text-[10.5px] tracking-wider leading-relaxed bg-white/70 backdrop-blur-xs py-2 px-3 rounded-2xl border border-[#e5c4b0]/40 max-w-[320px]">
-          <p class="font-semibold text-[#611522]">
+        <div class="mt-2 text-center text-[#9c3b53] space-y-1 font-cinzel text-[9.5px] sm:text-[10.5px] tracking-wider leading-relaxed bg-white/70 backdrop-blur-xs py-2 px-3 rounded-2xl border border-[#f5cad4]/60 max-w-[320px]">
+          <p class="font-semibold text-[#a8435d]">
             D/o Mrs. Mamta Singh and Late Mr. Matvar Singh
           </p>
           <p class="text-[8.5px] opacity-80">
             Granddaughter of Mrs. Darshana Devi w/o Late Mr. Dalip Singh
           </p>
-          <div class="w-8 h-[0.5px] bg-[#c49d68] mx-auto my-1"></div>
-          <p class="font-semibold text-[#611522]">
+          <div class="w-8 h-[0.5px] bg-[#e293a7] mx-auto my-1"></div>
+          <p class="font-semibold text-[#a8435d]">
             S/o Mrs. Milli Sukhwani and Mr. Jeet Kumar Sukhwani
           </p>
         </div>
@@ -365,13 +344,13 @@
         <img src="assets/template/scratch_bg.png" alt="Royal Background" class="w-full h-full object-cover object-center pointer-events-none"/>
       </div>
 
-      <div class="w-full max-w-[360px] flex flex-col items-center justify-center gap-3 z-10 text-[#af6078] my-auto">
+      <div class="w-full max-w-[360px] flex flex-col items-center justify-center gap-3 z-10 text-[#b85a73] my-auto">
         
-        <h2 class="font-bikham text-5xl sm:text-6xl text-[#964860] leading-tight drop-shadow-sm">
+        <h2 class="font-bikham text-5xl sm:text-6xl text-[#a8435d] leading-tight drop-shadow-sm">
           Save the Date
         </h2>
 
-        <p class="font-cinzel text-[11px] sm:text-xs tracking-[0.22em] uppercase text-[#b05f77] font-medium my-0.5">
+        <p class="font-cinzel text-[11px] sm:text-xs tracking-[0.22em] uppercase text-[#b85a73] font-medium my-0.5">
           UNFURL THE SCROLL TO REVEAL OUR DATE
         </p>
 
@@ -387,9 +366,9 @@
 
           <!-- Rolled Scroll Golden Wax Ribbon Seal (Visible when closed, pops on tap/open) -->
           <div id="scrollRibbonSeal" class="scroll-ribbon-seal z-40 my-[-10px] flex items-center justify-center">
-            <div class="flex items-center gap-1.5 bg-[#611522] border-2 border-[#d4af37] px-4 py-1.5 rounded-full shadow-lg">
+            <div class="flex items-center gap-1.5 bg-[#a8435d] border-2 border-[#d4af37] px-4 py-1.5 rounded-full shadow-lg">
               <span class="text-xs text-[#d4af37]">✨</span>
-              <span class="font-cinzel text-[10.5px] uppercase tracking-[0.22em] text-[#f3e0aa] font-bold">TOUCH TO UNFURL SCROLL</span>
+              <span class="font-cinzel text-[10.5px] uppercase tracking-[0.22em] text-[#fff0f4] font-bold">TOUCH TO UNFURL SCROLL</span>
               <span class="text-xs text-[#d4af37]">✨</span>
             </div>
           </div>
@@ -406,30 +385,30 @@
             <!-- Scroll Paper Header Crest -->
             <div class="flex items-center justify-center gap-2 mb-1">
               <span class="h-[0.5px] w-6 bg-[#b8860b]/60"></span>
-              <span class="font-cinzel text-[9.5px] tracking-[0.28em] uppercase text-[#8b3a52] font-semibold">ROYAL PROCLAMATION</span>
+              <span class="font-cinzel text-[9.5px] tracking-[0.28em] uppercase text-[#9c3b53] font-semibold">ROYAL PROCLAMATION</span>
               <span class="h-[0.5px] w-6 bg-[#b8860b]/60"></span>
             </div>
 
             <!-- Scroll Content (Unfurls smoothly) -->
             <div class="flex flex-col items-center justify-center text-center my-1">
-              <p class="font-cinzel text-[10px] sm:text-[10.5px] uppercase tracking-[0.24em] text-[#8b3a52] font-medium">
+              <p class="font-cinzel text-[10px] sm:text-[10.5px] uppercase tracking-[0.24em] text-[#9c3b53] font-medium">
                 WITH THE BLESSINGS OF OUR FAMILIES
               </p>
               
               <div class="my-1.5 flex flex-col items-center">
-                <span class="font-cinzel text-[11px] tracking-[0.2em] text-[#611522] uppercase font-semibold">WE ARE GETTING MARRIED ON</span>
-                <span class="font-bikham text-4xl sm:text-5xl text-[#611522] my-0.5 font-bold leading-tight drop-shadow-xs">
+                <span class="font-cinzel text-[11px] tracking-[0.2em] text-[#a8435d] uppercase font-semibold">WE ARE GETTING MARRIED ON</span>
+                <span class="font-bikham text-4xl sm:text-5xl text-[#a8435d] my-0.5 font-bold leading-tight drop-shadow-xs">
                   29th January 2027
                 </span>
-                <span class="font-cinzel text-[11px] sm:text-[12px] uppercase tracking-[0.24em] text-[#8b3a52] font-bold">
+                <span class="font-cinzel text-[11px] sm:text-[12px] uppercase tracking-[0.24em] text-[#9c3b53] font-bold">
                   FRIDAY &bull; VARANASI
                 </span>
               </div>
 
               <!-- Royal Seal Ribbon Stamp -->
-              <div class="flex items-center gap-1.5 text-[#8b3a52] mt-1 pt-1 border-t border-[#d4af37]/40 w-full justify-center">
+              <div class="flex items-center gap-1.5 text-[#9c3b53] mt-1 pt-1 border-t border-[#d4af37]/40 w-full justify-center">
                 <span class="text-xs text-[#b8860b]">🏛️</span>
-                <span class="font-cinzel text-[10px] tracking-widest uppercase font-semibold text-[#611522]">THE CLARKS, MALL ROAD, CANTONMENT</span>
+                <span class="font-cinzel text-[10px] tracking-widest uppercase font-semibold text-[#a8435d]">THE CLARKS, MALL ROAD, CANTONMENT</span>
               </div>
             </div>
 
@@ -455,10 +434,10 @@
 
       <!-- Section Title -->
       <div class="text-center mb-6 flex flex-col items-center gap-1.5">
-        <h2 class="font-bikham text-5xl sm:text-6xl text-[#964860] drop-shadow-sm">
+        <h2 class="font-bikham text-5xl sm:text-6xl text-[#a8435d] drop-shadow-sm">
           Wedding Events
         </h2>
-        <p class="font-cinzel text-xs sm:text-sm tracking-[0.24em] uppercase text-[#b05f77] font-medium">
+        <p class="font-cinzel text-xs sm:text-sm tracking-[0.24em] uppercase text-[#b85a73] font-medium">
           JOIN US IN CELEBRATING OUR SPECIAL MOMENTS
         </p>
         <div class="h-[1px] w-24 bg-gradient-to-r from-transparent via-[#c49d68] to-transparent mt-2"></div>
@@ -469,22 +448,22 @@
 
         <!-- Ceremony Navigation Quick Select Pills -->
         <div class="flex items-center justify-center gap-1.5 sm:gap-2 mb-3 overflow-x-auto no-scrollbar max-w-full px-2 py-1">
-          <button type="button" onclick="scrollToEventCard(0)" class="event-nav-pill px-3 py-1.5 rounded-full font-cinzel text-[10.5px] sm:text-[11px] font-bold tracking-wider transition-all duration-300 border bg-[#611522] text-[#f3e0aa] border-[#d4af37] shadow-md scale-105">
+          <button type="button" onclick="scrollToEventCard(0)" class="event-nav-pill px-3 py-1.5 rounded-full font-cinzel text-[10.5px] sm:text-[11px] font-bold tracking-wider transition-all duration-300 border bg-[#a8435d] text-[#fff0f4] border-[#f5cad4] shadow-md scale-105">
             Haldi
           </button>
-          <button type="button" onclick="scrollToEventCard(1)" class="event-nav-pill px-3 py-1.5 rounded-full font-cinzel text-[10.5px] sm:text-[11px] font-semibold tracking-wider transition-all duration-300 border bg-white/90 text-[#8b3a52] border-[#e5c4b0]/80 hover:bg-[#faf0e6]">
+          <button type="button" onclick="scrollToEventCard(1)" class="event-nav-pill px-3 py-1.5 rounded-full font-cinzel text-[10.5px] sm:text-[11px] font-semibold tracking-wider transition-all duration-300 border bg-white/90 text-[#9c3b53] border-[#f5cad4] hover:bg-[#ffeaf0]">
             Ring Ceremony
           </button>
-          <button type="button" onclick="scrollToEventCard(2)" class="event-nav-pill px-3 py-1.5 rounded-full font-cinzel text-[10.5px] sm:text-[11px] font-semibold tracking-wider transition-all duration-300 border bg-white/90 text-[#8b3a52] border-[#e5c4b0]/80 hover:bg-[#faf0e6]">
+          <button type="button" onclick="scrollToEventCard(2)" class="event-nav-pill px-3 py-1.5 rounded-full font-cinzel text-[10.5px] sm:text-[11px] font-semibold tracking-wider transition-all duration-300 border bg-white/90 text-[#9c3b53] border-[#f5cad4] hover:bg-[#ffeaf0]">
             Shubh Vivah
           </button>
-          <button type="button" onclick="scrollToEventCard(3)" class="event-nav-pill px-3 py-1.5 rounded-full font-cinzel text-[10.5px] sm:text-[11px] font-semibold tracking-wider transition-all duration-300 border bg-white/90 text-[#8b3a52] border-[#e5c4b0]/80 hover:bg-[#faf0e6]">
+          <button type="button" onclick="scrollToEventCard(3)" class="event-nav-pill px-3 py-1.5 rounded-full font-cinzel text-[10.5px] sm:text-[11px] font-semibold tracking-wider transition-all duration-300 border bg-white/90 text-[#9c3b53] border-[#f5cad4] hover:bg-[#ffeaf0]">
             Reception
           </button>
         </div>
 
         <!-- Swipe / Tap Hint -->
-        <div class="flex items-center justify-center gap-2 mb-2 text-[#964860] font-cinzel text-[10px] sm:text-[11px] font-semibold tracking-[0.22em] uppercase opacity-90 animate-pulse">
+        <div class="flex items-center justify-center gap-2 mb-2 text-[#a8435d] font-cinzel text-[10px] sm:text-[11px] font-semibold tracking-[0.22em] uppercase opacity-90 animate-pulse">
           <span>‹‹</span> <span>Swipe cards or tap to expand</span> <span>››</span>
         </div>
 
@@ -492,46 +471,46 @@
         <div id="eventsCarousel" class="event-cards-track w-full overflow-x-auto flex gap-4 sm:gap-6 py-6 no-scrollbar">
 
           <!-- Card 1: Turmeric Tales (Haldi) - 28 Jan, 11:00 AM @ Silk City Hotel -->
-          <div onclick="scrollToEventCard(0)" class="card-3d w-[60vw] max-w-[245px] sm:w-[260px] shrink-0 snap-center relative overflow-hidden bg-white border border-[#e5c4b0]/80">
+          <div onclick="scrollToEventCard(0)" class="card-3d w-[76vw] max-w-[285px] sm:w-[290px] shrink-0 snap-center relative overflow-hidden bg-[#fff8fa] border border-[#f5cad4]">
             <div class="relative w-full aspect-[9/16] overflow-hidden group">
               <img src="assets/template/card3.png" alt="Haldi Utsav" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
               
               <!-- Clean Central Ceremony Details (Title directly above date & venue) -->
               <div class="absolute top-[23%] inset-x-[8%] bottom-[36%] flex flex-col items-center justify-center text-center pointer-events-none select-none">
-                <h3 class="font-bikham text-3xl sm:text-4xl text-[#964860] leading-none mb-1 font-normal drop-shadow-xs">
+                <h3 class="font-bikham text-3xl sm:text-4xl text-[#a8435d] leading-none mb-1 font-normal drop-shadow-xs">
                   Turmeric Tales
                 </h3>
-                <p class="font-cinzel text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.2em] text-[#9a5416] font-semibold mb-2.5">
+                <p class="font-cinzel text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.2em] text-[#b85a73] font-semibold mb-2.5">
                   SPLASHES OF SUNSHINE AND BLESSINGS
                 </p>
 
                 <!-- Date Badge -->
-                <div class="flex items-center justify-center gap-1.5 text-[#853e0d] font-cinzel text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase">
+                <div class="flex items-center justify-center gap-1.5 text-[#9c3b53] font-cinzel text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase">
                   <span>THURSDAY</span>
-                  <span class="text-[#c49d68] text-sm">|</span>
-                  <span class="font-bold text-base sm:text-lg text-[#611522] tracking-normal px-0.5">28</span>
-                  <span class="text-[#c49d68] text-sm">|</span>
+                  <span class="text-[#e293a7] text-sm">|</span>
+                  <span class="font-bold text-base sm:text-lg text-[#a8435d] tracking-normal px-0.5">28</span>
+                  <span class="text-[#e293a7] text-sm">|</span>
                   <span>JANUARY</span>
                 </div>
-                <p class="font-cinzel text-[11px] font-bold text-[#853e0d] tracking-[0.22em] mt-0.5">2027</p>
+                <p class="font-cinzel text-[11px] font-bold text-[#9c3b53] tracking-[0.22em] mt-0.5">2027</p>
                 
-                <div class="w-10 h-[0.5px] bg-[#c49d68]/60 my-2"></div>
+                <div class="w-10 h-[0.5px] bg-[#e293a7]/70 my-2"></div>
                 
-                <p class="font-cinzel text-[10px] sm:text-[10.5px] uppercase tracking-[0.2em] text-[#9a5416] font-semibold">
+                <p class="font-cinzel text-[10px] sm:text-[10.5px] uppercase tracking-[0.2em] text-[#b85a73] font-semibold">
                   11:00 AM ONWARDS
                 </p>
-                <p class="font-cinzel text-[11px] sm:text-[11.5px] uppercase tracking-[0.2em] text-[#611522] font-bold mt-1">
+                <p class="font-cinzel text-[11px] sm:text-[11.5px] uppercase tracking-[0.2em] text-[#a8435d] font-bold mt-1">
                   SILK CITY HOTEL
                 </p>
               </div>
 
               <!-- Bottom Elegant Gradient Base -->
-              <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#360912]/80 via-[#360912]/30 to-transparent pointer-events-none"></div>
+              <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#731f35]/65 via-[#9c3b53]/20 to-transparent pointer-events-none"></div>
             </div>
           </div>
 
           <!-- Card 2: Ring Ceremony - 28 Jan, 7:00 PM @ Amaya -->
-          <div onclick="scrollToEventCard(1)" class="card-3d w-[60vw] max-w-[245px] sm:w-[260px] shrink-0 snap-center relative overflow-hidden bg-white border border-[#e5c4b0]/80">
+          <div onclick="scrollToEventCard(1)" class="card-3d w-[76vw] max-w-[285px] sm:w-[290px] shrink-0 snap-center relative overflow-hidden bg-[#fff8fa] border border-[#f5cad4]">
             <div class="relative w-full aspect-[9/16] overflow-hidden group">
               <img src="assets/template/card2.png" alt="Ring Ceremony" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
               
@@ -540,23 +519,23 @@
                 <h3 class="font-bikham text-3xl sm:text-4xl text-[#fff4e0] leading-none mb-1 font-normal drop-shadow-xs">
                   Ring Ceremony
                 </h3>
-                <p class="font-cinzel text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.2em] text-[#f3e0aa] font-semibold mb-2.5">
+                <p class="font-cinzel text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.2em] text-[#fff0f4] font-semibold mb-2.5">
                   EXCHANGE OF RINGS, MUSIC AND SANGEET
                 </p>
 
                 <!-- Date Badge -->
-                <div class="flex items-center justify-center gap-1.5 text-[#f3e0aa] font-cinzel text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase">
+                <div class="flex items-center justify-center gap-1.5 text-[#fff0f4] font-cinzel text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase">
                   <span>THURSDAY</span>
                   <span class="text-[#d4af37] text-sm">|</span>
                   <span class="font-bold text-base sm:text-lg text-white tracking-normal px-0.5">28</span>
                   <span class="text-[#d4af37] text-sm">|</span>
                   <span>JANUARY</span>
                 </div>
-                <p class="font-cinzel text-[11px] font-bold text-[#f3e0aa] tracking-[0.22em] mt-0.5">2027</p>
+                <p class="font-cinzel text-[11px] font-bold text-[#fff0f4] tracking-[0.22em] mt-0.5">2027</p>
                 
                 <div class="w-10 h-[0.5px] bg-[#d4af37]/70 my-2.5"></div>
                 
-                <p class="font-cinzel text-[10px] sm:text-[10.5px] uppercase tracking-[0.2em] text-[#f3e0aa] font-semibold">
+                <p class="font-cinzel text-[10px] sm:text-[10.5px] uppercase tracking-[0.2em] text-[#fff0f4] font-semibold">
                   7:00 PM ONWARDS
                 </p>
                 <p class="font-cinzel text-[11px] sm:text-[11.5px] uppercase tracking-[0.2em] text-white font-bold mt-1">
@@ -570,91 +549,98 @@
           </div>
 
           <!-- Card 3: Shubh Vivah (Baraat & Phere) - 29 Jan @ The Clarks -->
-          <div onclick="scrollToEventCard(2)" class="card-3d w-[60vw] max-w-[245px] sm:w-[260px] shrink-0 snap-center relative overflow-hidden bg-white border border-[#e5c4b0]/80">
+          <div onclick="scrollToEventCard(2)" class="card-3d w-[76vw] max-w-[285px] sm:w-[290px] shrink-0 snap-center relative overflow-hidden bg-[#fff8fa] border border-[#f5cad4]">
             <div class="relative w-full aspect-[9/16] overflow-hidden group">
               <img src="assets/template/card5.png" alt="Shubh Vivah" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
               
               <!-- Clean Central Ceremony Details (Title directly above date & venue) -->
               <div class="absolute top-[16%] inset-x-[6%] bottom-[54%] flex flex-col items-center justify-center text-center pointer-events-none select-none">
-                <h3 class="font-bikham text-3xl sm:text-4xl text-[#964860] leading-none mb-1 font-normal drop-shadow-xs">
+                <h3 class="font-bikham text-3xl sm:text-4xl text-[#a8435d] leading-none mb-1 font-normal drop-shadow-xs">
                   Shubh Vivah and Phere
                 </h3>
-                <p class="font-cinzel text-[8.5px] sm:text-[9px] uppercase tracking-[0.2em] text-[#9a5416] font-semibold mb-2">
+                <p class="font-cinzel text-[8.5px] sm:text-[9px] uppercase tracking-[0.2em] text-[#b85a73] font-semibold mb-2">
                   THE SACRED SEVEN VOWS AROUND THE FIRE
                 </p>
 
                 <!-- Date Badge -->
-                <div class="flex items-center justify-center gap-1.5 text-[#853e0d] font-cinzel text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase">
+                <div class="flex items-center justify-center gap-1.5 text-[#9c3b53] font-cinzel text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase">
                   <span>FRIDAY</span>
-                  <span class="text-[#c49d68] text-sm">|</span>
-                  <span class="font-bold text-base sm:text-lg text-[#611522] tracking-normal px-0.5">29</span>
-                  <span class="text-[#c49d68] text-sm">|</span>
+                  <span class="text-[#e293a7] text-sm">|</span>
+                  <span class="font-bold text-base sm:text-lg text-[#a8435d] tracking-normal px-0.5">29</span>
+                  <span class="text-[#e293a7] text-sm">|</span>
                   <span>JANUARY</span>
                 </div>
-                <p class="font-cinzel text-[11px] font-bold text-[#853e0d] tracking-[0.22em] mt-0.5">2027</p>
+                <p class="font-cinzel text-[11px] font-bold text-[#9c3b53] tracking-[0.22em] mt-0.5">2027</p>
                 
-                <div class="w-10 h-[0.5px] bg-[#c49d68]/60 my-2"></div>
+                <div class="w-10 h-[0.5px] bg-[#e293a7]/70 my-2"></div>
                 
-                <p class="font-cinzel text-[10px] sm:text-[10.5px] uppercase tracking-[0.2em] text-[#9a5416] font-semibold">
+                <p class="font-cinzel text-[10px] sm:text-[10.5px] uppercase tracking-[0.2em] text-[#b85a73] font-semibold">
                   BARAAT: 4:00 PM &bull; PHERE: 6:00 PM
                 </p>
-                <p class="font-cinzel text-[11px] sm:text-[11.5px] uppercase tracking-[0.2em] text-[#611522] font-bold mt-1">
+                <p class="font-cinzel text-[11px] sm:text-[11.5px] uppercase tracking-[0.2em] text-[#a8435d] font-bold mt-1">
                   THE CLARKS, VARANASI
                 </p>
               </div>
 
               <!-- Bottom Elegant Gradient Base -->
-              <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#360912]/80 via-[#360912]/30 to-transparent pointer-events-none"></div>
+              <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#731f35]/65 via-[#9c3b53]/20 to-transparent pointer-events-none"></div>
             </div>
           </div>
 
           <!-- Card 4: Royal Reception - 29 Jan @ The Clarks -->
-          <div onclick="scrollToEventCard(3)" class="card-3d w-[60vw] max-w-[245px] sm:w-[260px] shrink-0 snap-center relative overflow-hidden bg-white border border-[#e5c4b0]/80">
+          <div onclick="scrollToEventCard(3)" class="card-3d w-[76vw] max-w-[285px] sm:w-[290px] shrink-0 snap-center relative overflow-hidden bg-[#fff8fa] border border-[#f5cad4]">
             <div class="relative w-full aspect-[9/16] overflow-hidden group">
               <img src="assets/template/card6.png" alt="Royal Reception" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
               
               <!-- Clean Central Ceremony Details (Title directly above date & venue) -->
               <div class="absolute top-[22%] inset-x-[8%] bottom-[38%] flex flex-col items-center justify-center text-center pointer-events-none select-none">
-                <h3 class="font-bikham text-3xl sm:text-4xl text-[#964860] leading-none mb-1 font-normal drop-shadow-xs">
+                <h3 class="font-bikham text-3xl sm:text-4xl text-[#a8435d] leading-none mb-1 font-normal drop-shadow-xs">
                   Royal Reception
                 </h3>
-                <p class="font-cinzel text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.2em] text-[#9a5416] font-semibold mb-2.5">
+                <p class="font-cinzel text-[8.5px] sm:text-[9.5px] uppercase tracking-[0.2em] text-[#b85a73] font-semibold mb-2.5">
                   DINNER, CONGRATULATIONS AND DANCING
                 </p>
 
                 <!-- Date Badge -->
-                <div class="flex items-center justify-center gap-1.5 text-[#853e0d] font-cinzel text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase">
+                <div class="flex items-center justify-center gap-1.5 text-[#9c3b53] font-cinzel text-[10px] sm:text-[11px] font-bold tracking-[0.2em] uppercase">
                   <span>FRIDAY</span>
-                  <span class="text-[#c49d68] text-sm">|</span>
-                  <span class="font-bold text-base sm:text-lg text-[#611522] tracking-normal px-0.5">29</span>
-                  <span class="text-[#c49d68] text-sm">|</span>
+                  <span class="text-[#e293a7] text-sm">|</span>
+                  <span class="font-bold text-base sm:text-lg text-[#a8435d] tracking-normal px-0.5">29</span>
+                  <span class="text-[#e293a7] text-sm">|</span>
                   <span>JANUARY</span>
                 </div>
-                <p class="font-cinzel text-[11px] font-bold text-[#853e0d] tracking-[0.22em] mt-0.5">2027</p>
+                <p class="font-cinzel text-[11px] font-bold text-[#9c3b53] tracking-[0.22em] mt-0.5">2027</p>
                 
-                <div class="w-10 h-[0.5px] bg-[#c49d68]/60 my-2"></div>
+                <div class="w-10 h-[0.5px] bg-[#e293a7]/70 my-2"></div>
                 
-                <p class="font-cinzel text-[10px] sm:text-[10.5px] uppercase tracking-[0.2em] text-[#9a5416] font-semibold">
+                <p class="font-cinzel text-[10px] sm:text-[10.5px] uppercase tracking-[0.2em] text-[#b85a73] font-semibold">
                   8:00 PM ONWARDS
                 </p>
-                <p class="font-cinzel text-[11px] sm:text-[11.5px] uppercase tracking-[0.2em] text-[#611522] font-bold mt-1">
+                <p class="font-cinzel text-[11px] sm:text-[11.5px] uppercase tracking-[0.2em] text-[#a8435d] font-bold mt-1">
                   GRAND HERITAGE LAWN, THE CLARKS
                 </p>
               </div>
 
               <!-- Bottom Elegant Gradient Base -->
-              <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#360912]/80 via-[#360912]/30 to-transparent pointer-events-none"></div>
+              <div class="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-[#731f35]/65 via-[#9c3b53]/20 to-transparent pointer-events-none"></div>
             </div>
           </div>
+        
 
+        <!-- Carousel Pagination Dots -->
+        <div id="carouselDots" class="flex items-center justify-center gap-2 mt-2">
+          <button type="button" onclick="scrollToEventCard(0)" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-[#a8435d] scale-125" aria-label="Slide 1"></button>
+          <button type="button" onclick="scrollToEventCard(1)" class="w-2 h-2 rounded-full transition-all duration-300 bg-[#f5cad4]" aria-label="Slide 2"></button>
+          <button type="button" onclick="scrollToEventCard(2)" class="w-2 h-2 rounded-full transition-all duration-300 bg-[#f5cad4]" aria-label="Slide 3"></button>
+          <button type="button" onclick="scrollToEventCard(3)" class="w-2 h-2 rounded-full transition-all duration-300 bg-[#f5cad4]" aria-label="Slide 4"></button>
         </div>
 
       </div>
 
       <!-- With Love and Blessings Footer -->
       <div class="text-center mt-12 mb-4 flex flex-col items-center gap-1">
-        <p class="font-bikham text-4xl sm:text-5xl text-[#964860]">With Love and Blessings</p>
-        <p class="font-cinzel text-[11px] sm:text-xs tracking-[0.25em] uppercase text-[#b05f77] font-semibold">
+        <p class="font-bikham text-4xl sm:text-5xl text-[#a8435d]">With Love and Blessings</p>
+        <p class="font-cinzel text-[11px] sm:text-xs tracking-[0.25em] uppercase text-[#b85a73] font-semibold">
           SHREYA AND SHUBHAM
         </p>
       </div>
@@ -667,8 +653,8 @@
     <section class="w-full bg-gradient-to-b from-[#fcf8f2] via-[#faf5eb] to-[#f7efe3] py-14 px-4 sm:px-6 flex flex-col items-center select-none border-t border-[#e8d5c4]/60 relative overflow-hidden">
       
       <div class="text-center mb-8 flex flex-col items-center gap-1.5">
-        <h2 class="font-bikham text-5xl sm:text-6xl text-[#964860] drop-shadow-sm">RSVP</h2>
-        <p class="font-cinzel text-xs sm:text-sm tracking-[0.24em] uppercase text-[#b05f77] font-medium">
+        <h2 class="font-bikham text-5xl sm:text-6xl text-[#a8435d] drop-shadow-sm">RSVP</h2>
+        <p class="font-cinzel text-xs sm:text-sm tracking-[0.24em] uppercase text-[#b85a73] font-medium">
           PLEASE KINDLY RESPOND BY JANUARY 10TH
         </p>
         <div class="h-[1px] w-24 bg-gradient-to-r from-transparent via-[#c49d68] to-transparent mt-2"></div>
@@ -676,43 +662,43 @@
 
       <div class="w-full max-w-[420px] bg-[#fffcf7] rounded-3xl border border-[#edd6c4] p-6 sm:p-7 shadow-xl relative overflow-hidden">
         
-        <form id="rsvpForm" onsubmit="submitRSVP(event)" class="flex flex-col gap-5 text-[#8b3a52]">
+        <form id="rsvpForm" onsubmit="submitRSVP(event)" class="flex flex-col gap-5 text-[#9c3b53]">
           
           <!-- Full Name -->
           <div class="flex flex-col gap-1.5">
-            <label class="font-cinzel text-[11px] font-semibold tracking-[0.18em] uppercase text-[#8b3a52]">
+            <label class="font-cinzel text-[11px] font-semibold tracking-[0.18em] uppercase text-[#9c3b53]">
               YOUR FULL NAME
             </label>
-            <input type="text" id="guestName" required placeholder="e.g. Rajesh Kumar and Family" class="w-full bg-[#fffbf4] border border-[#e5c4b0]/80 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-[#611522] focus:ring-1 focus:ring-[#611522] transition-colors"/>
+            <input type="text" id="guestName" required placeholder="e.g. Rajesh Kumar and Family" class="w-full bg-[#fff8fa] border border-[#f5cad4] rounded-xl px-4 py-3 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-[#a8435d] focus:ring-1 focus:ring-[#a8435d] transition-colors"/>
           </div>
 
           <!-- Phone Number & Guests -->
           <div class="grid grid-cols-2 gap-3 sm:gap-4">
             <div class="flex flex-col gap-1.5">
-              <label class="font-cinzel text-[11px] font-semibold tracking-[0.16em] uppercase text-[#8b3a52]">
+              <label class="font-cinzel text-[11px] font-semibold tracking-[0.16em] uppercase text-[#9c3b53]">
                 PHONE NUMBER
               </label>
-              <input type="tel" id="guestPhone" placeholder="+91 ..." class="w-full bg-[#fffbf4] border border-[#e5c4b0]/80 rounded-xl px-3.5 py-3 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-[#611522] focus:ring-1 focus:ring-[#611522] transition-colors"/>
+              <input type="tel" id="guestPhone" placeholder="+91 ..." class="w-full bg-[#fff8fa] border border-[#f5cad4] rounded-xl px-3.5 py-3 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-[#a8435d] focus:ring-1 focus:ring-[#a8435d] transition-colors"/>
             </div>
 
             <div class="flex flex-col gap-1.5">
-              <label class="font-cinzel text-[10px] sm:text-[11px] font-semibold tracking-[0.14em] uppercase text-[#8b3a52] whitespace-nowrap overflow-hidden text-ellipsis">
+              <label class="font-cinzel text-[10px] sm:text-[11px] font-semibold tracking-[0.14em] uppercase text-[#9c3b53] whitespace-nowrap overflow-hidden text-ellipsis">
                 NUMBER OF GUESTS
               </label>
-              <input type="number" id="guestCount" min="1" max="10" value="2" class="w-full bg-[#fffbf4] border border-[#e5c4b0]/80 rounded-xl px-3.5 py-3 text-sm text-gray-800 text-center focus:outline-none focus:border-[#611522] focus:ring-1 focus:ring-[#611522] transition-colors font-medium"/>
+              <input type="number" id="guestCount" min="1" max="10" value="2" class="w-full bg-[#fff8fa] border border-[#f5cad4] rounded-xl px-3.5 py-3 text-sm text-gray-800 text-center focus:outline-none focus:border-[#a8435d] focus:ring-1 focus:ring-[#a8435d] transition-colors font-medium"/>
             </div>
           </div>
 
           <!-- Attendance Toggle -->
           <div class="flex flex-col gap-2">
-            <label class="font-cinzel text-[11px] font-semibold tracking-[0.18em] uppercase text-[#8b3a52]">
+            <label class="font-cinzel text-[11px] font-semibold tracking-[0.18em] uppercase text-[#9c3b53]">
               WILL YOU BE ATTENDING?
             </label>
             <div class="grid grid-cols-2 gap-3">
-              <button type="button" id="btnAttendYes" onclick="setAttendance(true)" class="py-3 px-3 rounded-full font-cinzel text-[11px] sm:text-[12px] font-semibold tracking-wide transition-all duration-300 cursor-pointer bg-[#611522] text-white shadow-md">
+              <button type="button" id="btnAttendYes" onclick="setAttendance(true)" class="py-3 px-3 rounded-full font-cinzel text-[11px] sm:text-[12px] font-semibold tracking-wide transition-all duration-300 cursor-pointer bg-[#a8435d] text-white shadow-md">
                 Joyfully Yes
               </button>
-              <button type="button" id="btnAttendNo" onclick="setAttendance(false)" class="py-3 px-3 rounded-full font-cinzel text-[11px] sm:text-[12px] font-semibold tracking-wide transition-all duration-300 cursor-pointer bg-[#fffbf4] border border-[#e5c4b0]/80 text-[#8b3a52] hover:bg-[#faf0e6]">
+              <button type="button" id="btnAttendNo" onclick="setAttendance(false)" class="py-3 px-3 rounded-full font-cinzel text-[11px] sm:text-[12px] font-semibold tracking-wide transition-all duration-300 cursor-pointer bg-[#fff8fa] border border-[#f5cad4] text-[#9c3b53] hover:bg-[#ffeaf0]">
                 Regretfully No
               </button>
             </div>
@@ -720,17 +706,17 @@
 
           <!-- Which Events Multi-select -->
           <div class="flex flex-col gap-2">
-            <label class="font-cinzel text-[11px] font-semibold tracking-[0.18em] uppercase text-[#8b3a52]">
+            <label class="font-cinzel text-[11px] font-semibold tracking-[0.18em] uppercase text-[#9c3b53]">
               WHICH EVENTS?
             </label>
             <div class="flex flex-wrap gap-2">
-              <button type="button" onclick="toggleEventSelect(this)" class="event-pill px-3.5 py-1.5 rounded-full font-cinzel text-[11px] font-semibold tracking-wide transition-all cursor-pointer bg-[#611522]/10 border border-[#611522] text-[#611522]">
+              <button type="button" onclick="toggleEventSelect(this)" class="event-pill px-3.5 py-1.5 rounded-full font-cinzel text-[11px] font-semibold tracking-wide transition-all cursor-pointer bg-[#a8435d]/10 border border-[#a8435d] text-[#a8435d]">
                 ✓ Haldi (28 Jan)
               </button>
-              <button type="button" onclick="toggleEventSelect(this)" class="event-pill px-3.5 py-1.5 rounded-full font-cinzel text-[11px] font-semibold tracking-wide transition-all cursor-pointer bg-[#611522]/10 border border-[#611522] text-[#611522]">
+              <button type="button" onclick="toggleEventSelect(this)" class="event-pill px-3.5 py-1.5 rounded-full font-cinzel text-[11px] font-semibold tracking-wide transition-all cursor-pointer bg-[#a8435d]/10 border border-[#a8435d] text-[#a8435d]">
                 ✓ Ring Ceremony (28 Jan)
               </button>
-              <button type="button" onclick="toggleEventSelect(this)" class="event-pill px-3.5 py-1.5 rounded-full font-cinzel text-[11px] font-semibold tracking-wide transition-all cursor-pointer bg-[#611522]/10 border border-[#611522] text-[#611522]">
+              <button type="button" onclick="toggleEventSelect(this)" class="event-pill px-3.5 py-1.5 rounded-full font-cinzel text-[11px] font-semibold tracking-wide transition-all cursor-pointer bg-[#a8435d]/10 border border-[#a8435d] text-[#a8435d]">
                 ✓ Shubh Vivah and Reception (29 Jan)
               </button>
             </div>
@@ -738,14 +724,14 @@
 
           <!-- Message / Wishes -->
           <div class="flex flex-col gap-1.5">
-            <label class="font-cinzel text-[11px] font-semibold tracking-[0.18em] uppercase text-[#8b3a52]">
+            <label class="font-cinzel text-[11px] font-semibold tracking-[0.18em] uppercase text-[#9c3b53]">
               A MESSAGE FOR SHREYA AND SHUBHAM
             </label>
-            <textarea id="guestMessage" rows="3" placeholder="Your warm blessings and wishes for the couple..." class="w-full bg-[#fffbf4] border border-[#e5c4b0]/80 rounded-2xl px-4 py-3 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-[#611522] focus:ring-1 focus:ring-[#611522] transition-colors resize-none"></textarea>
+            <textarea id="guestMessage" rows="3" placeholder="Your warm blessings and wishes for the couple..." class="w-full bg-[#fff8fa] border border-[#f5cad4] rounded-2xl px-4 py-3 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-[#a8435d] focus:ring-1 focus:ring-[#a8435d] transition-colors resize-none"></textarea>
           </div>
 
           <!-- Submit Button (Direct WhatsApp Integration) -->
-          <button type="submit" class="mt-2 w-full bg-[#611522] hover:bg-[#4a0d17] active:scale-[0.99] text-white font-cinzel text-xs font-semibold tracking-[0.22em] uppercase py-3.5 rounded-full shadow-lg flex items-center justify-center gap-2 transition-all cursor-pointer">
+          <button type="submit" class="mt-2 w-full bg-[#a8435d] hover:bg-[#8c2e45] active:scale-[0.99] text-white font-cinzel text-xs font-semibold tracking-[0.22em] uppercase py-3.5 rounded-full shadow-lg flex items-center justify-center gap-2 transition-all cursor-pointer">
             <svg class="w-4 h-4 text-white transform -rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
             </svg>
@@ -753,15 +739,15 @@
           </button>
 
           <!-- Direct Call RSVP Contacts -->
-          <div class="pt-3 border-t border-[#e5c4b0]/50 text-center">
-            <p class="font-cinzel text-[10px] tracking-widest text-[#8b3a52] uppercase mb-2">
+          <div class="pt-3 border-t border-[#f5cad4]/70 text-center">
+            <p class="font-cinzel text-[10px] tracking-widest text-[#9c3b53] uppercase mb-2">
               OR RSVP DIRECTLY VIA CALL
             </p>
             <div class="flex justify-center gap-3">
-              <a href="tel:8279642050" class="px-3 py-1.5 rounded-full border border-[#c49d68] text-[11px] font-cinzel font-semibold text-[#611522] hover:bg-rose-50 flex items-center gap-1">
+              <a href="tel:8279642050" class="px-3 py-1.5 rounded-full border border-[#c49d68] text-[11px] font-cinzel font-semibold text-[#a8435d] hover:bg-[#ffeef3] flex items-center gap-1">
                 <span>📞</span> Virendra Singh
               </a>
-              <a href="tel:9794904444" class="px-3 py-1.5 rounded-full border border-[#c49d68] text-[11px] font-cinzel font-semibold text-[#611522] hover:bg-rose-50 flex items-center gap-1">
+              <a href="tel:9794904444" class="px-3 py-1.5 rounded-full border border-[#c49d68] text-[11px] font-cinzel font-semibold text-[#a8435d] hover:bg-[#ffeef3] flex items-center gap-1">
                 <span>📞</span> Ravindra Singh
               </a>
             </div>
@@ -779,8 +765,8 @@
     <section class="w-full bg-gradient-to-b from-[#f7efe3] via-[#faf5eb] to-[#fcf8f2] py-14 px-4 sm:px-6 flex flex-col items-center select-none border-t border-[#e8d5c4]/60 relative overflow-hidden">
       
       <div class="text-center mb-8 flex flex-col items-center gap-1.5">
-        <h2 class="font-bikham text-5xl sm:text-6xl text-[#964860] drop-shadow-sm">Location</h2>
-        <p class="font-cinzel text-xs sm:text-sm tracking-[0.24em] uppercase text-[#b05f77] font-medium">
+        <h2 class="font-bikham text-5xl sm:text-6xl text-[#a8435d] drop-shadow-sm">Location</h2>
+        <p class="font-cinzel text-xs sm:text-sm tracking-[0.24em] uppercase text-[#b85a73] font-medium">
           VENUE AND DIRECTIONS
         </p>
         <div class="h-[1px] w-24 bg-gradient-to-r from-transparent via-[#c49d68] to-transparent mt-2"></div>
@@ -789,12 +775,12 @@
       <div class="w-full max-w-[420px] bg-[#fffcf7] rounded-3xl border border-[#edd6c4] p-5 sm:p-6 shadow-xl flex flex-col items-center gap-5 relative overflow-hidden">
         
         <!-- Venue Name & City Header -->
-        <div class="flex flex-col items-center text-center gap-1 text-[#964860]">
+        <div class="flex flex-col items-center text-center gap-1 text-[#a8435d]">
           <div class="flex items-center gap-1.5">
-            <svg class="w-5 h-5 text-[#c49d68]" fill="currentColor" viewBox="0 0 24 24">
+            <svg class="w-5 h-5 text-[#e293a7]" fill="currentColor" viewBox="0 0 24 24">
               <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
             </svg>
-            <span class="font-cinzel text-xs sm:text-sm font-bold tracking-wider text-[#8b3a52] uppercase">
+            <span class="font-cinzel text-xs sm:text-sm font-bold tracking-wider text-[#9c3b53] uppercase">
               The Clarks, Varanasi
             </span>
           </div>
@@ -804,13 +790,13 @@
         </div>
 
         <!-- Embedded Interactive Google Map -->
-        <div class="w-full h-56 rounded-2xl overflow-hidden border border-[#e5c4b0]/80 relative shadow-inner bg-[#f0e6df]">
+        <div class="w-full h-56 rounded-2xl overflow-hidden border border-[#f5cad4] relative shadow-inner bg-[#faeef2]">
           <iframe title="The Clarks Varanasi Map" src="https://maps.google.com/maps?q=The+Clarks+Varanasi+Mall+Road+Cantonment&t=&z=14&ie=UTF8&iwloc=&output=embed" class="w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
 
         <!-- Direct Navigation Link Button -->
-        <a href="https://maps.google.com/?q=The+Clarks+Varanasi" target="_blank" rel="noopener noreferrer" class="w-full bg-[#611522] hover:bg-[#4a0d17] active:scale-[0.99] text-white font-cinzel text-xs font-semibold tracking-[0.2em] uppercase py-3.5 rounded-full shadow-lg flex items-center justify-center gap-2.5 transition-all text-center cursor-pointer">
-          <svg class="w-4 h-4 text-[#c49d68]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <a href="https://maps.google.com/?q=The+Clarks+Varanasi" target="_blank" rel="noopener noreferrer" class="w-full bg-[#a8435d] hover:bg-[#8c2e45] active:scale-[0.99] text-white font-cinzel text-xs font-semibold tracking-[0.2em] uppercase py-3.5 rounded-full shadow-lg flex items-center justify-center gap-2.5 transition-all text-center cursor-pointer">
+          <svg class="w-4 h-4 text-[#e293a7]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
           </svg>
@@ -822,8 +808,8 @@
     </section>
 
     <!-- Footer -->
-    <footer class="w-full bg-[#faf6f0] py-6 px-4 flex flex-col items-center justify-center border-t border-[#e8d5c4]/40 text-center select-none">
-      <p class="font-bikham text-3xl text-[#964860]">Shreya and Shubham</p>
+    <footer class="w-full bg-[#faeef2] py-6 px-4 flex flex-col items-center justify-center border-t border-[#f5cad4]/50 text-center select-none">
+      <p class="font-bikham text-3xl text-[#a8435d]">Shreya and Shubham</p>
       <p class="font-cinzel text-[9.5px] tracking-[0.22em] text-[#705649] uppercase mt-1">
         29TH JANUARY 2027 &bull; VARANASI
       </p>
@@ -946,16 +932,16 @@
     }, { passive: true });
 
     // ---------------------------------------------------------------------------
-    // 3.5. Interactive 3D Pop-Out Carousel Controller (Swipe, Touch & Snap)
-    // ---------------------------------------------------------------------------
-    function updateSemicircularArc() {
+    // 3.5. Horizontal Event Cards Carousel Controller (Smooth Touch, Drag & Step)
+    let activeCardIndex = 0;
+
+    function updateCarouselState() {
       const carousel = document.getElementById('eventsCarousel');
       if (!carousel) return;
 
       const cards = Array.from(carousel.querySelectorAll('.card-3d'));
       const viewportWidth = carousel.clientWidth;
       const carouselCenter = carousel.scrollLeft + viewportWidth / 2;
-      const maxDistance = viewportWidth * 0.62;
 
       let closestIndex = 0;
       let minOffset = Infinity;
@@ -970,22 +956,17 @@
           closestIndex = index;
         }
 
-        const normalized = Math.max(-1, Math.min(1, offset / maxDistance));
+        const normalized = Math.max(-1, Math.min(1, offset / (viewportWidth * 0.75)));
         const absNorm = Math.abs(normalized);
 
-        // Center card pops out: scale up to 1.15, translateZ +75px forward
-        // Side cards shrink to 0.82, recede -45px
-        const scale = 1.15 - absNorm * 0.33;
-        const translateZ = (1 - absNorm) * 120 - 45;
-        const translateY = Math.pow(absNorm, 1.5) * 16;
-        const rotateY = normalized * 24;
-        const rotateZ = normalized * -2.5;
-        const opacity = 1 - absNorm * 0.36;
+        // Center card pops out gently, side cards shrink slightly
+        const scale = 1.04 - absNorm * 0.12;
+        const opacity = 1 - absNorm * 0.28;
 
-        card.style.transform = `perspective(1200px) translateY(${translateY}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg) scale(${scale})`;
+        card.style.transform = `scale(${scale})`;
         card.style.opacity = `${opacity}`;
 
-        if (absNorm < 0.22) {
+        if (absNorm < 0.25) {
           card.classList.add('card-active');
           card.classList.remove('card-inactive');
         } else {
@@ -994,26 +975,44 @@
         }
       });
 
+      activeCardIndex = closestIndex;
       updateNavPills(closestIndex);
+      updateCarouselDots(closestIndex);
     }
 
     function updateNavPills(activeIndex) {
       const pills = document.querySelectorAll('.event-nav-pill');
       pills.forEach((pill, idx) => {
         if (idx === activeIndex) {
-          pill.className = "event-nav-pill px-3 py-1.5 rounded-full font-cinzel text-[10.5px] sm:text-[11px] font-bold tracking-wider transition-all duration-300 border bg-[#611522] text-[#f3e0aa] border-[#d4af37] shadow-md scale-105";
+          pill.className = "event-nav-pill px-3 py-1.5 rounded-full font-cinzel text-[10.5px] sm:text-[11px] font-bold tracking-wider transition-all duration-300 border bg-[#a8435d] text-[#fff0f4] border-[#f5cad4] shadow-md scale-105";
         } else {
-          pill.className = "event-nav-pill px-3 py-1.5 rounded-full font-cinzel text-[10.5px] sm:text-[11px] font-semibold tracking-wider transition-all duration-300 border bg-white/90 text-[#8b3a52] border-[#e5c4b0]/80 hover:bg-[#faf0e6]";
+          pill.className = "event-nav-pill px-3 py-1.5 rounded-full font-cinzel text-[10.5px] sm:text-[11px] font-semibold tracking-wider transition-all duration-300 border bg-[#fff5f7]/95 text-[#a8435d] border-[#f5cad4] hover:bg-[#ffeaf0]";
         }
       });
+    }
+
+    function updateCarouselDots(activeIndex) {
+      const dotsContainer = document.getElementById('carouselDots');
+      if (!dotsContainer) return;
+      const dots = dotsContainer.children;
+      for (let i = 0; i < dots.length; i++) {
+        if (i === activeIndex) {
+          dots[i].className = "w-2.5 h-2.5 rounded-full transition-all duration-300 bg-[#a8435d] scale-125";
+        } else {
+          dots[i].className = "w-2 h-2 rounded-full transition-all duration-300 bg-[#f5cad4]";
+        }
+      }
     }
 
     function scrollToEventCard(index) {
       const carousel = document.getElementById('eventsCarousel');
       if (!carousel) return;
       const cards = Array.from(carousel.querySelectorAll('.card-3d'));
-      if (cards[index]) {
-        cards[index].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      const targetIndex = Math.max(0, Math.min(cards.length - 1, index));
+      const card = cards[targetIndex];
+      if (card) {
+        const targetLeft = card.offsetLeft - (carousel.clientWidth - card.clientWidth) / 2;
+        carousel.scrollTo({ left: targetLeft, behavior: 'smooth' });
       }
     }
 
@@ -1021,11 +1020,30 @@
     const carouselEl = document.getElementById('eventsCarousel');
     if (carouselEl) {
       carouselEl.addEventListener('scroll', () => {
-        window.requestAnimationFrame(updateSemicircularArc);
+        window.requestAnimationFrame(updateCarouselState);
       }, { passive: true });
-      window.addEventListener('resize', updateSemicircularArc);
-      // Initial frame render
-      setTimeout(updateSemicircularArc, 150);
+      window.addEventListener('resize', updateCarouselState);
+      
+      // Desktop mouse drag-to-scroll support
+      let isDown = false;
+      let startX, scrollLeft;
+      carouselEl.addEventListener('mousedown', (e) => {
+        isDown = true;
+        startX = e.pageX - carouselEl.offsetLeft;
+        scrollLeft = carouselEl.scrollLeft;
+      });
+      carouselEl.addEventListener('mouseleave', () => { isDown = false; });
+      carouselEl.addEventListener('mouseup', () => { isDown = false; });
+      carouselEl.addEventListener('mousemove', (e) => {
+        if (!isDown) return;
+        e.preventDefault();
+        const x = e.pageX - carouselEl.offsetLeft;
+        const walk = (x - startX) * 1.5;
+        carouselEl.scrollLeft = scrollLeft - walk;
+      });
+
+      // Initial state render
+      setTimeout(updateCarouselState, 150);
     }
 
     // ---------------------------------------------------------------------------
@@ -1039,24 +1057,24 @@
       const btnNo = document.getElementById('btnAttendNo');
 
       if (yes) {
-        btnYes.className = "py-3 px-3 rounded-full font-cinzel text-[11px] sm:text-[12px] font-semibold tracking-wide transition-all duration-300 cursor-pointer bg-[#611522] text-white shadow-md";
-        btnNo.className = "py-3 px-3 rounded-full font-cinzel text-[11px] sm:text-[12px] font-semibold tracking-wide transition-all duration-300 cursor-pointer bg-[#fffbf4] border border-[#e5c4b0]/80 text-[#8b3a52] hover:bg-[#faf0e6]";
+        btnYes.className = "py-3 px-3 rounded-full font-cinzel text-[11px] sm:text-[12px] font-semibold tracking-wide transition-all duration-300 cursor-pointer bg-[#a8435d] text-white shadow-md";
+        btnNo.className = "py-3 px-3 rounded-full font-cinzel text-[11px] sm:text-[12px] font-semibold tracking-wide transition-all duration-300 cursor-pointer bg-[#fff8fa] border border-[#f5cad4] text-[#9c3b53] hover:bg-[#ffeaf0]";
       } else {
-        btnNo.className = "py-3 px-3 rounded-full font-cinzel text-[11px] sm:text-[12px] font-semibold tracking-wide transition-all duration-300 cursor-pointer bg-[#611522] text-white shadow-md";
-        btnYes.className = "py-3 px-3 rounded-full font-cinzel text-[11px] sm:text-[12px] font-semibold tracking-wide transition-all duration-300 cursor-pointer bg-[#fffbf4] border border-[#e5c4b0]/80 text-[#8b3a52] hover:bg-[#faf0e6]";
+        btnNo.className = "py-3 px-3 rounded-full font-cinzel text-[11px] sm:text-[12px] font-semibold tracking-wide transition-all duration-300 cursor-pointer bg-[#a8435d] text-white shadow-md";
+        btnYes.className = "py-3 px-3 rounded-full font-cinzel text-[11px] sm:text-[12px] font-semibold tracking-wide transition-all duration-300 cursor-pointer bg-[#fff8fa] border border-[#f5cad4] text-[#9c3b53] hover:bg-[#ffeaf0]";
       }
     }
 
     function toggleEventSelect(btn) {
-      if (btn.classList.contains('bg-[#611522]')) {
+      if (btn.classList.contains('bg-[#a8435d]')) {
         // Deselect
-        btn.classList.remove('bg-[#611522]', 'text-white');
-        btn.classList.add('bg-[#611522]/10', 'text-[#611522]');
+        btn.classList.remove('bg-[#a8435d]', 'text-white');
+        btn.classList.add('bg-[#a8435d]/10', 'text-[#a8435d]');
         btn.innerText = btn.innerText.replace('✓', '○');
       } else {
         // Select
-        btn.classList.remove('bg-[#611522]/10', 'text-[#611522]');
-        btn.classList.add('bg-[#611522]', 'text-white');
+        btn.classList.remove('bg-[#a8435d]/10', 'text-[#a8435d]');
+        btn.classList.add('bg-[#a8435d]', 'text-white');
         btn.innerText = btn.innerText.replace('○', '✓');
       }
     }
