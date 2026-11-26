@@ -61,6 +61,23 @@
       scrollbar-width: none;  /* Firefox */
     }
 
+    /* Door Seal Center Placement */
+    .door-center-seal {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) !important;
+      -webkit-transform: translate(-50%, -50%) !important;
+      z-index: 40;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 320px;
+      pointer-events: none;
+    }
+
     /* Scroll reveal transitions */
     .reveal-item {
       opacity: 0;
@@ -156,7 +173,7 @@
         </div>
 
         <!-- Center Golden Wax Seal / Tap to Open Badge (Centered Exactly on Door Seam) -->
-        <div id="doorSealPrompt" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 flex flex-col items-center gap-4 transition-all duration-700 pointer-events-none">
+        <div id="doorSealPrompt" class="door-center-seal gap-4 transition-all duration-700">
           <div class="relative group">
             <div class="absolute -inset-3 rounded-full bg-gradient-to-r from-[#d4af37] via-[#f3e0aa] to-[#d4af37] opacity-80 blur-md animate-gold-glow"></div>
             <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-b from-[#611522] via-[#4a0d17] to-[#2d050c] border-[2.5px] border-[#d4af37] flex flex-col items-center justify-center shadow-[0_12px_40px_rgba(0,0,0,0.85)] text-[#f3e0aa]">
