@@ -46,6 +46,16 @@
       transform: translateX(101%) !important;
     }
 
+    /* Hide scrollbar for Chrome, Safari and Opera */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    /* Hide scrollbar for IE, Edge and Firefox */
+    .no-scrollbar {
+      -ms-overflow-style: none;  /* IE and Edge */
+      scrollbar-width: none;  /* Firefox */
+    }
+
     /* Scroll reveal transitions */
     .reveal-item {
       opacity: 0;
@@ -306,78 +316,112 @@
         <div class="h-[1px] w-24 bg-gradient-to-r from-transparent via-[#c49d68] to-transparent mt-2"></div>
       </div>
 
-      <!-- Event Cards Stack (Exact Template 9/16 Card Layout) -->
-      <div class="w-full max-w-[400px] flex flex-col gap-8 items-center">
-
-        <!-- Card 1: Tilak & Sagai (Engagement) -->
-        <div class="w-full relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#e5c4b0]/70 bg-white transition-all duration-500 ease-out transform hover:scale-[1.02] hover:shadow-2xl">
-          <div class="relative w-full aspect-[9/16] overflow-hidden group">
-            <img src="assets/template/card2.png" alt="Engagement &amp; Sangeet" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
-            <!-- Elegant Text Overlay -->
-            <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-[#360912]/90 via-[#360912]/50 to-transparent text-white flex flex-col items-center text-center">
-              <span class="font-cinzel text-[10px] tracking-[0.25em] uppercase text-[#f3e0aa] font-semibold">CEREMONY I</span>
-              <h3 class="font-bikham text-4xl sm:text-5xl text-[#fff6e6] my-1">Engagement &amp; Sangeet</h3>
-              <p class="font-cinzel text-xs text-[#f3e0aa] tracking-wider">AN EVENING OF MUSIC, RINGS &amp; CELEBRATION</p>
-              <div class="w-12 h-[0.5px] bg-[#d4af37] my-2"></div>
-              <p class="font-cinzel text-[11px] text-white/90 tracking-wide font-medium">7:00 PM Onwards &bull; Royal Ballroom</p>
-            </div>
-          </div>
+      <!-- Horizontal Scrollable Event Cards Carousel with Navigation -->
+      <div class="w-full relative px-2 sm:px-4">
+        
+        <!-- Swipe / Scroll Hint -->
+        <div class="flex items-center justify-center gap-2 mb-3 text-[#b05f77]/80 text-[11px] font-cinzel tracking-wider uppercase">
+          <span>‹</span>
+          <span class="animate-pulse">Swipe cards to explore ceremonies</span>
+          <span>›</span>
         </div>
 
-        <!-- Card 2: Turmeric Tales (Haldi) -->
-        <div class="w-full relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#e5c4b0]/70 bg-white transition-all duration-500 ease-out transform hover:scale-[1.02] hover:shadow-2xl">
-          <div class="relative w-full aspect-[9/16] overflow-hidden group">
-            <img src="assets/template/card3.png" alt="Haldi Utsav" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
-            <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-[#360912]/90 via-[#360912]/50 to-transparent text-white flex flex-col items-center text-center">
-              <span class="font-cinzel text-[10px] tracking-[0.25em] uppercase text-[#f3e0aa] font-semibold">CEREMONY II</span>
-              <h3 class="font-bikham text-4xl sm:text-5xl text-[#fff6e6] my-1">Turmeric Tales (Haldi)</h3>
-              <p class="font-cinzel text-xs text-[#f3e0aa] tracking-wider">SPLASHES OF SUNSHINE &amp; AUSPICIOUS BLESSINGS</p>
-              <div class="w-12 h-[0.5px] bg-[#d4af37] my-2"></div>
-              <p class="font-cinzel text-[11px] text-white/90 tracking-wide font-medium">10:00 AM &bull; Courtyard Lawn</p>
+        <!-- Carousel Track -->
+        <div id="eventsCarousel" class="w-full overflow-x-auto flex gap-4 sm:gap-6 snap-x snap-mandatory scroll-smooth py-3 px-3 no-scrollbar" onscroll="updateCarouselIndicators()">
+
+          <!-- Card 1: Tilak & Sagai (Engagement) -->
+          <div class="w-[78vw] max-w-[310px] shrink-0 snap-center relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#e5c4b0]/70 bg-white transition-all duration-300 hover:shadow-2xl">
+            <div class="relative w-full aspect-[9/16] overflow-hidden group">
+              <img src="assets/template/card2.png" alt="Engagement &amp; Sangeet" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
+              <!-- Elegant Text Overlay -->
+              <div class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-[#360912]/95 via-[#360912]/60 to-transparent text-white flex flex-col items-center text-center">
+                <span class="font-cinzel text-[10px] tracking-[0.25em] uppercase text-[#f3e0aa] font-semibold">CEREMONY I</span>
+                <h3 class="font-bikham text-3xl sm:text-4xl text-[#fff6e6] my-1">Engagement &amp; Sangeet</h3>
+                <p class="font-cinzel text-[11px] text-[#f3e0aa] tracking-wider">AN EVENING OF MUSIC &amp; RINGS</p>
+                <div class="w-12 h-[0.5px] bg-[#d4af37] my-2"></div>
+                <p class="font-cinzel text-[11px] text-white/90 tracking-wide font-medium">7:00 PM Onwards &bull; Royal Ballroom</p>
+              </div>
             </div>
           </div>
+
+          <!-- Card 2: Turmeric Tales (Haldi) -->
+          <div class="w-[78vw] max-w-[310px] shrink-0 snap-center relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#e5c4b0]/70 bg-white transition-all duration-300 hover:shadow-2xl">
+            <div class="relative w-full aspect-[9/16] overflow-hidden group">
+              <img src="assets/template/card3.png" alt="Haldi Utsav" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
+              <div class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-[#360912]/95 via-[#360912]/60 to-transparent text-white flex flex-col items-center text-center">
+                <span class="font-cinzel text-[10px] tracking-[0.25em] uppercase text-[#f3e0aa] font-semibold">CEREMONY II</span>
+                <h3 class="font-bikham text-3xl sm:text-4xl text-[#fff6e6] my-1">Turmeric Tales (Haldi)</h3>
+                <p class="font-cinzel text-[11px] text-[#f3e0aa] tracking-wider">SPLASHES OF SUNSHINE &amp; BLESSINGS</p>
+                <div class="w-12 h-[0.5px] bg-[#d4af37] my-2"></div>
+                <p class="font-cinzel text-[11px] text-white/90 tracking-wide font-medium">10:00 AM &bull; Courtyard Lawn</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3: The Henna Diaries (Mehendi) -->
+          <div class="w-[78vw] max-w-[310px] shrink-0 snap-center relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#e5c4b0]/70 bg-white transition-all duration-300 hover:shadow-2xl">
+            <div class="relative w-full aspect-[9/16] overflow-hidden group">
+              <img src="assets/template/card4.png" alt="Mehendi Celebrations" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
+              <div class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-[#360912]/95 via-[#360912]/60 to-transparent text-white flex flex-col items-center text-center">
+                <span class="font-cinzel text-[10px] tracking-[0.25em] uppercase text-[#f3e0aa] font-semibold">CEREMONY III</span>
+                <h3 class="font-bikham text-3xl sm:text-4xl text-[#fff6e6] my-1">The Henna Diaries</h3>
+                <p class="font-cinzel text-[11px] text-[#f3e0aa] tracking-wider">INTRICATE MEHENDI &amp; FOLK MELODIES</p>
+                <div class="w-12 h-[0.5px] bg-[#d4af37] my-2"></div>
+                <p class="font-cinzel text-[11px] text-white/90 tracking-wide font-medium">3:00 PM &bull; Poolside Garden</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4: Shubh Vivah (Baraat & Phere) -->
+          <div class="w-[78vw] max-w-[310px] shrink-0 snap-center relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#e5c4b0]/70 bg-white transition-all duration-300 hover:shadow-2xl">
+            <div class="relative w-full aspect-[9/16] overflow-hidden group">
+              <img src="assets/template/card5.png" alt="Shubh Vivah" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
+              <div class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-[#360912]/95 via-[#360912]/60 to-transparent text-white flex flex-col items-center text-center">
+                <span class="font-cinzel text-[10px] tracking-[0.25em] uppercase text-[#f3e0aa] font-semibold">MAIN AUSPICIOUS RITUAL</span>
+                <h3 class="font-bikham text-3xl sm:text-4xl text-[#fff6e6] my-1">Shubh Vivah &amp; Phere</h3>
+                <p class="font-cinzel text-[11px] text-[#f3e0aa] tracking-wider">THE SACRED SEVEN VOWS AROUND THE FIRE</p>
+                <div class="w-12 h-[0.5px] bg-[#d4af37] my-2"></div>
+                <p class="font-cinzel text-[11px] text-white/90 tracking-wide font-medium">Baraat: 4:00 PM &bull; Phere: 6:00 PM</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5: Royal Reception & Sundowner -->
+          <div class="w-[78vw] max-w-[310px] shrink-0 snap-center relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#e5c4b0]/70 bg-white transition-all duration-300 hover:shadow-2xl">
+            <div class="relative w-full aspect-[9/16] overflow-hidden group">
+              <img src="assets/template/card6.png" alt="Royal Reception" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
+              <div class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-[#360912]/95 via-[#360912]/60 to-transparent text-white flex flex-col items-center text-center">
+                <span class="font-cinzel text-[10px] tracking-[0.25em] uppercase text-[#f3e0aa] font-semibold">CELEBRATION DINNER</span>
+                <h3 class="font-bikham text-3xl sm:text-4xl text-[#fff6e6] my-1">Royal Reception</h3>
+                <p class="font-cinzel text-[11px] text-[#f3e0aa] tracking-wider">DINNER, CONGRATULATIONS &amp; DANCING</p>
+                <div class="w-12 h-[0.5px] bg-[#d4af37] my-2"></div>
+                <p class="font-cinzel text-[11px] text-white/90 tracking-wide font-medium">8:00 PM Onwards &bull; Grand Heritage Lawn</p>
+              </div>
+            </div>
+          </div>
+
         </div>
 
-        <!-- Card 3: The Henna Diaries (Mehendi) -->
-        <div class="w-full relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#e5c4b0]/70 bg-white transition-all duration-500 ease-out transform hover:scale-[1.02] hover:shadow-2xl">
-          <div class="relative w-full aspect-[9/16] overflow-hidden group">
-            <img src="assets/template/card4.png" alt="Mehendi Celebrations" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
-            <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-[#360912]/90 via-[#360912]/50 to-transparent text-white flex flex-col items-center text-center">
-              <span class="font-cinzel text-[10px] tracking-[0.25em] uppercase text-[#f3e0aa] font-semibold">CEREMONY III</span>
-              <h3 class="font-bikham text-4xl sm:text-5xl text-[#fff6e6] my-1">The Henna Diaries</h3>
-              <p class="font-cinzel text-xs text-[#f3e0aa] tracking-wider">INTRICATE MEHENDI &amp; FOLK MELODIES</p>
-              <div class="w-12 h-[0.5px] bg-[#d4af37] my-2"></div>
-              <p class="font-cinzel text-[11px] text-white/90 tracking-wide font-medium">3:00 PM &bull; Poolside Garden</p>
-            </div>
-          </div>
-        </div>
+        <!-- Navigation Controls: Left/Right Buttons & Dots -->
+        <div class="flex items-center justify-between mt-4 px-2">
+          <!-- Prev Button -->
+          <button onclick="scrollEventsCarousel(-1)" aria-label="Previous Event" class="w-9 h-9 rounded-full bg-white/90 border border-[#e5c4b0] shadow-md flex items-center justify-center text-[#964860] hover:bg-[#964860] hover:text-white transition-all duration-300 cursor-pointer active:scale-90">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
+          </button>
 
-        <!-- Card 4: Shubh Vivah (Baraat & Phere) -->
-        <div class="w-full relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#e5c4b0]/70 bg-white transition-all duration-500 ease-out transform hover:scale-[1.02] hover:shadow-2xl">
-          <div class="relative w-full aspect-[9/16] overflow-hidden group">
-            <img src="assets/template/card5.png" alt="Shubh Vivah" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
-            <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-[#360912]/90 via-[#360912]/50 to-transparent text-white flex flex-col items-center text-center">
-              <span class="font-cinzel text-[10px] tracking-[0.25em] uppercase text-[#f3e0aa] font-semibold">MAIN AUSPICIOUS RITUAL</span>
-              <h3 class="font-bikham text-4xl sm:text-5xl text-[#fff6e6] my-1">Shubh Vivah &amp; Phere</h3>
-              <p class="font-cinzel text-xs text-[#f3e0aa] tracking-wider">THE SACRED SEVEN VOWS AROUND THE HOLY FIRE</p>
-              <div class="w-12 h-[0.5px] bg-[#d4af37] my-2"></div>
-              <p class="font-cinzel text-[11px] text-white/90 tracking-wide font-medium">Baraat Swagat: 4:00 PM &bull; Phere: 6:00 PM</p>
-            </div>
+          <!-- Indicator Dots -->
+          <div class="flex items-center gap-2" id="carouselDots">
+            <button onclick="jumpToCard(0)" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-[#964860] scale-125" aria-label="Card 1"></button>
+            <button onclick="jumpToCard(1)" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-[#e5c4b0]" aria-label="Card 2"></button>
+            <button onclick="jumpToCard(2)" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-[#e5c4b0]" aria-label="Card 3"></button>
+            <button onclick="jumpToCard(3)" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-[#e5c4b0]" aria-label="Card 4"></button>
+            <button onclick="jumpToCard(4)" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-[#e5c4b0]" aria-label="Card 5"></button>
           </div>
-        </div>
 
-        <!-- Card 5: Royal Reception & Sundowner -->
-        <div class="w-full relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#e5c4b0]/70 bg-white transition-all duration-500 ease-out transform hover:scale-[1.02] hover:shadow-2xl">
-          <div class="relative w-full aspect-[9/16] overflow-hidden group">
-            <img src="assets/template/card6.png" alt="Royal Reception" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
-            <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-[#360912]/90 via-[#360912]/50 to-transparent text-white flex flex-col items-center text-center">
-              <span class="font-cinzel text-[10px] tracking-[0.25em] uppercase text-[#f3e0aa] font-semibold">CELEBRATION DINNER</span>
-              <h3 class="font-bikham text-4xl sm:text-5xl text-[#fff6e6] my-1">Royal Reception</h3>
-              <p class="font-cinzel text-xs text-[#f3e0aa] tracking-wider">DINNER, CONGRATULATIONS &amp; DANCING</p>
-              <div class="w-12 h-[0.5px] bg-[#d4af37] my-2"></div>
-              <p class="font-cinzel text-[11px] text-white/90 tracking-wide font-medium">8:00 PM Onwards &bull; Grand Heritage Lawn</p>
-            </div>
-          </div>
+          <!-- Next Button -->
+          <button onclick="scrollEventsCarousel(1)" aria-label="Next Event" class="w-9 h-9 rounded-full bg-white/90 border border-[#e5c4b0] shadow-md flex items-center justify-center text-[#964860] hover:bg-[#964860] hover:text-white transition-all duration-300 cursor-pointer active:scale-90">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
+          </button>
         </div>
 
       </div>
@@ -718,6 +762,55 @@
       isRevealed = true;
       canvas.style.opacity = '0';
       canvas.style.pointerEvents = 'none';
+    }
+
+    // ---------------------------------------------------------------------------
+    // 3.5. Horizontal Event Cards Carousel Controller
+    // ---------------------------------------------------------------------------
+    function scrollEventsCarousel(direction) {
+      const carousel = document.getElementById('eventsCarousel');
+      if (!carousel) return;
+      const cardWidth = carousel.firstElementChild ? carousel.firstElementChild.getBoundingClientRect().width + 16 : 280;
+      carousel.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
+    }
+
+    function jumpToCard(index) {
+      const carousel = document.getElementById('eventsCarousel');
+      if (!carousel) return;
+      const cards = carousel.children;
+      if (cards[index]) {
+        cards[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+      }
+    }
+
+    function updateCarouselIndicators() {
+      const carousel = document.getElementById('eventsCarousel');
+      const dots = document.getElementById('carouselDots');
+      if (!carousel || !dots) return;
+
+      const cards = Array.from(carousel.children);
+      const scrollCenter = carousel.scrollLeft + carousel.clientWidth / 2;
+
+      let closestIdx = 0;
+      let minDiff = Infinity;
+
+      cards.forEach((card, idx) => {
+        const cardCenter = card.offsetLeft + card.clientWidth / 2;
+        const diff = Math.abs(scrollCenter - cardCenter);
+        if (diff < minDiff) {
+          minDiff = diff;
+          closestIdx = idx;
+        }
+      });
+
+      const dotButtons = dots.children;
+      for (let i = 0; i < dotButtons.length; i++) {
+        if (i === closestIdx) {
+          dotButtons[i].className = "w-2.5 h-2.5 rounded-full transition-all duration-300 bg-[#964860] scale-125";
+        } else {
+          dotButtons[i].className = "w-2.5 h-2.5 rounded-full transition-all duration-300 bg-[#e5c4b0]";
+        }
+      }
     }
 
     // ---------------------------------------------------------------------------
