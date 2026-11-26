@@ -78,6 +78,32 @@
       pointer-events: none;
     }
 
+    /* 3D Event Cards & Realistic Elevation Shadows */
+    .event-cards-track {
+      perspective: 1200px;
+      -webkit-perspective: 1200px;
+      scroll-snap-type: x mandatory;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .card-3d {
+      transform-style: preserve-3d;
+      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+      box-shadow: 
+        0 14px 28px rgba(110, 48, 64, 0.16),
+        0 24px 48px -12px rgba(80, 20, 35, 0.22),
+        0 4px 12px rgba(0, 0, 0, 0.08);
+      border-radius: 1.75rem;
+    }
+
+    .card-3d:hover, .card-3d:active {
+      transform: translateY(-4px) scale(1.015);
+      box-shadow: 
+        0 22px 42px rgba(110, 48, 64, 0.22),
+        0 32px 64px -14px rgba(80, 20, 35, 0.3),
+        0 6px 16px rgba(0, 0, 0, 0.1);
+    }
+
     /* Scroll reveal transitions */
     .reveal-item {
       opacity: 0;
@@ -340,21 +366,14 @@
         <div class="h-[1px] w-24 bg-gradient-to-r from-transparent via-[#c49d68] to-transparent mt-2"></div>
       </div>
 
-      <!-- Horizontal Scrollable Event Cards Carousel with Navigation -->
+      <!-- Horizontal Touch & Scroll Event Cards with 3D Realistic Shadow -->
       <div class="w-full relative px-2 sm:px-4">
-        
-        <!-- Swipe / Scroll Hint -->
-        <div class="flex items-center justify-center gap-2 mb-3 text-[#b05f77]/80 text-[11px] font-cinzel tracking-wider uppercase">
-          <span>‹</span>
-          <span class="animate-pulse">Swipe cards to explore ceremonies</span>
-          <span>›</span>
-        </div>
 
-        <!-- Carousel Track -->
-        <div id="eventsCarousel" class="w-full overflow-x-auto flex gap-4 sm:gap-6 snap-x snap-mandatory scroll-smooth py-3 px-3 no-scrollbar" onscroll="updateCarouselIndicators()">
+        <!-- 3D Carousel Track (Smooth Touch & Drag Scrollable) -->
+        <div id="eventsCarousel" class="event-cards-track w-full overflow-x-auto flex gap-5 sm:gap-6 py-6 px-4 no-scrollbar">
 
           <!-- Card 1: Tilak & Sagai (Engagement) -->
-          <div class="w-[78vw] max-w-[310px] shrink-0 snap-center relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#e5c4b0]/70 bg-white transition-all duration-300 hover:shadow-2xl">
+          <div class="card-3d w-[80vw] max-w-[315px] shrink-0 snap-center relative overflow-hidden bg-white border border-[#e5c4b0]/80">
             <div class="relative w-full aspect-[9/16] overflow-hidden group">
               <img src="assets/template/card2.png" alt="Engagement &amp; Sangeet" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
               <!-- Elegant Text Overlay -->
@@ -369,7 +388,7 @@
           </div>
 
           <!-- Card 2: Turmeric Tales (Haldi) -->
-          <div class="w-[78vw] max-w-[310px] shrink-0 snap-center relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#e5c4b0]/70 bg-white transition-all duration-300 hover:shadow-2xl">
+          <div class="card-3d w-[80vw] max-w-[315px] shrink-0 snap-center relative overflow-hidden bg-white border border-[#e5c4b0]/80">
             <div class="relative w-full aspect-[9/16] overflow-hidden group">
               <img src="assets/template/card3.png" alt="Haldi Utsav" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
               <div class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-[#360912]/95 via-[#360912]/60 to-transparent text-white flex flex-col items-center text-center">
@@ -383,7 +402,7 @@
           </div>
 
           <!-- Card 3: The Henna Diaries (Mehendi) -->
-          <div class="w-[78vw] max-w-[310px] shrink-0 snap-center relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#e5c4b0]/70 bg-white transition-all duration-300 hover:shadow-2xl">
+          <div class="card-3d w-[80vw] max-w-[315px] shrink-0 snap-center relative overflow-hidden bg-white border border-[#e5c4b0]/80">
             <div class="relative w-full aspect-[9/16] overflow-hidden group">
               <img src="assets/template/card4.png" alt="Mehendi Celebrations" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
               <div class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-[#360912]/95 via-[#360912]/60 to-transparent text-white flex flex-col items-center text-center">
@@ -397,7 +416,7 @@
           </div>
 
           <!-- Card 4: Shubh Vivah (Baraat & Phere) -->
-          <div class="w-[78vw] max-w-[310px] shrink-0 snap-center relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#e5c4b0]/70 bg-white transition-all duration-300 hover:shadow-2xl">
+          <div class="card-3d w-[80vw] max-w-[315px] shrink-0 snap-center relative overflow-hidden bg-white border border-[#e5c4b0]/80">
             <div class="relative w-full aspect-[9/16] overflow-hidden group">
               <img src="assets/template/card5.png" alt="Shubh Vivah" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
               <div class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-[#360912]/95 via-[#360912]/60 to-transparent text-white flex flex-col items-center text-center">
@@ -411,7 +430,7 @@
           </div>
 
           <!-- Card 5: Royal Reception & Sundowner -->
-          <div class="w-[78vw] max-w-[310px] shrink-0 snap-center relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#e5c4b0]/70 bg-white transition-all duration-300 hover:shadow-2xl">
+          <div class="card-3d w-[80vw] max-w-[315px] shrink-0 snap-center relative overflow-hidden bg-white border border-[#e5c4b0]/80">
             <div class="relative w-full aspect-[9/16] overflow-hidden group">
               <img src="assets/template/card6.png" alt="Royal Reception" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
               <div class="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-[#360912]/95 via-[#360912]/60 to-transparent text-white flex flex-col items-center text-center">
@@ -424,28 +443,6 @@
             </div>
           </div>
 
-        </div>
-
-        <!-- Navigation Controls: Left/Right Buttons & Dots -->
-        <div class="flex items-center justify-between mt-4 px-2">
-          <!-- Prev Button -->
-          <button onclick="scrollEventsCarousel(-1)" aria-label="Previous Event" class="w-9 h-9 rounded-full bg-white/90 border border-[#e5c4b0] shadow-md flex items-center justify-center text-[#964860] hover:bg-[#964860] hover:text-white transition-all duration-300 cursor-pointer active:scale-90">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M15 19l-7-7 7-7"></path></svg>
-          </button>
-
-          <!-- Indicator Dots -->
-          <div class="flex items-center gap-2" id="carouselDots">
-            <button onclick="jumpToCard(0)" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-[#964860] scale-125" aria-label="Card 1"></button>
-            <button onclick="jumpToCard(1)" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-[#e5c4b0]" aria-label="Card 2"></button>
-            <button onclick="jumpToCard(2)" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-[#e5c4b0]" aria-label="Card 3"></button>
-            <button onclick="jumpToCard(3)" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-[#e5c4b0]" aria-label="Card 4"></button>
-            <button onclick="jumpToCard(4)" class="w-2.5 h-2.5 rounded-full transition-all duration-300 bg-[#e5c4b0]" aria-label="Card 5"></button>
-          </div>
-
-          <!-- Next Button -->
-          <button onclick="scrollEventsCarousel(1)" aria-label="Next Event" class="w-9 h-9 rounded-full bg-white/90 border border-[#e5c4b0] shadow-md flex items-center justify-center text-[#964860] hover:bg-[#964860] hover:text-white transition-all duration-300 cursor-pointer active:scale-90">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path></svg>
-          </button>
         </div>
 
       </div>
