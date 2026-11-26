@@ -1,1083 +1,784 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="h-full antialiased">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Royal Wedding Invitation | Shreya & Shubham</title>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Shreya &amp; Shubham - Wedding Invitation</title>
+  <meta name="description" content="Together, we begin our forever. Friday, 29th January, 2027. The Clarks, Varanasi."/>
+  
+  <!-- Tailwind CSS -->
   <script src="https://www.gstatic.com/antigravity/web/dev/tailwindcss.min.js"></script>
+
+  <!-- Luxury Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alex+Brush&family=Cinzel:wght@400;500;600;700;800&family=Great+Vibes&family=Pinyon+Script&family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,500;1,600&family=Sacramento&display=swap" rel="stylesheet">
+
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;800;900&family=Cinzel+Decorative:wght@700;900&family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Great+Vibes&family=Marcellus&family=Noto+Serif+Devanagari:wght@400;600;700&family=Pinyon+Script&display=swap');
+    .font-cinzel { font-family: 'Cinzel', serif; }
+    .font-bikham { font-family: 'Pinyon Script', 'Great Vibes', 'Alex Brush', cursive; }
+    .font-script { font-family: 'Great Vibes', 'Pinyon Script', cursive; }
+    .font-editorial { font-family: 'Playfair Display', serif; }
 
-    :root {
-      --gold-primary: #b8860b;
-      --gold-light: #f5df9b;
-      --gold-dark: #825a0a;
-      --blush-soft: #fcf1f3;
-      --blush-accent: #e8a7b3;
-      --ivory-bg: #faf7f2;
-      --ivory-card: #ffffff;
-      --crimson-text: #6b1426;
-      --charcoal-text: #362823;
-    }
-
-    /* Typography */
-    .font-royal { font-family: 'Cinzel', 'Playfair Display', serif; }
-    .font-royal-decor { font-family: 'Cinzel Decorative', 'Cinzel', serif; }
-    .font-serif-luxury { font-family: 'Cormorant Garamond', 'Georgia', serif; }
-    .font-script-calligraphy { font-family: 'Pinyon Script', 'Great Vibes', cursive; }
-    .font-devanagari { font-family: 'Noto Serif Devanagari', 'Mangal', serif; }
-
-    /* Animated Gold Foil Shimmer */
-    .gold-foil-shine {
-      background: linear-gradient(120deg, #9b6c16 0%, #f6df8b 25%, #bf8d29 50%, #fef3c7 75%, #8a5e0f 100%);
-      background-size: 200% auto;
-      color: transparent;
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      animation: shine 4s linear infinite;
+    /* Custom Mobile Container */
+    .mobile-container {
+      width: 100%;
+      max-width: 440px;
+      margin: 0 auto;
+      box-shadow: 0 0 50px rgba(0, 0, 0, 0.7);
     }
 
-    @keyframes shine {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+    /* Shimmer animation for golden seals */
+    @keyframes goldGlow {
+      0%, 100% { opacity: 0.65; transform: scale(1); }
+      50% { opacity: 1; transform: scale(1.06); }
+    }
+    .animate-gold-glow {
+      animation: goldGlow 3s ease-in-out infinite;
     }
 
-    /* 3D Perspective and Doors */
-    .perspective-container {
-      perspective: 1400px;
-      perspective-origin: center center;
+    /* Smooth Door Opening Animation */
+    .door-left-open {
+      transform: translateX(-101%) !important;
+    }
+    .door-right-open {
+      transform: translateX(101%) !important;
     }
 
-    .palace-door-left {
-      transform-origin: left center;
-      transition: transform 1.6s cubic-bezier(0.65, 0, 0.35, 1);
+    /* Scroll reveal transitions */
+    .reveal-item {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .palace-door-right {
-      transform-origin: right center;
-      transition: transform 1.6s cubic-bezier(0.65, 0, 0.35, 1);
-    }
-    .doors-open .palace-door-left {
-      transform: rotateY(-110deg);
-    }
-    .doors-open .palace-door-right {
-      transform: rotateY(110deg);
+    .reveal-item.revealed {
+      opacity: 1;
+      transform: translateY(0);
     }
 
-    /* Envelope Opening Animation */
-    .envelope-flap {
-      transform-origin: top center;
-      transition: transform 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 5px;
     }
-    .envelope-open .envelope-flap {
-      transform: rotateX(180deg);
-      z-index: 5;
+    ::-webkit-scrollbar-track {
+      background: #1a1a1a;
     }
-    .letter-card {
-      transition: transform 1.4s cubic-bezier(0.34, 1.56, 0.64, 1), opacity 0.8s ease;
-    }
-    .envelope-open .letter-card {
-      transform: translateY(-80px);
-    }
-
-    /* Spinning Vinyl Record */
-    @keyframes spinVinyl {
-      from { transform: rotate(0deg); }
-      to { transform: rotate(360deg); }
-    }
-    .spin-slow {
-      animation: spinVinyl 5s linear infinite;
-    }
-    .spin-paused {
-      animation-play-state: paused;
-    }
-
-    /* Subtle Paper Texture Effect */
-    .paper-texture {
-      background-color: #faf7f2;
-      background-image: radial-gradient(#d4af37 0.6px, transparent 0.6px);
-      background-size: 16px 16px;
-    }
-
-    /* Custom Scrollbar */
-    ::-webkit-scrollbar { width: 6px; }
-    ::-webkit-scrollbar-track { background: #f3ece1; }
-    ::-webkit-scrollbar-thumb { background: #d4af37; border-radius: 3px; }
-
-    @media print {
-      .no-print { display: none !important; }
-      body { background: white !important; color: black !important; padding: 0 !important; }
-      .print-card-clean { box-shadow: none !important; border: 2px solid #8b6b23 !important; max-width: 100% !important; margin: 0 auto !important; }
+    ::-webkit-scrollbar-thumb {
+      background: #964860;
+      border-radius: 4px;
     }
   </style>
 </head>
-<body class="bg-[#FAF7F2] text-[#3A2A24] antialiased overflow-x-hidden selection:bg-amber-300 selection:text-amber-900 min-h-screen">
+<body class="min-h-full flex flex-col bg-[#111111] text-gray-900 justify-center items-center selection:bg-[#964860] selection:text-white">
 
-  <!-- Ambient Canvas for Floating Soft Rose Petals & Gold Dust -->
-  <canvas id="ambientCanvas" class="fixed inset-0 pointer-events-none z-30"></canvas>
+  <!-- Main Mobile Frame Container -->
+  <main class="mobile-container bg-white flex flex-col relative min-h-screen overflow-x-hidden">
 
-  <!-- ============================================================== -->
-  <!-- 1. ENTRANCE GATE / PALACE DOORS & ROYAL ENVELOPE (LIGHT THEME) -->
-  <!-- ============================================================== -->
-  <div id="entranceModal" class="perspective-container fixed inset-0 z-50 flex items-center justify-center bg-[#F7F2EA] transition-opacity duration-1000 overflow-hidden shadow-2xl">
-    
-    <!-- Luxurious Ivory & Pastel Floral Courtyard Background -->
-    <div class="absolute inset-0 bg-cover bg-center opacity-70" style="background-image: radial-gradient(circle at center, #ffffff 0%, #faede8 50%, #f2e3dd 100%);"></div>
+    <!-- ========================================================================= -->
+    <!-- AUDIO SOUNDTRACK & FLOATING TOGGLE BUTTON                                 -->
+    <!-- ========================================================================= -->
+    <audio id="bgMusic" src="assets/template/music.mpeg" preload="auto" loop></audio>
 
-    <!-- Entrance Mode Switcher & Skip Button -->
-    <div class="absolute top-4 inset-x-4 flex justify-between items-center z-50">
-      <div class="flex items-center gap-1 bg-white/80 backdrop-blur-md px-3 py-1.5 rounded-full border border-amber-400/50 text-[11px] text-[#4a2e22] shadow-sm">
-        <span class="text-amber-800 font-semibold">Style:</span>
-        <button onclick="switchEntranceMode('door')" id="modeBtnDoor" class="px-2.5 py-0.5 rounded-full bg-amber-500 text-black font-semibold shadow-xs">Palace Gate</button>
-        <button onclick="switchEntranceMode('envelope')" id="modeBtnEnvelope" class="px-2.5 py-0.5 rounded-full hover:bg-amber-200/60 text-[#543b31]">Blush Envelope</button>
-      </div>
+    <button id="audioToggleBtn" onclick="toggleAudio()" aria-label="Toggle Background Music" class="fixed top-4 right-4 z-50 flex items-center gap-1.5 bg-[#fffaf2]/90 backdrop-blur-md border border-[#e5c4b0]/80 shadow-md rounded-full px-3 py-1.5 text-[#964860] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer select-none">
+      <svg id="audioIconMuted" class="w-3.5 h-3.5 text-[#a05267]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 14l2-2m0 0l2-2m-2 2l-2-2m2 2l2 2"></path>
+      </svg>
+      <svg id="audioIconPlaying" class="w-3.5 h-3.5 text-[#a05267] hidden animate-pulse" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.536 8.464a5 5 0 010 7.072m2.828-9.9a9 9 0 010 12.728M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z"></path>
+      </svg>
+      <span id="audioText" class="font-cinzel text-[9.5px] tracking-wider uppercase font-semibold text-[#a05267]">Muted</span>
+    </button>
 
-      <button onclick="fastSkipEntrance()" class="text-xs tracking-wider uppercase bg-white/80 backdrop-blur-md px-4 py-1.5 rounded-full border border-amber-400/50 text-[#6b1426] hover:bg-amber-500 hover:text-black font-royal font-semibold transition shadow-sm">
-        Skip Entrance ›
-      </button>
-    </div>
+    <!-- Top Left Save the Date Quick Switcher -->
+    <a href="save-the-date.html" title="Open Save the Date Animation" class="fixed top-4 left-4 z-50 flex items-center gap-1.5 bg-[#fffaf2]/90 backdrop-blur-md border border-[#e5c4b0]/80 shadow-md rounded-full px-3 py-1.5 text-[#964860] hover:scale-105 active:scale-95 transition-all duration-300 text-[9.5px] font-cinzel font-semibold uppercase tracking-wider">
+      <span>🎬</span> <span>Save The Date</span>
+    </a>
 
-    <!-- --------------------------------------------------- -->
-    <!-- ENTRANCE STYLE A: WHITE MARBLE & GOLD PALACE DOORS -->
-    <!-- --------------------------------------------------- -->
-    <div id="palaceDoorContainer" class="absolute inset-0 flex items-center justify-center p-4">
-      
-      <!-- Hanging Jasmine & Pink Rose Floral Toran (Top) -->
-      <div class="absolute top-12 inset-x-0 h-12 flex justify-around pointer-events-none z-20 overflow-hidden opacity-95">
-        <div class="w-full flex justify-between px-6 text-xl md:text-2xl select-none">
-          <span>🔔 🌸 🌼 🌸 🔔</span>
-          <span>🌸 🤍 🌸 🤍 🌸</span>
-          <span>🔔 🌸 🌼 🌸 🔔</span>
-        </div>
-      </div>
-
-      <!-- The Double Palace Doors (White & Champagne Gold) -->
-      <div class="relative w-full max-w-lg md:max-w-xl h-[76vh] flex shadow-[0_25px_70px_rgba(139,107,35,0.25)] rounded-2xl overflow-hidden border-2 border-[#d4af37]/70 bg-white">
+    <!-- ========================================================================= -->
+    <!-- INTERACTIVE ROYAL PALACE DOORS OPENING OVERLAY                            -->
+    <!-- ========================================================================= -->
+    <div id="doorOverlay" class="fixed inset-0 z-[100] flex items-center justify-center bg-black/80 transition-opacity duration-1000 select-none">
+      <div class="relative w-full max-w-[440px] h-full flex flex-col items-center justify-center overflow-hidden bg-transparent shadow-2xl cursor-pointer select-none" onclick="openPalaceDoors()">
         
-        <!-- Left Door -->
-        <div id="pDoorLeft" class="palace-door-left w-1/2 h-full bg-gradient-to-br from-[#ffffff] via-[#fbf7f0] to-[#f4ebe1] border-r border-[#d4af37]/60 flex flex-col justify-between p-6 relative">
-          <!-- Jharokha Lattice Overlay -->
-          <div class="absolute inset-4 rounded-xl border border-[#d4af37]/30 bg-[radial-gradient(#b8860b_1px,transparent_1px)] [background-size:16px_16px] opacity-20"></div>
-          
-          <div class="relative z-10 text-left">
-            <div class="text-[#8c6226] font-devanagari text-2xl font-bold tracking-widest drop-shadow-xs">॥ शुभ ॥</div>
-            <div class="text-[10px] text-[#916b39] uppercase tracking-widest font-royal mt-1 font-semibold">Vivahotsav</div>
-          </div>
-
-          <div class="relative z-10 text-right pr-2">
-            <div class="font-royal text-[#6b1426] text-base md:text-lg font-bold">Shreya</div>
-            <div class="text-[10px] text-[#8c6226] uppercase font-semibold">Singh Family</div>
-          </div>
-        </div>
-
-        <!-- Right Door -->
-        <div id="pDoorRight" class="palace-door-right w-1/2 h-full bg-gradient-to-bl from-[#ffffff] via-[#fbf7f0] to-[#f4ebe1] border-l border-[#d4af37]/60 flex flex-col justify-between p-6 relative">
-          <!-- Jharokha Lattice Overlay -->
-          <div class="absolute inset-4 rounded-xl border border-[#d4af37]/30 bg-[radial-gradient(#b8860b_1px,transparent_1px)] [background-size:16px_16px] opacity-20"></div>
-
-          <div class="relative z-10 text-right">
-            <div class="text-[#8c6226] font-devanagari text-2xl font-bold tracking-widest drop-shadow-xs">॥ लाभ ॥</div>
-            <div class="text-[10px] text-[#916b39] uppercase tracking-widest font-royal mt-1 font-semibold">29 Jan 2027</div>
-          </div>
-
-          <div class="relative z-10 text-left pl-2">
-            <div class="font-royal text-[#6b1426] text-base md:text-lg font-bold">Shubham</div>
-            <div class="text-[10px] text-[#8c6226] uppercase font-semibold">Sukhwani Family</div>
-          </div>
-        </div>
-
-        <!-- Central Palace Door Golden Medallion Trigger -->
-        <div id="doorTrigger" onclick="openPalaceDoors()" class="absolute inset-0 flex items-center justify-center z-30 cursor-pointer group">
-          <div class="flex flex-col items-center">
-            <div class="w-32 h-32 md:w-40 md:h-40 rounded-full bg-gradient-to-br from-[#fff3cd] via-[#e5c07b] to-[#b8860b] p-1.5 shadow-[0_10px_35px_rgba(184,134,11,0.45)] group-hover:scale-110 transition-transform duration-500 flex items-center justify-center">
-              <div class="w-full h-full rounded-full bg-gradient-to-br from-[#ffffff] to-[#faf0e1] border-2 border-[#b8860b] flex flex-col items-center justify-center text-center p-2">
-                <!-- Ganesha Silhouette -->
-                <svg viewBox="0 0 100 100" class="w-12 h-12 text-[#8c6226] mb-1 drop-shadow-xs" fill="currentColor">
-                  <path d="M50 15 C45 15 40 20 40 25 C40 30 43 33 46 35 C42 36 38 40 37 45 C35 52 38 60 44 65 C41 68 38 72 37 77 C35 84 39 90 47 90 C53 90 58 87 61 82 C63 85 67 87 72 85 C77 83 79 77 77 71 C75 66 70 63 65 64 C64 64 63 64 62 65 C64 61 65 56 64 51 C63 46 59 42 54 41 C57 39 59 36 59 32 C59 27 55 23 50 15 Z" />
-                </svg>
-                <div class="font-royal text-[#6b1426] font-black text-xs md:text-sm tracking-widest">S &bull; S</div>
-                <div class="text-[9px] uppercase tracking-wider text-[#8c6226] font-semibold">Tap to Open</div>
-              </div>
-            </div>
-            <div class="mt-4 px-4 py-1.5 rounded-full bg-white/90 border border-[#b8860b] text-[#6b1426] text-xs font-royal font-bold tracking-widest shadow-lg animate-pulse flex items-center gap-1.5">
-              <span>✨</span> OPEN PALACE DOORS <span>✨</span>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- --------------------------------------------------- -->
-    <!-- ENTRANCE STYLE B: BLUSH PINK & GOLD ROYAL ENVELOPE  -->
-    <!-- --------------------------------------------------- -->
-    <div id="royalEnvelopeContainer" class="absolute inset-0 flex items-center justify-center hidden p-4">
-      <div id="envelopeCard" class="relative w-80 md:w-96 h-60 md:h-72 bg-[#F8EAE9] rounded-xl shadow-[0_20px_50px_rgba(209,148,160,0.35)] border-2 border-[#d4af37]/60 flex flex-col justify-end p-4 cursor-pointer" onclick="openRoyalEnvelope()">
-        
-        <!-- Flap of Envelope -->
-        <div id="envFlap" class="envelope-flap absolute -top-1 inset-x-0 h-32 md:h-36 bg-gradient-to-b from-[#fae5e6] to-[#f4d7d9] border-b-2 border-[#d4af37]/70 shadow-md [clip-path:polygon(0%_0%,100%_0%,50%_100%)] flex items-start justify-center pt-3 z-20">
-          <div class="text-[#8c6226] font-royal text-[11px] font-bold tracking-widest">ROYAL INVITATION</div>
-        </div>
-
-        <!-- Inner Letter Peeking -->
-        <div id="letterPeek" class="letter-card absolute inset-x-4 top-2 h-52 bg-[#ffffff] rounded-lg shadow-md border border-[#d4af37]/50 p-4 text-center z-10 flex flex-col justify-center items-center">
-          <div class="text-xs text-[#8c6226] font-devanagari font-bold">॥ श्री गणेशाय नमः ॥</div>
-          <div class="font-royal-decor text-lg font-bold text-[#6b1426] my-1">Shreya & Shubham</div>
-          <div class="text-[11px] text-[#7d5b24] font-serif-luxury font-semibold">29th January, 2027 &bull; Varanasi</div>
-        </div>
-
-        <!-- Gold Wax Seal on Flap -->
-        <div id="waxSeal" class="absolute top-24 md:top-28 left-1/2 -translate-x-1/2 z-30 w-16 h-16 rounded-full bg-gradient-to-br from-[#fae59f] via-[#d4af37] to-[#99731e] border-2 border-white shadow-xl flex items-center justify-center text-[#4a0d18] font-royal font-black text-xs tracking-widest hover:scale-110 transition-transform">
-          S&S
-        </div>
-
-        <!-- Instruction -->
-        <div class="relative z-20 text-center pb-1">
-          <span class="text-xs text-[#6b1426] font-royal font-bold tracking-widest bg-white/90 px-3 py-1 rounded-full border border-[#d4af37]/60 shadow-xs">
-            TAP WAX SEAL TO UNVEIL
-          </span>
-        </div>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- ============================================================== -->
-  <!-- 2. STICKY TOP NAVIGATION BAR (LIGHT THEME)                     -->
-  <!-- ============================================================== -->
-  <header class="no-print sticky top-0 z-40 bg-white/85 backdrop-blur-md border-b border-[#e5d4b8] px-4 py-2.5 shadow-xs">
-    <div class="max-w-4xl mx-auto flex items-center justify-between gap-2">
-      <!-- Monogram & Title -->
-      <div class="flex items-center gap-2">
-        <div class="w-8 h-8 rounded-full border border-[#b8860b] flex items-center justify-center bg-[#faf0e1] text-[#6b1426] font-royal font-bold text-xs shadow-xs">
-          S&S
-        </div>
-        <div>
-          <div class="text-xs font-royal text-[#6b1426] tracking-wider font-bold">Shreya & Shubham</div>
-          <div class="text-[10px] text-[#8c6226] font-medium">29 January 2027 &bull; Varanasi</div>
-        </div>
-      </div>
-
-      <!-- Controls -->
-      <div class="flex items-center gap-2 text-xs">
-        <!-- Save the Date Card Link -->
-        <a href="save-the-date.html" class="px-2.5 py-1 rounded-full bg-rose-50 border border-rose-300 text-rose-800 hover:bg-rose-100 transition flex items-center gap-1 font-semibold">
-          <span>🛵</span> <span class="hidden sm:inline text-[11px]">Save The Date</span>
-        </a>
-
-        <!-- Replay Doors / Envelope -->
-        <button onclick="reopenEntrance()" title="Replay Opening Doors" class="p-1.5 rounded-full bg-[#faf0e1] border border-[#d4af37]/60 text-[#6b1426] hover:bg-amber-200/50 transition">
-          🚪 <span class="hidden md:inline text-[11px] font-royal font-semibold">Reopen</span>
-        </button>
-
-        <!-- Rose Petals Shower -->
-        <button onclick="triggerPetalBurst(35)" class="px-2.5 py-1 rounded-full bg-[#fdf2f4] border border-[#e8a7b3] text-[#6b1426] hover:bg-[#fae1e5] transition flex items-center gap-1 font-semibold">
-          <span>🌸</span> <span class="hidden sm:inline text-[11px]">Blessings</span>
-        </button>
-
-        <!-- Share WhatsApp Text -->
-        <button onclick="copyWhatsAppInvite()" class="px-2.5 py-1 rounded-full bg-emerald-50 border border-emerald-400 text-emerald-800 hover:bg-emerald-100 transition flex items-center gap-1 font-semibold">
-          <span>💬</span> <span class="hidden sm:inline text-[11px]">Share</span>
-        </button>
-
-        <!-- Print -->
-        <button onclick="window.print()" class="px-2.5 py-1 rounded-full bg-[#faf0e1] border border-[#d4af37]/60 text-[#6b1426] hover:bg-amber-200/50 transition flex items-center gap-1 font-semibold">
-          <span>🖨️</span> <span class="hidden md:inline text-[11px]">Print</span>
-        </button>
-      </div>
-    </div>
-  </header>
-
-  <!-- ============================================================== -->
-  <!-- 3. MAIN INVITATION BODY (LIGHT LUXURY ARCHITECTURE)            -->
-  <!-- ============================================================== -->
-  <main class="max-w-[560px] mx-auto px-3 sm:px-4 py-6 md:py-10 space-y-8 relative z-20">
-
-    <!-- Save the Date Banner Link -->
-    <div class="no-print bg-gradient-to-r from-rose-50 via-amber-50 to-rose-50 border border-rose-200/80 rounded-xl p-3 px-4 flex items-center justify-between text-xs text-[#6e202e] shadow-xs">
-      <div class="flex items-center gap-2">
-        <span class="text-lg">🛵</span>
-        <div>
-          <div class="font-bold">Playful "Save the Date" Card</div>
-          <div class="text-[10px] text-[#7a5e4d]">"My angry bird is becoming my wife this January!"</div>
-        </div>
-      </div>
-      <a href="save-the-date.html" class="px-3 py-1 rounded-full bg-[#6e202e] text-white font-royal font-bold text-[11px] hover:bg-[#521520] transition shadow-xs whitespace-nowrap">
-        View Card ›
-      </a>
-    </div>
-
-    <!-- CHAPTER 1: THE SACRED INVITATION CARD (IVORY, BLUSH & GOLD) -->
-    <article class="print-card-clean relative rounded-2xl bg-white text-[#38261e] shadow-[0_15px_45px_rgba(184,134,11,0.15)] border-2 border-[#e6c888] overflow-hidden">
-      
-      <!-- Subtle Luxury Linen Texture -->
-      <div class="absolute inset-0 pointer-events-none opacity-20 bg-[radial-gradient(#b8860b_0.8px,transparent_0.8px)] [background-size:16px_16px]"></div>
-      
-      <!-- Double Gold Filigree Hairline Borders -->
-      <div class="absolute inset-2 border-2 border-[#d4af37]/50 rounded-xl pointer-events-none"></div>
-      <div class="absolute inset-3.5 border border-[#d4af37]/30 rounded-lg pointer-events-none"></div>
-
-      <!-- Traditional Corner Filigrees -->
-      <div class="absolute top-3 left-3 w-8 h-8 text-[#b8860b] pointer-events-none">
-        <svg viewBox="0 0 100 100" fill="currentColor"><path d="M0,0 L70,0 C40,0 0,40 0,70 Z M10,10 L30,10 C20,10 10,20 10,30 Z"/></svg>
-      </div>
-      <div class="absolute top-3 right-3 w-8 h-8 text-[#b8860b] rotate-90 pointer-events-none">
-        <svg viewBox="0 0 100 100" fill="currentColor"><path d="M0,0 L70,0 C40,0 0,40 0,70 Z M10,10 L30,10 C20,10 10,20 10,30 Z"/></svg>
-      </div>
-      <div class="absolute bottom-3 left-3 w-8 h-8 text-[#b8860b] -rotate-90 pointer-events-none">
-        <svg viewBox="0 0 100 100" fill="currentColor"><path d="M0,0 L70,0 C40,0 0,40 0,70 Z M10,10 L30,10 C20,10 10,20 10,30 Z"/></svg>
-      </div>
-      <div class="absolute bottom-3 right-3 w-8 h-8 text-[#b8860b] rotate-180 pointer-events-none">
-        <svg viewBox="0 0 100 100" fill="currentColor"><path d="M0,0 L70,0 C40,0 0,40 0,70 Z M10,10 L30,10 C20,10 10,20 10,30 Z"/></svg>
-      </div>
-
-      <!-- Card Inner Content -->
-      <div class="relative z-10 px-5 sm:px-8 py-8 md:py-12 text-center space-y-6">
-
-        <!-- Ganesha Vandana & Shlokas -->
-        <div class="space-y-3">
-          <div class="w-16 h-16 md:w-20 md:h-20 mx-auto rounded-full bg-gradient-to-b from-[#fff6de] to-[#fae2a4] p-1 shadow-sm border border-[#d4af37] flex items-center justify-center">
-            <svg viewBox="0 0 200 200" class="w-12 h-12 md:w-16 md:h-16 text-[#6b1426]" fill="currentColor">
-              <path d="M98,25 C88,25 78,32 75,42 C72,52 76,62 82,69 C73,73 66,81 64,91 C61,105 69,119 82,126 C75,133 68,142 66,152 C63,165 71,178 86,178 C99,178 109,171 114,162 C118,168 126,172 135,168 C144,164 148,154 145,144 C141,135 131,130 122,132 C120,132 118,133 116,134 C121,126 123,117 122,107 C120,96 112,88 103,85 C109,81 113,74 113,67 C113,57 106,49 96,48 C96,38 98,25 98,25 Z M100,53 C104,53 107,56 107,60 C107,64 104,67 100,67 C96,67 93,64 93,60 C93,56 96,53 100,53 Z" />
-              <circle cx="100" cy="40" r="4" fill="#a81a2e"/>
-              <path d="M96,34 L104,34 L100,43 Z" fill="#b8860b"/>
+        <!-- Decorative Leafy Botanical Vines in Corners -->
+        <div id="doorCornerDecor" class="transition-all duration-700 opacity-100">
+          <div class="absolute top-0 left-0 w-24 h-24 sm:w-32 sm:h-32 pointer-events-none z-30 opacity-90">
+            <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+              <path d="M0 0 C30 20, 50 50, 75 100" stroke="#7a8b6e" stroke-width="1.8" stroke-linecap="round"></path>
+              <path d="M0 0 C45 15, 75 35, 110 65" stroke="#7a8b6e" stroke-width="1.5" stroke-linecap="round"></path>
+              <path d="M15 0 C25 35, 40 70, 50 120" stroke="#7a8b6e" stroke-width="1.2" stroke-linecap="round"></path>
+              <path d="M20 15 Q30 10 32 22 Q22 24 20 15 Z" fill="#6b8e56"></path>
+              <path d="M35 30 Q48 24 46 38 Q34 40 35 30 Z" fill="#7a9a60"></path>
+              <path d="M50 55 Q62 48 62 62 Q48 64 50 55 Z" fill="#6b8e56"></path>
+              <circle cx="75" cy="100" r="4.5" fill="#e8a2b5" opacity="0.95"></circle>
+              <circle cx="72" cy="94" r="5" fill="#d9779b" opacity="0.9"></circle>
+              <circle cx="78" cy="92" r="4" fill="#b05f77" opacity="0.85"></circle>
             </svg>
           </div>
-
-          <div class="text-[#6b1426] font-devanagari text-xl md:text-2xl font-bold tracking-wide">
-            ॥ श्री गणेशाय नमः ॥
-          </div>
-
-          <div class="font-devanagari text-xs md:text-sm text-[#73432d] leading-relaxed max-w-md mx-auto italic font-medium px-2">
-            सर्वमङ्गलमाङ्गल्ये शिवे सर्वार्थसाधिके ।<br>
-            शरण्ये त्र्यम्बके गौरि नारायणि नमोऽस्तु ते ॥
-          </div>
-
-          <!-- Divider -->
-          <div class="flex items-center justify-center gap-2 py-1">
-            <div class="w-16 h-[1px] bg-gradient-to-r from-transparent to-[#b8860b]"></div>
-            <span class="text-[#b8860b] text-xs">❖ ⚜ ❖</span>
-            <div class="w-16 h-[1px] bg-gradient-to-l from-transparent to-[#b8860b]"></div>
+          <div class="absolute top-0 right-0 transform scale-x-[-1] w-24 h-24 sm:w-32 sm:h-32 pointer-events-none z-30 opacity-90">
+            <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg" class="w-full h-full">
+              <path d="M0 0 C30 20, 50 50, 75 100" stroke="#7a8b6e" stroke-width="1.8" stroke-linecap="round"></path>
+              <path d="M0 0 C45 15, 75 35, 110 65" stroke="#7a8b6e" stroke-width="1.5" stroke-linecap="round"></path>
+              <path d="M15 0 C25 35, 40 70, 50 120" stroke="#7a8b6e" stroke-width="1.2" stroke-linecap="round"></path>
+              <path d="M20 15 Q30 10 32 22 Q22 24 20 15 Z" fill="#6b8e56"></path>
+              <path d="M35 30 Q48 24 46 38 Q34 40 35 30 Z" fill="#7a9a60"></path>
+              <circle cx="75" cy="100" r="4.5" fill="#e8a2b5" opacity="0.95"></circle>
+              <circle cx="72" cy="94" r="5" fill="#d9779b" opacity="0.9"></circle>
+            </svg>
           </div>
         </div>
 
-        <!-- Grandparents & Host -->
-        <div class="space-y-1.5 max-w-md mx-auto">
-          <div class="font-royal text-base md:text-lg font-bold text-[#6b1426] tracking-wide">
-            Mrs. Darshana Devi
+        <!-- Left Palace Door Panel -->
+        <div id="doorLeft" class="absolute top-0 left-0 w-1/2 h-full overflow-hidden z-20 transition-transform duration-1200 ease-in-out border-r-[1px] border-[#9c7653]/70 shadow-2xl">
+          <img src="assets/template/door.jpeg" alt="Left Door" class="absolute top-0 left-0 h-full w-[200%] max-w-none object-cover object-top pointer-events-none brightness-100"/>
+        </div>
+
+        <!-- Right Palace Door Panel -->
+        <div id="doorRight" class="absolute top-0 right-0 w-1/2 h-full overflow-hidden z-20 transition-transform duration-1200 ease-in-out border-l-0 shadow-2xl">
+          <img src="assets/template/door.jpeg" alt="Right Door" class="absolute top-0 right-0 h-full w-[200%] max-w-none object-cover object-top pointer-events-none brightness-100"/>
+        </div>
+
+        <!-- Center Golden Wax Seal / Tap to Open Badge -->
+        <div id="doorSealPrompt" class="absolute bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-3 transition-all duration-700 pointer-events-none">
+          <div class="relative group">
+            <div class="absolute -inset-3 rounded-full bg-gradient-to-r from-[#d4af37] via-[#f3e0aa] to-[#d4af37] opacity-75 blur-md animate-gold-glow"></div>
+            <div class="relative w-22 h-22 rounded-full bg-gradient-to-b from-[#611522] via-[#4a0d17] to-[#2d050c] border-2 border-[#d4af37] flex flex-col items-center justify-center shadow-[0_10px_35px_rgba(0,0,0,0.8)] text-[#f3e0aa]">
+              <span class="font-bikham text-3xl sm:text-4xl text-[#f3e0aa] leading-none mb-0.5 drop-shadow-sm font-normal">S &amp; S</span>
+              <span class="font-cinzel text-[8.5px] tracking-[0.25em] uppercase text-[#d4af37] font-semibold">OPEN</span>
+            </div>
           </div>
-          <div class="text-xs uppercase tracking-widest text-[#8c6226] font-serif-luxury font-bold">
-            w/o. Late Mr. Dalip Singh
+          <div class="bg-[#611522]/90 backdrop-blur-md border border-[#c49d68] text-[#f3e0aa] font-cinzel text-[10.5px] tracking-[0.26em] uppercase px-5 py-2 rounded-full shadow-2xl text-center font-medium">
+            ✨ Tap to Open Invitation ✨
           </div>
-          <p class="text-xs md:text-sm text-[#543b31] font-serif-luxury leading-relaxed pt-1">
-            Requests the honour of your gracious presence on the auspicious wedding occasion of her loving granddaughter
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 1: ROYAL COVER / HERO                                             -->
+    <!-- ========================================================================= -->
+    <section class="relative w-full aspect-[9/16] min-h-screen flex flex-col items-center justify-between text-center overflow-hidden select-none">
+      
+      <!-- Floral Arch Background -->
+      <div class="absolute inset-0 w-full h-full z-0">
+        <img src="assets/template/hero_bg.png" alt="Wedding Frame Background" class="w-full h-full object-cover object-center pointer-events-none"/>
+      </div>
+
+      <!-- Sacred Ganesh & Hero Text Content -->
+      <div class="w-full pt-[27%] sm:pt-[29%] px-6 flex flex-col items-center gap-3 sm:gap-4 z-10 text-[#af6078]">
+        
+        <!-- Sacred Shloka & Ganesh Icon -->
+        <div class="flex flex-col items-center gap-1 transition-all duration-1000 transform">
+          <div class="flex items-center justify-center gap-2.5 sm:gap-3 text-[#9c7653]">
+            <span class="text-2xl font-serif text-[#9c7653]">ॐ</span>
+            <span class="w-1.5 h-1.5 rounded-full bg-[#9c7653] opacity-60"></span>
+            <div class="w-11 h-11 relative flex items-center justify-center">
+              <img src="assets/template/ganesh.png" alt="Lord Ganesh" class="w-full h-full object-contain drop-shadow-xs"/>
+            </div>
+            <span class="w-1.5 h-1.5 rounded-full bg-[#9c7653] opacity-60"></span>
+            <span class="text-2xl font-serif text-[#9c7653]">ॐ</span>
+          </div>
+          <p class="font-cinzel text-[11px] sm:text-[12px] tracking-[0.24em] font-semibold text-[#9c7653] opacity-95 uppercase mt-0.5">
+            || श्री गणेशाय नमः ||
+          </p>
+          <div class="w-14 h-[1px] bg-[#9c7653] opacity-85 mt-1"></div>
+        </div>
+
+        <!-- Royal Couple Monogram Emblem -->
+        <div class="w-24 h-12 relative flex items-center justify-center text-[#9c7653] my-0.5">
+          <div class="font-bikham text-4xl text-[#964860] tracking-wider">S &amp; S</div>
+        </div>
+
+        <!-- Romantic Quote -->
+        <div class="font-cinzel italic text-base sm:text-lg leading-snug tracking-wide text-[#b05f77] font-normal">
+          <p>Every love story is beautiful</p>
+          <p>but ours is our favourite</p>
+        </div>
+
+        <!-- We're Getting Married Header -->
+        <p class="font-cinzel text-[12px] sm:text-[13px] tracking-[0.3em] uppercase text-[#b05f77] font-medium mt-1">
+          WE’RE GETTING MARRIED
+        </p>
+
+        <!-- Grand Calligraphy Names: Shreya & Shubham -->
+        <h1 class="font-bikham text-6xl sm:text-7xl font-normal tracking-wide text-[#a04e67] my-1 sm:my-2 drop-shadow-sm leading-tight">
+          Shreya <span class="font-bikham font-light text-5xl sm:text-6xl text-[#b05f77]">&amp;</span> Shubham
+        </h1>
+
+        <p class="font-cinzel text-[11px] sm:text-[12px] tracking-[0.25em] uppercase text-[#b05f77] font-medium">
+          TOGETHER, WE BEGIN OUR FOREVER
+        </p>
+
+        <!-- Parents' Blessing & Lineage -->
+        <div class="mt-2 text-center text-[#8b3a52] space-y-1 font-cinzel text-[9.5px] sm:text-[10.5px] tracking-wider leading-relaxed bg-white/70 backdrop-blur-xs py-2 px-3 rounded-2xl border border-[#e5c4b0]/40 max-w-[320px]">
+          <p class="font-semibold text-[#611522]">
+            D/o Mrs. Mamta Singh &amp; Late Mr. Matvar Singh
+          </p>
+          <p class="text-[8.5px] opacity-80">
+            Granddaughter of Mrs. Darshana Devi w/o Late Mr. Dalip Singh
+          </p>
+          <div class="w-8 h-[0.5px] bg-[#c49d68] mx-auto my-1"></div>
+          <p class="font-semibold text-[#611522]">
+            S/o Mrs. Milli Sukhwani &amp; Mr. Jeet Kumar Sukhwani
           </p>
         </div>
 
-        <!-- The Royal Couple (Shreya & Shubham) in Light Parchment Ribbon -->
-        <div class="my-6 py-5 px-4 rounded-xl bg-gradient-to-b from-[#fdfbf7] via-[#faf3e6] to-[#f6ecda] border border-[#dfc285] shadow-xs space-y-4">
+      </div>
+
+      <div class="h-[6%] w-full pointer-events-none"></div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 2: INTERACTIVE GOLD FOIL SCRATCH CARD (SAVE THE DATE)             -->
+    <!-- ========================================================================= -->
+    <section class="relative w-full aspect-[9/16] min-h-screen flex flex-col items-center justify-between text-center overflow-hidden select-none">
+      
+      <!-- Scratch Section Background -->
+      <div class="absolute inset-0 w-full h-full z-0">
+        <img src="assets/template/scratch_bg.png" alt="Scratch Background" class="w-full h-full object-cover object-center pointer-events-none"/>
+      </div>
+
+      <div class="w-full pt-[32%] sm:pt-[34%] px-6 flex flex-col items-center gap-3.5 sm:gap-4 z-10 text-[#af6078]">
+        
+        <h2 class="font-bikham text-6xl sm:text-7xl text-[#964860] leading-tight drop-shadow-sm">
+          Save the Date
+        </h2>
+
+        <p class="font-cinzel text-xs sm:text-sm tracking-[0.22em] uppercase text-[#b05f77] font-medium my-0.5">
+          SCRATCH TO REVEAL OUR SPECIAL DAY
+        </p>
+
+        <!-- The Scratch Container with Gold Border -->
+        <div class="relative w-[285px] sm:w-[315px] h-[155px] sm:h-[165px] rounded-2xl p-1 bg-gradient-to-r from-[#d4af37] via-[#f3e0aa] to-[#c59b27] shadow-xl my-1.5">
           
-          <!-- Bride -->
-          <div class="space-y-1">
-            <h1 class="text-3xl md:text-5xl font-royal-decor font-black text-[#6b1426] tracking-wide drop-shadow-xs">
-              Shreya
-            </h1>
-            <div class="text-xs text-[#5c4033] font-serif-luxury italic font-medium">
-              D/o. Mrs. Mamta Singh and Late Mr. Matvar Singh
+          <div class="relative w-full h-full rounded-[14px] bg-[#fffbf2] flex flex-col items-center justify-center overflow-hidden border border-[#e5c4b0]/40 select-none">
+            
+            <!-- Underneath Revealed Date Details -->
+            <div class="flex flex-col items-center justify-center p-3 text-center z-0">
+              <span class="font-cinzel text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-[#b05f77] font-semibold">
+                WE ARE GETTING MARRIED ON
+              </span>
+              <span class="font-bikham text-4xl sm:text-5xl text-[#964860] my-1 font-semibold">
+                29th January 2027
+              </span>
+              <span class="font-cinzel text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-[#b05f77] font-bold">
+                FRIDAY &bull; THE CLARKS, VARANASI
+              </span>
             </div>
-          </div>
 
-          <!-- Decorative Ampersand / With -->
-          <div class="flex items-center justify-center gap-3">
-            <div class="w-14 h-[1px] bg-[#b8860b]/60"></div>
-            <span class="font-script-calligraphy text-2xl md:text-3xl text-[#b8860b] font-bold">with</span>
-            <div class="w-14 h-[1px] bg-[#b8860b]/60"></div>
-          </div>
+            <!-- HTML5 Interactive Gold Foil Scratch Canvas -->
+            <canvas id="scratchCanvas" width="315" height="165" class="absolute inset-0 w-full h-full cursor-pointer touch-none rounded-[14px] transition-opacity duration-700 z-10"></canvas>
 
-          <!-- Groom -->
-          <div class="space-y-1">
-            <h1 class="text-3xl md:text-5xl font-royal-decor font-black text-[#6b1426] tracking-wide drop-shadow-xs">
-              Shubham
-            </h1>
-            <div class="text-xs text-[#5c4033] font-serif-luxury italic font-medium">
-              S/o. Mrs. Milli Sukhwani and Mr. Jeet Kumar Sukhwani
-            </div>
           </div>
 
         </div>
 
-        <!-- Auspicious Date Callout -->
-        <div class="space-y-1 pt-2">
-          <div class="text-[11px] uppercase tracking-widest text-[#8c6226] font-royal font-bold">
-            On the Auspicious Day of
-          </div>
-          <div class="text-lg md:text-2xl font-royal font-bold text-[#6b1426]">
-            Friday, 29th January, 2027
-          </div>
-          <div class="text-xs text-[#6b4e3d] font-serif-luxury font-medium">
-            The Clarks, Varanasi
+        <!-- Automatic Reveal Button for Touch/Accessibility -->
+        <button onclick="revealDateInstant()" class="font-cinzel text-[11px] tracking-[0.18em] uppercase text-[#964860] underline underline-offset-4 hover:text-[#b05f77] transition-colors my-1 cursor-pointer animate-pulse font-semibold">
+          Tap here to reveal date
+        </button>
+
+      </div>
+
+      <div class="h-[5%] w-full pointer-events-none"></div>
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 3: WEDDING EVENTS SCHEDULE & CEREMONIES CARDS                     -->
+    <!-- ========================================================================= -->
+    <section class="w-full bg-gradient-to-b from-[#faf5eb] via-[#fcf8f2] to-[#f7efe3] py-14 px-4 sm:px-6 flex flex-col items-center select-none border-t border-[#e8d5c4]/60 relative overflow-hidden">
+      
+      <!-- Ambient Glow Blobs -->
+      <div class="absolute -top-24 -left-20 w-72 h-72 bg-[#f5ebd9]/30 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -right-20 w-72 h-72 bg-[#efe0ce]/30 rounded-full blur-3xl pointer-events-none"></div>
+
+      <!-- Section Title -->
+      <div class="text-center mb-8 flex flex-col items-center gap-1.5">
+        <h2 class="font-bikham text-5xl sm:text-6xl text-[#964860] drop-shadow-sm">
+          Wedding Events
+        </h2>
+        <p class="font-cinzel text-xs sm:text-sm tracking-[0.24em] uppercase text-[#b05f77] font-medium">
+          JOIN US IN CELEBRATING OUR SPECIAL MOMENTS
+        </p>
+        <div class="h-[1px] w-24 bg-gradient-to-r from-transparent via-[#c49d68] to-transparent mt-2"></div>
+      </div>
+
+      <!-- Event Cards Stack (Exact Template 9/16 Card Layout) -->
+      <div class="w-full max-w-[400px] flex flex-col gap-8 items-center">
+
+        <!-- Card 1: Tilak & Sagai (Engagement) -->
+        <div class="w-full relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#e5c4b0]/70 bg-white transition-all duration-500 ease-out transform hover:scale-[1.02] hover:shadow-2xl">
+          <div class="relative w-full aspect-[9/16] overflow-hidden group">
+            <img src="assets/template/card2.png" alt="Engagement &amp; Sangeet" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
+            <!-- Elegant Text Overlay -->
+            <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-[#360912]/90 via-[#360912]/50 to-transparent text-white flex flex-col items-center text-center">
+              <span class="font-cinzel text-[10px] tracking-[0.25em] uppercase text-[#f3e0aa] font-semibold">CEREMONY I</span>
+              <h3 class="font-bikham text-4xl sm:text-5xl text-[#fff6e6] my-1">Engagement &amp; Sangeet</h3>
+              <p class="font-cinzel text-xs text-[#f3e0aa] tracking-wider">AN EVENING OF MUSIC, RINGS &amp; CELEBRATION</p>
+              <div class="w-12 h-[0.5px] bg-[#d4af37] my-2"></div>
+              <p class="font-cinzel text-[11px] text-white/90 tracking-wide font-medium">7:00 PM Onwards &bull; Royal Ballroom</p>
+            </div>
           </div>
         </div>
 
-        <!-- Warm Regards -->
-        <div class="pt-4 border-t border-[#d4af37]/40 space-y-1">
-          <div class="text-[11px] uppercase tracking-widest text-[#8c6226] font-royal font-bold">
-            With Warm Regards
+        <!-- Card 2: Turmeric Tales (Haldi) -->
+        <div class="w-full relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#e5c4b0]/70 bg-white transition-all duration-500 ease-out transform hover:scale-[1.02] hover:shadow-2xl">
+          <div class="relative w-full aspect-[9/16] overflow-hidden group">
+            <img src="assets/template/card3.png" alt="Haldi Utsav" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
+            <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-[#360912]/90 via-[#360912]/50 to-transparent text-white flex flex-col items-center text-center">
+              <span class="font-cinzel text-[10px] tracking-[0.25em] uppercase text-[#f3e0aa] font-semibold">CEREMONY II</span>
+              <h3 class="font-bikham text-4xl sm:text-5xl text-[#fff6e6] my-1">Turmeric Tales (Haldi)</h3>
+              <p class="font-cinzel text-xs text-[#f3e0aa] tracking-wider">SPLASHES OF SUNSHINE &amp; AUSPICIOUS BLESSINGS</p>
+              <div class="w-12 h-[0.5px] bg-[#d4af37] my-2"></div>
+              <p class="font-cinzel text-[11px] text-white/90 tracking-wide font-medium">10:00 AM &bull; Courtyard Lawn</p>
+            </div>
           </div>
-          <div class="text-sm md:text-base font-royal font-bold text-[#6b1426]">
-            Entire Singh Family / Miyan Family
+        </div>
+
+        <!-- Card 3: The Henna Diaries (Mehendi) -->
+        <div class="w-full relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#e5c4b0]/70 bg-white transition-all duration-500 ease-out transform hover:scale-[1.02] hover:shadow-2xl">
+          <div class="relative w-full aspect-[9/16] overflow-hidden group">
+            <img src="assets/template/card4.png" alt="Mehendi Celebrations" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
+            <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-[#360912]/90 via-[#360912]/50 to-transparent text-white flex flex-col items-center text-center">
+              <span class="font-cinzel text-[10px] tracking-[0.25em] uppercase text-[#f3e0aa] font-semibold">CEREMONY III</span>
+              <h3 class="font-bikham text-4xl sm:text-5xl text-[#fff6e6] my-1">The Henna Diaries</h3>
+              <p class="font-cinzel text-xs text-[#f3e0aa] tracking-wider">INTRICATE MEHENDI &amp; FOLK MELODIES</p>
+              <div class="w-12 h-[0.5px] bg-[#d4af37] my-2"></div>
+              <p class="font-cinzel text-[11px] text-white/90 tracking-wide font-medium">3:00 PM &bull; Poolside Garden</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 4: Shubh Vivah (Baraat & Phere) -->
+        <div class="w-full relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#e5c4b0]/70 bg-white transition-all duration-500 ease-out transform hover:scale-[1.02] hover:shadow-2xl">
+          <div class="relative w-full aspect-[9/16] overflow-hidden group">
+            <img src="assets/template/card5.png" alt="Shubh Vivah" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
+            <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-[#360912]/90 via-[#360912]/50 to-transparent text-white flex flex-col items-center text-center">
+              <span class="font-cinzel text-[10px] tracking-[0.25em] uppercase text-[#f3e0aa] font-semibold">MAIN AUSPICIOUS RITUAL</span>
+              <h3 class="font-bikham text-4xl sm:text-5xl text-[#fff6e6] my-1">Shubh Vivah &amp; Phere</h3>
+              <p class="font-cinzel text-xs text-[#f3e0aa] tracking-wider">THE SACRED SEVEN VOWS AROUND THE HOLY FIRE</p>
+              <div class="w-12 h-[0.5px] bg-[#d4af37] my-2"></div>
+              <p class="font-cinzel text-[11px] text-white/90 tracking-wide font-medium">Baraat Swagat: 4:00 PM &bull; Phere: 6:00 PM</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Card 5: Royal Reception & Sundowner -->
+        <div class="w-full relative rounded-2xl sm:rounded-3xl overflow-hidden shadow-xl border border-[#e5c4b0]/70 bg-white transition-all duration-500 ease-out transform hover:scale-[1.02] hover:shadow-2xl">
+          <div class="relative w-full aspect-[9/16] overflow-hidden group">
+            <img src="assets/template/card6.png" alt="Royal Reception" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
+            <div class="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-[#360912]/90 via-[#360912]/50 to-transparent text-white flex flex-col items-center text-center">
+              <span class="font-cinzel text-[10px] tracking-[0.25em] uppercase text-[#f3e0aa] font-semibold">CELEBRATION DINNER</span>
+              <h3 class="font-bikham text-4xl sm:text-5xl text-[#fff6e6] my-1">Royal Reception</h3>
+              <p class="font-cinzel text-xs text-[#f3e0aa] tracking-wider">DINNER, CONGRATULATIONS &amp; DANCING</p>
+              <div class="w-12 h-[0.5px] bg-[#d4af37] my-2"></div>
+              <p class="font-cinzel text-[11px] text-white/90 tracking-wide font-medium">8:00 PM Onwards &bull; Grand Heritage Lawn</p>
+            </div>
           </div>
         </div>
 
       </div>
-    </article>
 
-    <!-- CHAPTER 2: INTERACTIVE SCRATCH-TO-REVEAL SAVE THE DATE (LIGHT THEME) -->
-    <section class="rounded-2xl bg-white p-6 text-center border-2 border-[#e6c888] shadow-md text-[#3a2a24] space-y-4">
-      <div class="space-y-1">
-        <div class="text-[#8c6226] font-royal text-xs tracking-widest uppercase font-bold">✨ Interactive Save The Date ✨</div>
-        <h3 class="text-xl md:text-2xl font-royal font-bold text-[#6b1426]">Scratch to Reveal Muhurat</h3>
-        <p class="text-xs text-[#61473b] font-serif-luxury">
-          Use your finger or mouse to scratch the metallic champagne gold foil:
+      <!-- With Love & Blessings Footer -->
+      <div class="text-center mt-12 mb-4 flex flex-col items-center gap-1">
+        <p class="font-bikham text-4xl sm:text-5xl text-[#964860]">With Love &amp; Blessings</p>
+        <p class="font-cinzel text-[11px] sm:text-xs tracking-[0.25em] uppercase text-[#b05f77] font-semibold">
+          SHREYA &amp; SHUBHAM
         </p>
       </div>
 
-      <!-- Scratch Canvas Container -->
-      <div class="relative w-72 h-36 mx-auto rounded-xl overflow-hidden border-2 border-[#d4af37] shadow-md bg-[#fffcf5]">
-        <!-- Revealed Content Underneath -->
-        <div class="absolute inset-0 flex flex-col items-center justify-center text-center p-3 text-[#4a0d18]">
-          <div class="text-xs font-devanagari font-bold text-amber-700">॥ शुभ विवाह तिथि ॥</div>
-          <div class="text-2xl font-royal font-black text-[#6b1426] my-0.5">29 JAN 2027</div>
-          <div class="text-xs font-serif-luxury text-[#4a3227] font-semibold">Friday &bull; Varanasi</div>
-          <div class="text-[10px] text-emerald-700 font-bold mt-1">🎉 Date Revealed!</div>
-        </div>
+    </section>
 
-        <!-- Gold Foil Canvas Layer on Top -->
-        <canvas id="scratchCanvas" width="288" height="144" class="absolute inset-0 z-10 cursor-crosshair"></canvas>
+    <!-- ========================================================================= -->
+    <!-- SECTION 4: INTERACTIVE RSVP FORM (WHATSAPP & DIRECT CALL READY)           -->
+    <!-- ========================================================================= -->
+    <section class="w-full bg-gradient-to-b from-[#fcf8f2] via-[#faf5eb] to-[#f7efe3] py-14 px-4 sm:px-6 flex flex-col items-center select-none border-t border-[#e8d5c4]/60 relative overflow-hidden">
+      
+      <div class="text-center mb-8 flex flex-col items-center gap-1.5">
+        <h2 class="font-bikham text-5xl sm:text-6xl text-[#964860] drop-shadow-sm">RSVP</h2>
+        <p class="font-cinzel text-xs sm:text-sm tracking-[0.24em] uppercase text-[#b05f77] font-medium">
+          PLEASE KINDLY RESPOND BY JANUARY 10TH
+        </p>
+        <div class="h-[1px] w-24 bg-gradient-to-r from-transparent via-[#c49d68] to-transparent mt-2"></div>
       </div>
 
-      <!-- Live Countdown Blocks (Light Theme) -->
-      <div class="pt-2">
-        <div class="text-[11px] uppercase tracking-widest text-[#8c6226] font-royal font-bold mb-2">Countdown to Auspicious Muhurat</div>
-        <div class="grid grid-cols-4 gap-2 max-w-xs mx-auto">
-          <div class="bg-[#faf3e6] p-2 rounded-lg border border-[#d4af37]/50 text-center shadow-2xs">
-            <div id="cntDays" class="text-lg md:text-xl font-bold font-royal text-[#6b1426]">--</div>
-            <div class="text-[9px] uppercase text-[#8c6226] font-bold">Days</div>
+      <div class="w-full max-w-[420px] bg-[#fffcf7] rounded-3xl border border-[#edd6c4] p-6 sm:p-7 shadow-xl relative overflow-hidden">
+        
+        <form id="rsvpForm" onsubmit="submitRSVP(event)" class="flex flex-col gap-5 text-[#8b3a52]">
+          
+          <!-- Full Name -->
+          <div class="flex flex-col gap-1.5">
+            <label class="font-cinzel text-[11px] font-semibold tracking-[0.18em] uppercase text-[#8b3a52]">
+              YOUR FULL NAME
+            </label>
+            <input type="text" id="guestName" required placeholder="e.g. Rajesh Kumar &amp; Family" class="w-full bg-[#fffbf4] border border-[#e5c4b0]/80 rounded-xl px-4 py-3 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-[#611522] focus:ring-1 focus:ring-[#611522] transition-colors"/>
           </div>
-          <div class="bg-[#faf3e6] p-2 rounded-lg border border-[#d4af37]/50 text-center shadow-2xs">
-            <div id="cntHours" class="text-lg md:text-xl font-bold font-royal text-[#6b1426]">--</div>
-            <div class="text-[9px] uppercase text-[#8c6226] font-bold">Hours</div>
+
+          <!-- Phone Number & Guests -->
+          <div class="grid grid-cols-2 gap-3 sm:gap-4">
+            <div class="flex flex-col gap-1.5">
+              <label class="font-cinzel text-[11px] font-semibold tracking-[0.16em] uppercase text-[#8b3a52]">
+                PHONE NUMBER
+              </label>
+              <input type="tel" id="guestPhone" placeholder="+91 ..." class="w-full bg-[#fffbf4] border border-[#e5c4b0]/80 rounded-xl px-3.5 py-3 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-[#611522] focus:ring-1 focus:ring-[#611522] transition-colors"/>
+            </div>
+
+            <div class="flex flex-col gap-1.5">
+              <label class="font-cinzel text-[10px] sm:text-[11px] font-semibold tracking-[0.14em] uppercase text-[#8b3a52] whitespace-nowrap overflow-hidden text-ellipsis">
+                NUMBER OF GUESTS
+              </label>
+              <input type="number" id="guestCount" min="1" max="10" value="2" class="w-full bg-[#fffbf4] border border-[#e5c4b0]/80 rounded-xl px-3.5 py-3 text-sm text-gray-800 text-center focus:outline-none focus:border-[#611522] focus:ring-1 focus:ring-[#611522] transition-colors font-medium"/>
+            </div>
           </div>
-          <div class="bg-[#faf3e6] p-2 rounded-lg border border-[#d4af37]/50 text-center shadow-2xs">
-            <div id="cntMins" class="text-lg md:text-xl font-bold font-royal text-[#6b1426]">--</div>
-            <div class="text-[9px] uppercase text-[#8c6226] font-bold">Mins</div>
+
+          <!-- Attendance Toggle -->
+          <div class="flex flex-col gap-2">
+            <label class="font-cinzel text-[11px] font-semibold tracking-[0.18em] uppercase text-[#8b3a52]">
+              WILL YOU BE ATTENDING?
+            </label>
+            <div class="grid grid-cols-2 gap-3">
+              <button type="button" id="btnAttendYes" onclick="setAttendance(true)" class="py-3 px-3 rounded-full font-cinzel text-[11px] sm:text-[12px] font-semibold tracking-wide transition-all duration-300 cursor-pointer bg-[#611522] text-white shadow-md">
+                Joyfully Yes
+              </button>
+              <button type="button" id="btnAttendNo" onclick="setAttendance(false)" class="py-3 px-3 rounded-full font-cinzel text-[11px] sm:text-[12px] font-semibold tracking-wide transition-all duration-300 cursor-pointer bg-[#fffbf4] border border-[#e5c4b0]/80 text-[#8b3a52] hover:bg-[#faf0e6]">
+                Regretfully No
+              </button>
+            </div>
           </div>
-          <div class="bg-[#faf3e6] p-2 rounded-lg border border-[#d4af37]/50 text-center shadow-2xs">
-            <div id="cntSecs" class="text-lg md:text-xl font-bold font-royal text-[#6b1426]">--</div>
-            <div class="text-[9px] uppercase text-[#8c6226] font-bold">Secs</div>
+
+          <!-- Which Events Multi-select -->
+          <div class="flex flex-col gap-2">
+            <label class="font-cinzel text-[11px] font-semibold tracking-[0.18em] uppercase text-[#8b3a52]">
+              WHICH EVENTS?
+            </label>
+            <div class="flex flex-wrap gap-2">
+              <button type="button" onclick="toggleEventSelect(this)" class="event-pill px-3.5 py-1.5 rounded-full font-cinzel text-[11px] font-semibold tracking-wide transition-all cursor-pointer bg-[#611522]/10 border border-[#611522] text-[#611522]">
+                ✓ Engagement
+              </button>
+              <button type="button" onclick="toggleEventSelect(this)" class="event-pill px-3.5 py-1.5 rounded-full font-cinzel text-[11px] font-semibold tracking-wide transition-all cursor-pointer bg-[#611522]/10 border border-[#611522] text-[#611522]">
+                ✓ Haldi
+              </button>
+              <button type="button" onclick="toggleEventSelect(this)" class="event-pill px-3.5 py-1.5 rounded-full font-cinzel text-[11px] font-semibold tracking-wide transition-all cursor-pointer bg-[#611522]/10 border border-[#611522] text-[#611522]">
+                ✓ Mehendi
+              </button>
+              <button type="button" onclick="toggleEventSelect(this)" class="event-pill px-3.5 py-1.5 rounded-full font-cinzel text-[11px] font-semibold tracking-wide transition-all cursor-pointer bg-[#611522]/10 border border-[#611522] text-[#611522]">
+                ✓ Shubh Vivah &amp; Reception
+              </button>
+            </div>
           </div>
-        </div>
+
+          <!-- Message / Wishes -->
+          <div class="flex flex-col gap-1.5">
+            <label class="font-cinzel text-[11px] font-semibold tracking-[0.18em] uppercase text-[#8b3a52]">
+              A MESSAGE FOR SHREYA &amp; SHUBHAM
+            </label>
+            <textarea id="guestMessage" rows="3" placeholder="Your warm blessings &amp; wishes for the couple..." class="w-full bg-[#fffbf4] border border-[#e5c4b0]/80 rounded-2xl px-4 py-3 text-sm text-gray-800 placeholder:text-gray-400 focus:outline-none focus:border-[#611522] focus:ring-1 focus:ring-[#611522] transition-colors resize-none"></textarea>
+          </div>
+
+          <!-- Submit Button (Direct WhatsApp Integration) -->
+          <button type="submit" class="mt-2 w-full bg-[#611522] hover:bg-[#4a0d17] active:scale-[0.99] text-white font-cinzel text-xs font-semibold tracking-[0.22em] uppercase py-3.5 rounded-full shadow-lg flex items-center justify-center gap-2 transition-all cursor-pointer">
+            <svg class="w-4 h-4 text-white transform -rotate-12" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+            </svg>
+            <span>Send RSVP via WhatsApp</span>
+          </button>
+
+          <!-- Direct Call RSVP Contacts -->
+          <div class="pt-3 border-t border-[#e5c4b0]/50 text-center">
+            <p class="font-cinzel text-[10px] tracking-widest text-[#8b3a52] uppercase mb-2">
+              OR RSVP DIRECTLY VIA CALL
+            </p>
+            <div class="flex justify-center gap-3">
+              <a href="tel:8279642050" class="px-3 py-1.5 rounded-full border border-[#c49d68] text-[11px] font-cinzel font-semibold text-[#611522] hover:bg-rose-50 flex items-center gap-1">
+                <span>📞</span> Virendra Singh
+              </a>
+              <a href="tel:9794904444" class="px-3 py-1.5 rounded-full border border-[#c49d68] text-[11px] font-cinzel font-semibold text-[#611522] hover:bg-rose-50 flex items-center gap-1">
+                <span>📞</span> Ravindra Singh
+              </a>
+            </div>
+          </div>
+
+        </form>
+
       </div>
 
-      <!-- Add to Calendar Button -->
-      <div class="pt-2">
-        <a href="https://calendar.google.com/calendar/render?action=TEMPLATE&text=Wedding+of+Shreya+%26+Shubham&dates=20270129T103000Z/20270129T183000Z&details=Auspicious+Wedding+of+Shreya+(D/o+Mrs.+Mamta+Singh+%26+Late+Mr.+Matvar+Singh)+and+Shubham+(S/o+Mrs.+Milli+Sukhwani+%26+Mr.+Jeet+Kumar+Sukhwani).+Baraat+Swagat+at+4:00+PM,+Phere+at+6:00+PM.&location=The+Clarks,+Mall+Road,+Cantonment,+Varanasi+-+221002" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-2 px-5 py-2 rounded-full bg-[#6b1426] hover:bg-[#520d1c] text-white font-royal font-bold text-xs shadow transition">
-          <span>📅</span> Add to Google Calendar
+    </section>
+
+    <!-- ========================================================================= -->
+    <!-- SECTION 5: VENUE & GOOGLE MAPS LOCATION                                   -->
+    <!-- ========================================================================= -->
+    <section class="w-full bg-gradient-to-b from-[#f7efe3] via-[#faf5eb] to-[#fcf8f2] py-14 px-4 sm:px-6 flex flex-col items-center select-none border-t border-[#e8d5c4]/60 relative overflow-hidden">
+      
+      <div class="text-center mb-8 flex flex-col items-center gap-1.5">
+        <h2 class="font-bikham text-5xl sm:text-6xl text-[#964860] drop-shadow-sm">Location</h2>
+        <p class="font-cinzel text-xs sm:text-sm tracking-[0.24em] uppercase text-[#b05f77] font-medium">
+          VENUE &amp; DIRECTIONS
+        </p>
+        <div class="h-[1px] w-24 bg-gradient-to-r from-transparent via-[#c49d68] to-transparent mt-2"></div>
+      </div>
+
+      <div class="w-full max-w-[420px] bg-[#fffcf7] rounded-3xl border border-[#edd6c4] p-5 sm:p-6 shadow-xl flex flex-col items-center gap-5 relative overflow-hidden">
+        
+        <!-- Venue Name & City Header -->
+        <div class="flex flex-col items-center text-center gap-1 text-[#964860]">
+          <div class="flex items-center gap-1.5">
+            <svg class="w-5 h-5 text-[#c49d68]" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5s1.12-2.5 2.5-2.5 2.5 1.12 2.5 2.5-1.12 2.5-2.5 2.5z"></path>
+            </svg>
+            <span class="font-cinzel text-xs sm:text-sm font-bold tracking-wider text-[#8b3a52] uppercase">
+              The Clarks, Varanasi
+            </span>
+          </div>
+          <p class="font-cinzel text-[11px] text-[#705649] tracking-wide">
+            Mall Road, Cantonment, Varanasi, Uttar Pradesh - 221002
+          </p>
+        </div>
+
+        <!-- Embedded Interactive Google Map -->
+        <div class="w-full h-56 rounded-2xl overflow-hidden border border-[#e5c4b0]/80 relative shadow-inner bg-[#f0e6df]">
+          <iframe title="The Clarks Varanasi Map" src="https://maps.google.com/maps?q=The+Clarks+Varanasi+Mall+Road+Cantonment&t=&z=14&ie=UTF8&iwloc=&output=embed" class="w-full h-full border-0" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+        </div>
+
+        <!-- Direct Navigation Link Button -->
+        <a href="https://maps.google.com/?q=The+Clarks+Varanasi" target="_blank" rel="noopener noreferrer" class="w-full bg-[#611522] hover:bg-[#4a0d17] active:scale-[0.99] text-white font-cinzel text-xs font-semibold tracking-[0.2em] uppercase py-3.5 rounded-full shadow-lg flex items-center justify-center gap-2.5 transition-all text-center cursor-pointer">
+          <svg class="w-4 h-4 text-[#c49d68]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
+          </svg>
+          <span>Open in Google Maps</span>
         </a>
+
       </div>
+
     </section>
 
-    <!-- CHAPTER 3: WEDDING PROGRAMME & CEREMONIES (LIGHT CARDS) -->
-    <section class="space-y-4">
-      <div class="text-center space-y-1">
-        <div class="text-[#8c6226] font-devanagari text-sm font-semibold">॥ शुभ कार्यक्रम ॥</div>
-        <h2 class="text-2xl md:text-3xl font-royal font-bold text-[#6b1426]">Programme & Itinerary</h2>
-        <p class="text-xs text-[#704f41] font-serif-luxury font-medium">Friday, 29th January, 2027</p>
-      </div>
-
-      <div class="space-y-3">
-        <!-- Event 1: Baraat Swagat -->
-        <div class="rounded-xl bg-white p-4 border border-[#e5d4b8] shadow-xs flex items-center justify-between gap-4">
-          <div class="w-12 h-12 rounded-full bg-[#fcf2f4] border border-[#e8a7b3] flex items-center justify-center text-xl shrink-0 text-[#6b1426] shadow-xs">
-            🎺
-          </div>
-          <div class="flex-1 text-left">
-            <div class="flex items-center justify-between">
-              <h4 class="font-royal font-bold text-[#6b1426] text-sm md:text-base">Baraat Swagat</h4>
-              <span class="text-xs bg-[#faf0e1] text-[#6b1426] font-bold px-2.5 py-0.5 rounded-full border border-[#d4af37]/40">04:00 PM</span>
-            </div>
-            <p class="text-xs text-[#5c4236] mt-1 font-serif-luxury font-medium">
-              Welcoming the groom & baraat with grand floral garlands, dhol beats, and traditional aarti.
-            </p>
-          </div>
-        </div>
-
-        <!-- Event 2: Sacred Phere -->
-        <div class="rounded-xl bg-white p-4 border border-[#e5d4b8] shadow-xs flex items-center justify-between gap-4">
-          <div class="w-12 h-12 rounded-full bg-[#fcf2f4] border border-[#e8a7b3] flex items-center justify-center text-xl shrink-0 text-[#6b1426] shadow-xs">
-            🔥
-          </div>
-          <div class="flex-1 text-left">
-            <div class="flex items-center justify-between">
-              <h4 class="font-royal font-bold text-[#6b1426] text-sm md:text-base">Sacred Phere</h4>
-              <span class="text-xs bg-[#faf0e1] text-[#6b1426] font-bold px-2.5 py-0.5 rounded-full border border-[#d4af37]/40">06:00 PM</span>
-            </div>
-            <p class="text-xs text-[#5c4236] mt-1 font-serif-luxury font-medium">
-              The seven sacred circumambulations around the holy agni kund, solemnizing eternal love.
-            </p>
-          </div>
-        </div>
-
-        <!-- Event 3: Reception & Gala Dinner -->
-        <div class="rounded-xl bg-white p-4 border border-[#e5d4b8] shadow-xs flex items-center justify-between gap-4">
-          <div class="w-12 h-12 rounded-full bg-[#fcf2f4] border border-[#e8a7b3] flex items-center justify-center text-xl shrink-0 text-[#6b1426] shadow-xs">
-            🍽️
-          </div>
-          <div class="flex-1 text-left">
-            <div class="flex items-center justify-between">
-              <h4 class="font-royal font-bold text-[#6b1426] text-sm md:text-base">Wedding Reception</h4>
-              <span class="text-xs bg-[#faf0e1] text-[#6b1426] font-bold px-2.5 py-0.5 rounded-full border border-[#d4af37]/40">Post Phere</span>
-            </div>
-            <p class="text-xs text-[#5c4236] mt-1 font-serif-luxury font-medium">
-              Followed by blessings for the newlyweds, photography, and an authentic royal feast.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CHAPTER 4: SAPTAPADI - THE 7 SACRED VOWS (LIGHT THEME) -->
-    <section class="rounded-2xl bg-white p-6 text-center border-2 border-[#e6c888] shadow-md text-[#3a2a24] space-y-4">
-      <div class="space-y-1">
-        <div class="text-[#8c6226] font-devanagari text-xs font-bold">॥ सप्तपदी ॥</div>
-        <h3 class="text-xl md:text-2xl font-royal font-bold text-[#6b1426]">The Seven Sacred Vows</h3>
-        <p class="text-xs text-[#6e5042] font-serif-luxury">Click on each golden diya to read the sacred promises of marriage:</p>
-      </div>
-
-      <!-- Diya Step Numbers -->
-      <div class="flex justify-center items-center gap-1.5 flex-wrap py-2">
-        <button onclick="showVow(1)" id="vowBtn1" class="w-8 h-8 rounded-full border border-[#b8860b] bg-[#b8860b] text-white font-bold text-xs shadow-xs">1</button>
-        <button onclick="showVow(2)" id="vowBtn2" class="w-8 h-8 rounded-full border border-[#d4af37]/60 bg-[#faf3e6] text-[#6b1426] text-xs font-bold">2</button>
-        <button onclick="showVow(3)" id="vowBtn3" class="w-8 h-8 rounded-full border border-[#d4af37]/60 bg-[#faf3e6] text-[#6b1426] text-xs font-bold">3</button>
-        <button onclick="showVow(4)" id="vowBtn4" class="w-8 h-8 rounded-full border border-[#d4af37]/60 bg-[#faf3e6] text-[#6b1426] text-xs font-bold">4</button>
-        <button onclick="showVow(5)" id="vowBtn5" class="w-8 h-8 rounded-full border border-[#d4af37]/60 bg-[#faf3e6] text-[#6b1426] text-xs font-bold">5</button>
-        <button onclick="showVow(6)" id="vowBtn6" class="w-8 h-8 rounded-full border border-[#d4af37]/60 bg-[#faf3e6] text-[#6b1426] text-xs font-bold">6</button>
-        <button onclick="showVow(7)" id="vowBtn7" class="w-8 h-8 rounded-full border border-[#d4af37]/60 bg-[#faf3e6] text-[#6b1426] text-xs font-bold">7</button>
-      </div>
-
-      <!-- Active Vow Card Display -->
-      <div id="vowCard" class="bg-[#faf3e6] p-4 rounded-xl border border-[#d4af37]/50 text-center space-y-2 min-h-[110px] flex flex-col justify-center shadow-2xs">
-        <div id="vowSanskrit" class="text-[#8c6226] font-devanagari text-sm font-bold">
-          ॐ एकमिषे विष्णुस्त्वान्वेतु ।
-        </div>
-        <div id="vowMeaning" class="text-xs text-[#4a3227] font-serif-luxury leading-relaxed font-medium">
-          <strong>1st Vow:</strong> To nourish each other with pure sustenance, mutual respect, and radiant health throughout life.
-        </div>
-      </div>
-    </section>
-
-    <!-- CHAPTER 5: VENUE & LOCATION (THE CLARKS, VARANASI) -->
-    <section class="rounded-2xl bg-white p-6 text-center border-2 border-[#e6c888] shadow-md space-y-4 text-[#3d271d]">
-      <div class="space-y-1">
-        <div class="text-2xl">🏛️</div>
-        <h3 class="text-2xl font-royal font-bold text-[#6b1426]">The Wedding Venue</h3>
-        <p class="text-xs text-[#704a27] font-serif-luxury font-medium">Royal Hospitality in the Sacred City of Varanasi</p>
-      </div>
-
-      <div class="p-4 rounded-xl bg-[#faf3e6] border border-[#d4af37]/50 space-y-2 shadow-2xs">
-        <div class="text-lg font-royal font-bold text-[#6b1426]">The Clarks</div>
-        <div class="text-xs text-[#52382c] font-serif-luxury leading-relaxed font-medium">
-          Mall Road, Cantonment,<br>
-          Varanasi, Uttar Pradesh – 221002
-        </div>
-      </div>
-
-      <div class="flex flex-col sm:flex-row justify-center gap-2 pt-1">
-        <a href="https://www.google.com/maps/search/?api=1&query=The+Clarks+Mall+Road+Cantonment+Varanasi+221002" target="_blank" rel="noopener noreferrer" class="px-5 py-2 rounded-full bg-[#6b1426] text-white font-royal font-semibold text-xs shadow hover:bg-[#520d1c] transition flex items-center justify-center gap-1.5">
-          <span>🗺️</span> Open Google Maps
-        </a>
-        <button onclick="copyVenue()" class="px-5 py-2 rounded-full border border-[#b8860b] text-[#6b1426] font-royal text-xs font-semibold hover:bg-amber-100/50 transition">
-          📋 Copy Address
-        </button>
-      </div>
-    </section>
-
-    <!-- CHAPTER 6: RSVP & CORDIAL FAMILY CONTACTS -->
-    <section class="rounded-2xl bg-white p-6 text-center border-2 border-[#e6c888] shadow-md text-[#3a2a24] space-y-5">
-      <div class="space-y-1">
-        <div class="text-2xl">💌</div>
-        <h3 class="text-2xl font-royal font-bold text-[#6b1426]">RSVP & Inquiries</h3>
-        <p class="text-xs text-[#6e5042] font-serif-luxury font-medium">For warm congratulations, travel, and accommodation assistance:</p>
-      </div>
-
-      <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-md mx-auto">
-        <!-- Contact 1 -->
-        <div class="bg-[#faf3e6] p-4 rounded-xl border border-[#d4af37]/50 text-center space-y-2 shadow-2xs">
-          <div class="w-10 h-10 mx-auto rounded-full bg-[#fcf2f4] border border-[#e8a7b3] flex items-center justify-center text-[#6b1426] font-bold font-royal text-xs">
-            VS
-          </div>
-          <div>
-            <div class="font-royal text-xs font-bold text-[#6b1426]">Mr. Virendra Singh</div>
-            <div class="text-[11px] font-mono text-[#8c6226] font-semibold">+91 8279642050</div>
-          </div>
-          <div class="flex justify-center gap-2 pt-1">
-            <a href="tel:+918279642050" class="flex-1 py-1.5 rounded-lg bg-white border border-[#d4af37]/60 text-[#6b1426] text-[11px] font-bold hover:bg-amber-100/50 shadow-2xs">
-              📞 Call
-            </a>
-            <a href="https://wa.me/918279642050?text=Namaste%20Virendra%20Ji,%20we%20have%20received%20the%20wedding%20invitation%20for%20Shreya%20and%20Shubham." target="_blank" rel="noopener noreferrer" class="flex-1 py-1.5 rounded-lg bg-emerald-50 border border-emerald-400 text-emerald-800 text-[11px] font-bold hover:bg-emerald-100 shadow-2xs">
-              💬 WhatsApp
-            </a>
-          </div>
-        </div>
-
-        <!-- Contact 2 -->
-        <div class="bg-[#faf3e6] p-4 rounded-xl border border-[#d4af37]/50 text-center space-y-2 shadow-2xs">
-          <div class="w-10 h-10 mx-auto rounded-full bg-[#fcf2f4] border border-[#e8a7b3] flex items-center justify-center text-[#6b1426] font-bold font-royal text-xs">
-            RS
-          </div>
-          <div>
-            <div class="font-royal text-xs font-bold text-[#6b1426]">Mr. Ravindra Singh</div>
-            <div class="text-[11px] font-mono text-[#8c6226] font-semibold">+91 9794904444</div>
-          </div>
-          <div class="flex justify-center gap-2 pt-1">
-            <a href="tel:+919794904444" class="flex-1 py-1.5 rounded-lg bg-white border border-[#d4af37]/60 text-[#6b1426] text-[11px] font-bold hover:bg-amber-100/50 shadow-2xs">
-              📞 Call
-            </a>
-            <a href="https://wa.me/919794904444?text=Namaste%20Ravindra%20Ji,%20we%20have%20received%20the%20wedding%20invitation%20for%20Shreya%20and%20Shubham." target="_blank" rel="noopener noreferrer" class="flex-1 py-1.5 rounded-lg bg-emerald-50 border border-emerald-400 text-emerald-800 text-[11px] font-bold hover:bg-emerald-100 shadow-2xs">
-              💬 WhatsApp
-            </a>
-          </div>
-        </div>
-      </div>
-
-      <div class="pt-3 text-[11px] text-[#8c6226] font-royal font-bold tracking-widest uppercase">
-        With Warm Regards: Entire Singh Family / Miyan Family
-      </div>
-    </section>
-
-    <!-- Bottom Footer Sign-off -->
-    <footer class="text-center text-[#9c7866] text-[11px] font-royal pb-10">
-      Shreya &bull; Shubham &bull; 29th January, 2027 &bull; Varanasi
+    <!-- Footer -->
+    <footer class="w-full bg-[#faf6f0] py-6 px-4 flex flex-col items-center justify-center border-t border-[#e8d5c4]/40 text-center select-none">
+      <p class="font-bikham text-3xl text-[#964860]">Shreya &amp; Shubham</p>
+      <p class="font-cinzel text-[9.5px] tracking-[0.22em] text-[#705649] uppercase mt-1">
+        29TH JANUARY 2027 &bull; VARANASI
+      </p>
     </footer>
 
   </main>
 
-  <!-- ============================================================== -->
-  <!-- 4. FLOATING SPINNING VINYL RECORD PLAYER (LIGHT THEME)         -->
-  <!-- ============================================================== -->
-  <div class="no-print fixed bottom-5 right-5 z-40 flex items-center gap-2">
-    <div id="vinylPlayer" onclick="toggleVinylMusic()" class="cursor-pointer group flex items-center gap-2 bg-white/90 backdrop-blur-md p-1.5 pr-3 rounded-full border border-[#d4af37] shadow-xl hover:scale-105 transition">
-      <!-- Vinyl Disc Graphic -->
-      <div id="vinylDisc" class="w-10 h-10 rounded-full bg-gradient-to-tr from-stone-800 to-black border-2 border-[#d4af37] flex items-center justify-center shadow-md relative spin-slow">
-        <!-- Groove circles -->
-        <div class="w-7 h-7 rounded-full border border-stone-600 flex items-center justify-center">
-          <div class="w-3.5 h-3.5 rounded-full bg-amber-400 flex items-center justify-center text-[8px] font-bold text-black">
-            🎵
-          </div>
-        </div>
-      </div>
-      <div class="text-left">
-        <div id="musicStatus" class="text-[10px] text-[#6b1426] font-royal font-bold uppercase">Playing Tune</div>
-        <div class="text-[9px] text-[#8c6226] font-medium">Indian Wedding Raag</div>
-      </div>
-    </div>
-  </div>
-
-  <!-- Notification Toast -->
-  <div id="appToast" class="fixed bottom-6 left-1/2 -translate-x-1/2 z-50 bg-[#381f25] text-amber-100 px-5 py-2 rounded-full text-xs shadow-2xl opacity-0 pointer-events-none transition-opacity duration-300 border border-amber-300">
-    Copied to clipboard!
-  </div>
-
-  <!-- ============================================================== -->
-  <!-- JAVASCRIPT CONTROLLERS                                          -->
-  <!-- ============================================================== -->
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT CONTROLLERS                                                    -->
+  <!-- ========================================================================= -->
   <script>
-    // -------------------------------------------------------------
-    // A. Entrance Mode Switcher & Opening Mechanism
-    // -------------------------------------------------------------
-    function switchEntranceMode(mode) {
-      const pContainer = document.getElementById('palaceDoorContainer');
-      const eContainer = document.getElementById('royalEnvelopeContainer');
-      const btnDoor = document.getElementById('modeBtnDoor');
-      const btnEnv = document.getElementById('modeBtnEnvelope');
+    // ---------------------------------------------------------------------------
+    // 1. Audio Soundtrack Controller
+    // ---------------------------------------------------------------------------
+    const bgMusic = document.getElementById('bgMusic');
+    const audioIconMuted = document.getElementById('audioIconMuted');
+    const audioIconPlaying = document.getElementById('audioIconPlaying');
+    const audioText = document.getElementById('audioText');
+    let isPlaying = false;
 
-      if (mode === 'door') {
-        pContainer.classList.remove('hidden');
-        eContainer.classList.add('hidden');
-        btnDoor.className = "px-2.5 py-0.5 rounded-full bg-amber-500 text-black font-semibold shadow-xs";
-        btnEnv.className = "px-2.5 py-0.5 rounded-full hover:bg-amber-200/60 text-[#543b31]";
+    function playAudio() {
+      bgMusic.play().then(() => {
+        isPlaying = true;
+        audioIconMuted.classList.add('hidden');
+        audioIconPlaying.classList.remove('hidden');
+        audioText.innerText = 'Playing';
+      }).catch(err => {
+        console.log('Autoplay blocked until user interaction');
+      });
+    }
+
+    function toggleAudio() {
+      if (isPlaying) {
+        bgMusic.pause();
+        isPlaying = false;
+        audioIconPlaying.classList.add('hidden');
+        audioIconMuted.classList.remove('hidden');
+        audioText.innerText = 'Muted';
       } else {
-        pContainer.classList.add('hidden');
-        eContainer.classList.remove('hidden');
-        btnEnv.className = "px-2.5 py-0.5 rounded-full bg-amber-500 text-black font-semibold shadow-xs";
-        btnDoor.className = "px-2.5 py-0.5 rounded-full hover:bg-amber-200/60 text-[#543b31]";
+        playAudio();
       }
     }
+
+    // ---------------------------------------------------------------------------
+    // 2. Palace Doors Opening Animation
+    // ---------------------------------------------------------------------------
+    let doorsOpened = false;
 
     function openPalaceDoors() {
-      const modal = document.getElementById('entranceModal');
-      modal.classList.add('doors-open');
-      playRoyalChime();
-      startVinylAudio();
-      triggerPetalBurst(40);
+      if (doorsOpened) return;
+      doorsOpened = true;
 
+      const doorLeft = document.getElementById('doorLeft');
+      const doorRight = document.getElementById('doorRight');
+      const doorSealPrompt = document.getElementById('doorSealPrompt');
+      const doorCornerDecor = document.getElementById('doorCornerDecor');
+      const doorOverlay = document.getElementById('doorOverlay');
+
+      // Animate doors
+      doorLeft.classList.add('door-left-open');
+      doorRight.classList.add('door-right-open');
+      doorSealPrompt.classList.add('opacity-0', 'scale-90');
+      doorCornerDecor.classList.add('opacity-0');
+
+      // Start music upon opening
+      playAudio();
+
+      // Fade out overlay after door slide
       setTimeout(() => {
-        modal.style.opacity = '0';
-        modal.style.pointerEvents = 'none';
-        setTimeout(() => modal.style.display = 'none', 1000);
-      }, 1100);
+        doorOverlay.classList.add('opacity-0', 'pointer-events-none');
+        setTimeout(() => {
+          doorOverlay.style.display = 'none';
+        }, 1000);
+      }, 1000);
     }
 
-    function openRoyalEnvelope() {
-      const modal = document.getElementById('entranceModal');
-      const env = document.getElementById('envelopeCard');
-      env.classList.add('envelope-open');
-      playRoyalChime();
-      startVinylAudio();
-      triggerPetalBurst(40);
+    // ---------------------------------------------------------------------------
+    // 3. Gold Foil Scratch Card Engine
+    // ---------------------------------------------------------------------------
+    const canvas = document.getElementById('scratchCanvas');
+    const ctx = canvas.getContext('2d');
+    let isDrawing = false;
+    let scratchedPixels = 0;
+    let totalPixels = canvas.width * canvas.height;
+    let isRevealed = false;
 
-      setTimeout(() => {
-        modal.style.opacity = '0';
-        modal.style.pointerEvents = 'none';
-        setTimeout(() => modal.style.display = 'none', 1000);
-      }, 1200);
+    // Paint realistic gold foil gradient with sparkle dust
+    function initGoldFoil() {
+      const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
+      grad.addColorStop(0, '#C59B27');
+      grad.addColorStop(0.2, '#E5C467');
+      grad.addColorStop(0.4, '#FDF3C7');
+      grad.addColorStop(0.6, '#D4AF37');
+      grad.addColorStop(0.8, '#F5DE93');
+      grad.addColorStop(1, '#B8860B');
+
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      // Gold shimmer dust
+      ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
+      for (let i = 0; i < 400; i++) {
+        const x = Math.random() * canvas.width;
+        const y = Math.random() * canvas.height;
+        ctx.fillRect(x, y, 1.5, 1.5);
+      }
+
+      // Gold foil stamp text
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      ctx.font = '600 13px Cinzel, serif';
+      ctx.fillStyle = '#611522';
+      ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
+      ctx.shadowBlur = 4;
+      ctx.fillText('✨ SCRATCH WITH FINGER ✨', canvas.width / 2, canvas.height / 2 - 8);
+
+      ctx.font = 'bold 9px Cinzel, serif';
+      ctx.fillStyle = '#7a1c2b';
+      ctx.fillText('TO REVEAL THE DATE', canvas.width / 2, canvas.height / 2 + 12);
+      ctx.shadowBlur = 0;
     }
 
-    function fastSkipEntrance() {
-      const modal = document.getElementById('entranceModal');
-      modal.style.opacity = '0';
-      modal.style.pointerEvents = 'none';
-      startVinylAudio();
-      setTimeout(() => modal.style.display = 'none', 600);
-    }
-
-    function reopenEntrance() {
-      const modal = document.getElementById('entranceModal');
-      modal.style.display = 'flex';
-      modal.classList.remove('doors-open');
-      const env = document.getElementById('envelopeCard');
-      if (env) env.classList.remove('envelope-open');
-      setTimeout(() => {
-        modal.style.opacity = '1';
-        modal.style.pointerEvents = 'auto';
-      }, 50);
-    }
-
-    // -------------------------------------------------------------
-    // B. Interactive Scratch to Reveal Canvas
-    // -------------------------------------------------------------
-    const sCanvas = document.getElementById('scratchCanvas');
-    const sCtx = sCanvas.getContext('2d');
-    let isScratching = false;
-
-    function initScratchCanvas() {
-      const w = sCanvas.width;
-      const h = sCanvas.height;
-
-      // Draw metallic champagne gold gradient
-      const grad = sCtx.createLinearGradient(0, 0, w, h);
-      grad.addColorStop(0, '#d8b257');
-      grad.addColorStop(0.3, '#fbf0cd');
-      grad.addColorStop(0.5, '#e4c478');
-      grad.addColorStop(0.8, '#c29738');
-      grad.addColorStop(1, '#fae6a6');
-      sCtx.fillStyle = grad;
-      sCtx.fillRect(0, 0, w, h);
-
-      // Prompt text
-      sCtx.fillStyle = '#6b1426';
-      sCtx.font = 'bold 12px Cinzel, serif';
-      sCtx.textAlign = 'center';
-      sCtx.fillText('✨ SCRATCH WITH FINGER / MOUSE ✨', w / 2, h / 2 - 4);
-      sCtx.font = '10px Marcellus, serif';
-      sCtx.fillStyle = '#4a2512';
-      sCtx.fillText('TO REVEAL WEDDING DATE', w / 2, h / 2 + 14);
-    }
-    initScratchCanvas();
+    initGoldFoil();
 
     function scratch(e) {
-      if (!isScratching) return;
-      const rect = sCanvas.getBoundingClientRect();
-      const x = (e.clientX || (e.touches && e.touches[0].clientX)) - rect.left;
-      const y = (e.clientY || (e.touches && e.touches[0].clientY)) - rect.top;
+      if (!isDrawing || isRevealed) return;
+      const rect = canvas.getBoundingClientRect();
+      const scaleX = canvas.width / rect.width;
+      const scaleY = canvas.height / rect.height;
 
-      sCtx.globalCompositeOperation = 'destination-out';
-      sCtx.beginPath();
-      sCtx.arc(x * (sCanvas.width / rect.width), y * (sCanvas.height / rect.height), 16, 0, Math.PI * 2);
-      sCtx.fill();
-    }
+      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
+      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
 
-    sCanvas.addEventListener('mousedown', (e) => { isScratching = true; scratch(e); });
-    window.addEventListener('mouseup', () => isScratching = false);
-    sCanvas.addEventListener('mousemove', scratch);
+      const x = (clientX - rect.left) * scaleX;
+      const y = (clientY - rect.top) * scaleY;
 
-    sCanvas.addEventListener('touchstart', (e) => { isScratching = true; scratch(e); }, { passive: false });
-    window.addEventListener('touchend', () => isScratching = false);
-    sCanvas.addEventListener('touchmove', (e) => { e.preventDefault(); scratch(e); }, { passive: false });
+      ctx.globalCompositeOperation = 'destination-out';
+      ctx.beginPath();
+      ctx.arc(x, y, 22, 0, Math.PI * 2);
+      ctx.fill();
 
-    // -------------------------------------------------------------
-    // C. Saptapadi (7 Sacred Vows) Data & Switcher
-    // -------------------------------------------------------------
-    const vowsData = [
-      {
-        sanskrit: "ॐ एकमिषे विष्णुस्त्वान्वेतु ।",
-        meaning: "1st Vow: To nourish each other with pure sustenance, mutual respect, and radiant health throughout life."
-      },
-      {
-        sanskrit: "ॐ द्वे ऊर्जे विष्णुस्त्वान्वेतु ।",
-        meaning: "2nd Vow: To share physical, mental, and spiritual strength together in joy, harmony, and protection."
-      },
-      {
-        sanskrit: "ॐ त्रीणि रायस्पोषाय विष्णुस्त्वान्वेतु ।",
-        meaning: "3rd Vow: To work diligently, preserve prosperity, and earn righteous wealth for our family."
-      },
-      {
-        sanskrit: "ॐ चत्वारि मयोभवाय विष्णुस्त्वान्वेतु ।",
-        meaning: "4th Vow: To acquire true wisdom, happiness, and peace by mutual respect and love."
-      },
-      {
-        sanskrit: "ॐ पञ्च प्रजाभ्यः विष्णुस्त्वान्वेतु ।",
-        meaning: "5th Vow: To be blessed with noble children, virtues, and compassion for all living beings."
-      },
-      {
-        sanskrit: "ॐ षट् ऋतुभ्यः विष्णुस्त्वान्वेतु ।",
-        meaning: "6th Vow: To stay united in longevity and companionship across all seasons of life."
-      },
-      {
-        sanskrit: "ॐ सखे सप्तपदा भव सा मामनुव्रता भव ।",
-        meaning: "7th Vow: To be lifelong eternal companions, united in soul, devotion, and undying friendship."
+      scratchedPixels += 80;
+      if (scratchedPixels > totalPixels * 0.28) {
+        revealDateInstant();
       }
-    ];
-
-    function showVow(num) {
-      for (let i = 1; i <= 7; i++) {
-        const btn = document.getElementById('vowBtn' + i);
-        if (i === num) {
-          btn.className = "w-8 h-8 rounded-full border border-[#b8860b] bg-[#b8860b] text-white font-bold text-xs shadow-xs";
-        } else {
-          btn.className = "w-8 h-8 rounded-full border border-[#d4af37]/60 bg-[#faf3e6] text-[#6b1426] text-xs font-bold";
-        }
-      }
-      const data = vowsData[num - 1];
-      document.getElementById('vowSanskrit').innerText = data.sanskrit;
-      document.getElementById('vowMeaning').innerHTML = data.meaning;
     }
 
-    // -------------------------------------------------------------
-    // D. Countdown Timer to Jan 29, 2027
-    // -------------------------------------------------------------
-    function updateCountdown() {
-      const target = new Date('2027-01-29T16:00:00+05:30').getTime();
-      const now = new Date().getTime();
-      const diff = target - now;
+    canvas.addEventListener('mousedown', (e) => { isDrawing = true; scratch(e); });
+    canvas.addEventListener('mousemove', scratch);
+    window.addEventListener('mouseup', () => { isDrawing = false; });
 
-      if (diff <= 0) return;
-      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-      const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const s = Math.floor((diff % (1000 * 60)) / 1000);
+    canvas.addEventListener('touchstart', (e) => { isDrawing = true; scratch(e); }, { passive: true });
+    canvas.addEventListener('touchmove', scratch, { passive: true });
+    window.addEventListener('touchend', () => { isDrawing = false; });
 
-      document.getElementById('cntDays').innerText = String(d).padStart(2, '0');
-      document.getElementById('cntHours').innerText = String(h).padStart(2, '0');
-      document.getElementById('cntMins').innerText = String(m).padStart(2, '0');
-      document.getElementById('cntSecs').innerText = String(s).padStart(2, '0');
-    }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-
-    // -------------------------------------------------------------
-    // E. Ambient Canvas: Floating Soft Rose Petals & Gold Dust
-    // -------------------------------------------------------------
-    const ambCanvas = document.getElementById('ambientCanvas');
-    const ambCtx = ambCanvas.getContext('2d');
-    let particles = [];
-
-    function resizeAmbCanvas() {
-      ambCanvas.width = window.innerWidth;
-      ambCanvas.height = window.innerHeight;
-    }
-    window.addEventListener('resize', resizeAmbCanvas);
-    resizeAmbCanvas();
-
-    function createParticle() {
-      const isPetal = Math.random() > 0.55;
-      return {
-        x: Math.random() * ambCanvas.width,
-        y: -10,
-        size: isPetal ? (Math.random() * 8 + 6) : (Math.random() * 3 + 1.5),
-        speedY: Math.random() * 1.4 + 0.7,
-        speedX: (Math.random() - 0.5) * 1.1,
-        isPetal: isPetal,
-        rotation: Math.random() * Math.PI * 2,
-        rotSpeed: (Math.random() - 0.5) * 0.04,
-        opacity: Math.random() * 0.6 + 0.3
-      };
+    function revealDateInstant() {
+      if (isRevealed) return;
+      isRevealed = true;
+      canvas.style.opacity = '0';
+      canvas.style.pointerEvents = 'none';
     }
 
-    for (let i = 0; i < 30; i++) {
-      const p = createParticle();
-      p.y = Math.random() * ambCanvas.height;
-      particles.push(p);
-    }
+    // ---------------------------------------------------------------------------
+    // 4. RSVP Form Controller (WhatsApp & Feedback)
+    // ---------------------------------------------------------------------------
+    let willAttend = true;
 
-    function renderParticles() {
-      ambCtx.clearRect(0, 0, ambCanvas.width, ambCanvas.height);
-      particles.forEach((p, idx) => {
-        p.y += p.speedY;
-        p.x += p.speedX;
-        p.rotation += p.rotSpeed;
+    function setAttendance(yes) {
+      willAttend = yes;
+      const btnYes = document.getElementById('btnAttendYes');
+      const btnNo = document.getElementById('btnAttendNo');
 
-        if (p.isPetal) {
-          ambCtx.save();
-          ambCtx.translate(p.x, p.y);
-          ambCtx.rotate(p.rotation);
-          ambCtx.fillStyle = `rgba(235, 120, 140, ${p.opacity})`;
-          ambCtx.beginPath();
-          ambCtx.ellipse(0, 0, p.size, p.size / 1.6, 0, 0, Math.PI * 2);
-          ambCtx.fill();
-          ambCtx.restore();
-        } else {
-          ambCtx.fillStyle = `rgba(184, 134, 11, ${p.opacity})`;
-          ambCtx.beginPath();
-          ambCtx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-          ambCtx.fill();
-        }
-
-        if (p.y > ambCanvas.height + 20) {
-          particles[idx] = createParticle();
-        }
-      });
-      requestAnimationFrame(renderParticles);
-    }
-    requestAnimationFrame(renderParticles);
-
-    function triggerPetalBurst(count = 30) {
-      for (let i = 0; i < count; i++) {
-        const p = createParticle();
-        p.isPetal = true;
-        p.size = Math.random() * 10 + 8;
-        p.speedY = Math.random() * 3 + 1.8;
-        particles.push(p);
-      }
-      showToast("🌸 May the couple be blessed with love and joy!");
-    }
-
-    // -------------------------------------------------------------
-    // F. Web Audio Synthesizer (Raag Yaman Wedding Sitar & Shehnai)
-    // -------------------------------------------------------------
-    let audioContext = null;
-    let isPlayingAudio = false;
-    let melodyTimer = null;
-
-    function getAudioCtx() {
-      if (!audioContext) {
-        audioContext = new (window.AudioContext || window.webkitAudioContext)();
-      }
-      if (audioContext.state === 'suspended') {
-        audioContext.resume();
-      }
-      return audioContext;
-    }
-
-    function playTone(freq, type = 'sine', duration = 0.9, gainVal = 0.12) {
-      try {
-        const ctx = getAudioCtx();
-        const osc = ctx.createOscillator();
-        const gain = ctx.createGain();
-
-        osc.type = type;
-        osc.frequency.setValueAtTime(freq, ctx.currentTime);
-
-        gain.gain.setValueAtTime(0, ctx.currentTime);
-        gain.gain.linearRampToValueAtTime(gainVal, ctx.currentTime + 0.08);
-        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
-
-        osc.connect(gain);
-        gain.connect(ctx.destination);
-
-        osc.start();
-        osc.stop(ctx.currentTime + duration);
-      } catch (err) {}
-    }
-
-    function playRoyalChime() {
-      const notes = [440, 554.37, 659.25, 880];
-      notes.forEach((f, i) => setTimeout(() => playTone(f, 'triangle', 1.3, 0.2), i * 150));
-    }
-
-    function startVinylAudio() {
-      if (isPlayingAudio) return;
-      isPlayingAudio = true;
-      const vinyl = document.getElementById('vinylDisc');
-      vinyl.classList.remove('spin-paused');
-      document.getElementById('musicStatus').innerText = 'Playing Tune';
-
-      const notes = [293.66, 329.63, 369.99, 440.00, 493.88, 587.33];
-      playTone(notes[0], 'sine', 1.5, 0.15);
-
-      melodyTimer = setInterval(() => {
-        if (!isPlayingAudio) return;
-        const note = notes[Math.floor(Math.random() * notes.length)];
-        playTone(note, 'sine', 1.2, 0.12);
-      }, 900);
-    }
-
-    function stopVinylAudio() {
-      isPlayingAudio = false;
-      clearInterval(melodyTimer);
-      const vinyl = document.getElementById('vinylDisc');
-      vinyl.classList.add('spin-paused');
-      document.getElementById('musicStatus').innerText = 'Music Muted';
-    }
-
-    function toggleVinylMusic() {
-      if (isPlayingAudio) {
-        stopVinylAudio();
-        showToast("Audio Muted");
+      if (yes) {
+        btnYes.className = "py-3 px-3 rounded-full font-cinzel text-[11px] sm:text-[12px] font-semibold tracking-wide transition-all duration-300 cursor-pointer bg-[#611522] text-white shadow-md";
+        btnNo.className = "py-3 px-3 rounded-full font-cinzel text-[11px] sm:text-[12px] font-semibold tracking-wide transition-all duration-300 cursor-pointer bg-[#fffbf4] border border-[#e5c4b0]/80 text-[#8b3a52] hover:bg-[#faf0e6]";
       } else {
-        startVinylAudio();
-        showToast("Playing Wedding Sitar Melody");
+        btnNo.className = "py-3 px-3 rounded-full font-cinzel text-[11px] sm:text-[12px] font-semibold tracking-wide transition-all duration-300 cursor-pointer bg-[#611522] text-white shadow-md";
+        btnYes.className = "py-3 px-3 rounded-full font-cinzel text-[11px] sm:text-[12px] font-semibold tracking-wide transition-all duration-300 cursor-pointer bg-[#fffbf4] border border-[#e5c4b0]/80 text-[#8b3a52] hover:bg-[#faf0e6]";
       }
     }
 
-    // -------------------------------------------------------------
-    // G. Helper Functions
-    // -------------------------------------------------------------
-    function showToast(msg) {
-      const toast = document.getElementById('appToast');
-      toast.innerText = msg;
-      toast.style.opacity = '1';
-      setTimeout(() => toast.style.opacity = '0', 2500);
+    function toggleEventSelect(btn) {
+      if (btn.classList.contains('bg-[#611522]')) {
+        // Deselect
+        btn.classList.remove('bg-[#611522]', 'text-white');
+        btn.classList.add('bg-[#611522]/10', 'text-[#611522]');
+        btn.innerText = btn.innerText.replace('✓', '○');
+      } else {
+        // Select
+        btn.classList.remove('bg-[#611522]/10', 'text-[#611522]');
+        btn.classList.add('bg-[#611522]', 'text-white');
+        btn.innerText = btn.innerText.replace('○', '✓');
+      }
     }
 
-    function copyVenue() {
-      navigator.clipboard.writeText("The Clarks, Mall Road, Cantonment, Varanasi- 221002").then(() => {
-        showToast("Venue address copied to clipboard!");
-      });
-    }
+    function submitRSVP(e) {
+      e.preventDefault();
+      const name = document.getElementById('guestName').value.trim();
+      const phone = document.getElementById('guestPhone').value.trim();
+      const guests = document.getElementById('guestCount').value;
+      const message = document.getElementById('guestMessage').value.trim();
 
-    function copyWhatsAppInvite() {
-      const text = `🌸 *॥ श्री गणेशाय नमः ॥* 🌸\n` +
-        `_सर्वमङ्गलमाङ्गल्ये शिवे सर्वार्थसाधिके ।_\n` +
-        `_शरण्ये त्र्यम्बके गौरि नारायणि नमोऽस्तु ते ॥_\n\n` +
-        `*Mrs. Darshana Devi* (w/o. Late Mr. Dalip Singh)\n` +
-        `Cordially requests the honour of your gracious presence on the auspicious wedding occasion of her loving granddaughter\n\n` +
-        `👑 *SHREYA*\n(D/o. Mrs. Mamta Singh and Late Mr. Matvar Singh)\n\n` +
-        `✨ *WITH* ✨\n\n` +
-        `👑 *SHUBHAM*\n(S/o. Mrs. Milli Sukhwani and Mr. Jeet Kumar Sukhwani)\n\n` +
-        `🗓️ *Date:* Friday, 29th January, 2027\n` +
-        `🎺 *Baraat Swagat:* 04:00 PM\n` +
-        `🔥 *Phere:* 06:00 PM (Followed by Reception)\n\n` +
-        `📍 *Venue:* The Clarks, Mall Road, Cantonment, Varanasi - 221002\n\n` +
-        `With Warm Regards:\n*Entire Singh Family / Miyan Family*\n\n` +
-        `📞 *RSVP:*\n` +
-        `• Mr. Virendra Singh: +91 8279642050\n` +
-        `• Mr. Ravindra Singh: +91 9794904444`;
+      const attendanceText = willAttend ? 'Joyfully Attending ✅' : 'Regretfully Unable to Attend ❌';
 
-      navigator.clipboard.writeText(text).then(() => {
-        showToast("WhatsApp Invitation copied! Ready to paste & send.");
-      });
+      const eventsSelected = Array.from(document.querySelectorAll('.event-pill'))
+        .filter(b => b.innerText.includes('✓'))
+        .map(b => b.innerText.replace('✓', '').trim())
+        .join(', ');
+
+      const text = `*Wedding RSVP - Shreya & Shubham*%0A` +
+        `*Name:* ${encodeURIComponent(name)}%0A` +
+        `*Phone:* ${encodeURIComponent(phone)}%0A` +
+        `*Attendance:* ${encodeURIComponent(attendanceText)}%0A` +
+        `*Number of Guests:* ${guests}%0A` +
+        `*Events:* ${encodeURIComponent(eventsSelected)}%0A` +
+        `*Wishes:* ${encodeURIComponent(message || 'None')}`;
+
+      // Open WhatsApp chat to Mr. Virendra Singh
+      const waUrl = `https://wa.me/918279642050?text=${text}`;
+      window.open(waUrl, '_blank');
     }
   </script>
+
 </body>
 </html>
