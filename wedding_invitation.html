@@ -155,17 +155,19 @@
           <img src="assets/template/door.jpeg" alt="Right Door" class="absolute top-0 right-0 h-full w-[200%] max-w-none object-cover object-top pointer-events-none brightness-100"/>
         </div>
 
-        <!-- Center Golden Wax Seal / Tap to Open Badge -->
-        <div id="doorSealPrompt" class="absolute bottom-16 sm:bottom-20 left-1/2 -translate-x-1/2 z-40 flex flex-col items-center gap-3 transition-all duration-700 pointer-events-none">
+        <!-- Center Golden Wax Seal / Tap to Open Badge (Centered Exactly on Door Seam) -->
+        <div id="doorSealPrompt" class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-40 flex flex-col items-center gap-4 transition-all duration-700 pointer-events-none">
           <div class="relative group">
-            <div class="absolute -inset-3 rounded-full bg-gradient-to-r from-[#d4af37] via-[#f3e0aa] to-[#d4af37] opacity-75 blur-md animate-gold-glow"></div>
-            <div class="relative w-22 h-22 rounded-full bg-gradient-to-b from-[#611522] via-[#4a0d17] to-[#2d050c] border-2 border-[#d4af37] flex flex-col items-center justify-center shadow-[0_10px_35px_rgba(0,0,0,0.8)] text-[#f3e0aa]">
-              <span class="font-bikham text-3xl sm:text-4xl text-[#f3e0aa] leading-none mb-0.5 drop-shadow-sm font-normal">S &amp; S</span>
-              <span class="font-cinzel text-[8.5px] tracking-[0.25em] uppercase text-[#d4af37] font-semibold">OPEN</span>
+            <div class="absolute -inset-3 rounded-full bg-gradient-to-r from-[#d4af37] via-[#f3e0aa] to-[#d4af37] opacity-80 blur-md animate-gold-glow"></div>
+            <div class="relative w-24 h-24 sm:w-28 sm:h-28 rounded-full bg-gradient-to-b from-[#611522] via-[#4a0d17] to-[#2d050c] border-[2.5px] border-[#d4af37] flex flex-col items-center justify-center shadow-[0_12px_40px_rgba(0,0,0,0.85)] text-[#f3e0aa]">
+              <span class="font-bikham text-4xl sm:text-5xl text-[#f3e0aa] leading-none mb-0.5 drop-shadow-sm font-normal">S &amp; S</span>
+              <span class="font-cinzel text-[9px] sm:text-[10px] tracking-[0.28em] uppercase text-[#d4af37] font-semibold">OPEN</span>
             </div>
           </div>
-          <div class="bg-[#611522]/90 backdrop-blur-md border border-[#c49d68] text-[#f3e0aa] font-cinzel text-[10.5px] tracking-[0.26em] uppercase px-5 py-2 rounded-full shadow-2xl text-center font-medium">
-            ✨ Tap to Open Invitation ✨
+          <div class="bg-[#611522]/95 backdrop-blur-md border border-[#c49d68] text-[#f3e0aa] font-cinzel text-[11px] sm:text-[12px] tracking-[0.25em] uppercase px-6 py-2.5 rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.6)] text-center font-medium flex items-center gap-2">
+            <span class="text-[#e2be79]">✨</span>
+            <span>Tap to Open Invitation</span>
+            <span class="text-[#e2be79]">✨</span>
           </div>
         </div>
 
