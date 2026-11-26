@@ -104,6 +104,30 @@
         0 6px 16px rgba(0, 0, 0, 0.1);
     }
 
+    /* Royal Parchment Scroll Paper Styling & Unfurling Animation */
+    .scroll-parchment {
+      background: linear-gradient(180deg, #fbf4e8 0%, #f6ecd8 15%, #fdf8ef 50%, #f4e8d3 85%, #eddcc2 100%);
+      box-shadow: 
+        inset 0 0 40px rgba(180, 130, 80, 0.25),
+        inset 0 4px 10px rgba(139, 69, 19, 0.15),
+        0 15px 35px -5px rgba(80, 20, 35, 0.28);
+    }
+
+    .scroll-wood-rod {
+      background: linear-gradient(180deg, #5c2411 0%, #8b4513 25%, #d4af37 45%, #8b4513 65%, #3d1406 100%);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4), inset 0 1px 2px rgba(255, 255, 255, 0.3);
+    }
+
+    .scroll-golden-knob {
+      background: radial-gradient(circle at 35% 35%, #fff2b2, #d4af37 55%, #8a6c17 100%);
+      box-shadow: 0 2px 6px rgba(0,0,0,0.4);
+    }
+
+    .scroll-body-wrapper {
+      transition: max-height 0.9s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.8s ease;
+      will-change: max-height, opacity;
+    }
+
     /* Scroll reveal transitions */
     .reveal-item {
       opacity: 0;
@@ -292,54 +316,89 @@
     </section>
 
     <!-- ========================================================================= -->
-    <!-- SECTION 2: INTERACTIVE GOLD FOIL SCRATCH CARD (SAVE THE DATE)             -->
+    <!-- SECTION 2: INTERACTIVE ROYAL PARCHMENT SCROLL (SAVE THE DATE)             -->
     <!-- ========================================================================= -->
     <section class="relative w-full aspect-[9/16] min-h-screen flex flex-col items-center justify-between text-center overflow-hidden select-none">
       
       <!-- Scratch Section Background -->
       <div class="absolute inset-0 w-full h-full z-0">
-        <img src="assets/template/scratch_bg.png" alt="Scratch Background" class="w-full h-full object-cover object-center pointer-events-none"/>
+        <img src="assets/template/scratch_bg.png" alt="Royal Background" class="w-full h-full object-cover object-center pointer-events-none"/>
       </div>
 
-      <div class="w-full pt-[32%] sm:pt-[34%] px-6 flex flex-col items-center gap-3.5 sm:gap-4 z-10 text-[#af6078]">
+      <div class="w-full pt-[26%] sm:pt-[28%] px-5 flex flex-col items-center gap-3 z-10 text-[#af6078]">
         
-        <h2 class="font-bikham text-6xl sm:text-7xl text-[#964860] leading-tight drop-shadow-sm">
+        <h2 class="font-bikham text-5xl sm:text-6xl text-[#964860] leading-tight drop-shadow-sm">
           Save the Date
         </h2>
 
-        <p class="font-cinzel text-xs sm:text-sm tracking-[0.22em] uppercase text-[#b05f77] font-medium my-0.5">
-          SCRATCH TO REVEAL OUR SPECIAL DAY
+        <p class="font-cinzel text-[11px] sm:text-xs tracking-[0.22em] uppercase text-[#b05f77] font-medium my-0.5">
+          UNFURL THE SCROLL TO REVEAL OUR DATE
         </p>
 
-        <!-- The Scratch Container with Gold Border -->
-        <div class="relative w-[285px] sm:w-[315px] h-[155px] sm:h-[165px] rounded-2xl p-1 bg-gradient-to-r from-[#d4af37] via-[#f3e0aa] to-[#c59b27] shadow-xl my-1.5">
+        <!-- Royal Parchment Scroll Interactive Container -->
+        <div id="royalScrollContainer" class="relative w-full max-w-[340px] flex flex-col items-center my-2 cursor-pointer group" onclick="toggleRoyalScroll()">
           
-          <div class="relative w-full h-full rounded-[14px] bg-[#fffbf2] flex flex-col items-center justify-center overflow-hidden border border-[#e5c4b0]/40 select-none">
+          <!-- Top Royal Wooden Rod with Gold Knobs -->
+          <div class="w-[96%] flex items-center justify-between z-20 -mb-2">
+            <div class="w-4 h-4 rounded-full scroll-golden-knob shrink-0 border border-[#b8860b]"></div>
+            <div class="flex-1 h-3 rounded-full scroll-wood-rod mx-[-4px]"></div>
+            <div class="w-4 h-4 rounded-full scroll-golden-knob shrink-0 border border-[#b8860b]"></div>
+          </div>
+
+          <!-- Unrolling Parchment Paper -->
+          <div id="scrollPaper" class="scroll-parchment w-[90%] rounded-sm border-x border-[#cbb292]/70 overflow-hidden shadow-2xl transition-all duration-700 ease-out py-4 px-4 flex flex-col items-center justify-center relative">
             
-            <!-- Underneath Revealed Date Details -->
-            <div class="flex flex-col items-center justify-center p-3 text-center z-0">
-              <span class="font-cinzel text-[10px] sm:text-[11px] uppercase tracking-[0.25em] text-[#b05f77] font-semibold">
-                WE ARE GETTING MARRIED ON
-              </span>
-              <span class="font-bikham text-4xl sm:text-5xl text-[#964860] my-1 font-semibold">
-                29th January 2027
-              </span>
-              <span class="font-cinzel text-[10px] sm:text-[11px] uppercase tracking-[0.22em] text-[#b05f77] font-bold">
-                FRIDAY &bull; THE CLARKS, VARANASI
-              </span>
+            <!-- Vintage Floral Corner Ornaments -->
+            <div class="absolute top-1 left-1.5 text-[#b08968]/50 text-xs pointer-events-none">❧</div>
+            <div class="absolute top-1 right-1.5 text-[#b08968]/50 text-xs pointer-events-none transform scale-x-[-1]">❧</div>
+            <div class="absolute bottom-1 left-1.5 text-[#b08968]/50 text-xs pointer-events-none transform scale-y-[-1]">❧</div>
+            <div class="absolute bottom-1 right-1.5 text-[#b08968]/50 text-xs pointer-events-none transform scale-[-1]">❧</div>
+
+            <!-- Scroll Paper Header Crest -->
+            <div class="flex items-center justify-center gap-2 mb-1">
+              <span class="h-[0.5px] w-6 bg-[#b8860b]/60"></span>
+              <span class="font-cinzel text-[9.5px] tracking-[0.28em] uppercase text-[#8b3a52] font-semibold">ROYAL PROCLAMATION</span>
+              <span class="h-[0.5px] w-6 bg-[#b8860b]/60"></span>
             </div>
 
-            <!-- HTML5 Interactive Gold Foil Scratch Canvas -->
-            <canvas id="scratchCanvas" width="315" height="165" class="absolute inset-0 w-full h-full cursor-pointer touch-none rounded-[14px] transition-opacity duration-700 z-10"></canvas>
+            <!-- Scroll Content (Unfurls smoothly) -->
+            <div class="flex flex-col items-center justify-center text-center my-1">
+              <p class="font-cinzel text-[10px] sm:text-[10.5px] uppercase tracking-[0.24em] text-[#8b3a52] font-medium">
+                WITH THE BLESSINGS OF OUR FAMILIES
+              </p>
+              
+              <div class="my-1.5 flex flex-col items-center">
+                <span class="font-cinzel text-[11px] tracking-[0.2em] text-[#611522] uppercase font-semibold">WE ARE GETTING MARRIED ON</span>
+                <span class="font-bikham text-4xl sm:text-5xl text-[#611522] my-0.5 font-bold leading-tight drop-shadow-xs">
+                  29th January 2027
+                </span>
+                <span class="font-cinzel text-[11px] sm:text-[12px] uppercase tracking-[0.24em] text-[#8b3a52] font-bold">
+                  FRIDAY &bull; VARANASI
+                </span>
+              </div>
 
+              <!-- Royal Seal Ribbon Stamp -->
+              <div class="flex items-center gap-1.5 text-[#8b3a52] mt-1 pt-1 border-t border-[#d4af37]/40 w-full justify-center">
+                <span class="text-xs text-[#b8860b]">🏛️</span>
+                <span class="font-cinzel text-[10px] tracking-widest uppercase font-semibold text-[#611522]">THE CLARKS, MALL ROAD, CANTONMENT</span>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- Bottom Royal Wooden Rod with Gold Knobs -->
+          <div class="w-[96%] flex items-center justify-between z-20 -mt-2">
+            <div class="w-4 h-4 rounded-full scroll-golden-knob shrink-0 border border-[#b8860b]"></div>
+            <div class="flex-1 h-3 rounded-full scroll-wood-rod mx-[-4px]"></div>
+            <div class="w-4 h-4 rounded-full scroll-golden-knob shrink-0 border border-[#b8860b]"></div>
           </div>
 
         </div>
 
-        <!-- Automatic Reveal Button for Touch/Accessibility -->
-        <button onclick="revealDateInstant()" class="font-cinzel text-[11px] tracking-[0.18em] uppercase text-[#964860] underline underline-offset-4 hover:text-[#b05f77] transition-colors my-1 cursor-pointer animate-pulse font-semibold">
-          Tap here to reveal date
-        </button>
+        <!-- Gentle Interactive Tap / Scroll Hint -->
+        <p class="font-cinzel text-[10px] sm:text-[11px] tracking-[0.2em] uppercase text-[#964860] my-1 font-semibold opacity-90">
+          📜 Scroll down to explore ceremonies 📜
+        </p>
 
       </div>
 
@@ -700,89 +759,23 @@
     }
 
     // ---------------------------------------------------------------------------
-    // 3. Gold Foil Scratch Card Engine
+    // 3. Royal Parchment Scroll Controller
     // ---------------------------------------------------------------------------
-    const canvas = document.getElementById('scratchCanvas');
-    const ctx = canvas.getContext('2d');
-    let isDrawing = false;
-    let scratchedPixels = 0;
-    let totalPixels = canvas.width * canvas.height;
-    let isRevealed = false;
+    let scrollUnfurled = true;
 
-    // Paint realistic gold foil gradient with sparkle dust
-    function initGoldFoil() {
-      const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-      grad.addColorStop(0, '#C59B27');
-      grad.addColorStop(0.2, '#E5C467');
-      grad.addColorStop(0.4, '#FDF3C7');
-      grad.addColorStop(0.6, '#D4AF37');
-      grad.addColorStop(0.8, '#F5DE93');
-      grad.addColorStop(1, '#B8860B');
-
-      ctx.fillStyle = grad;
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-      // Gold shimmer dust
-      ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
-      for (let i = 0; i < 400; i++) {
-        const x = Math.random() * canvas.width;
-        const y = Math.random() * canvas.height;
-        ctx.fillRect(x, y, 1.5, 1.5);
+    function toggleRoyalScroll() {
+      const scrollPaper = document.getElementById('scrollPaper');
+      if (!scrollPaper) return;
+      scrollUnfurled = !scrollUnfurled;
+      if (scrollUnfurled) {
+        scrollPaper.style.maxHeight = '300px';
+        scrollPaper.style.opacity = '1';
+        scrollPaper.style.transform = 'scaleY(1)';
+      } else {
+        scrollPaper.style.maxHeight = '70px';
+        scrollPaper.style.opacity = '0.7';
+        scrollPaper.style.transform = 'scaleY(0.9)';
       }
-
-      // Gold foil stamp text
-      ctx.textAlign = 'center';
-      ctx.textBaseline = 'middle';
-      ctx.font = '600 13px Cinzel, serif';
-      ctx.fillStyle = '#611522';
-      ctx.shadowColor = 'rgba(255, 255, 255, 0.8)';
-      ctx.shadowBlur = 4;
-      ctx.fillText('✨ SCRATCH WITH FINGER ✨', canvas.width / 2, canvas.height / 2 - 8);
-
-      ctx.font = 'bold 9px Cinzel, serif';
-      ctx.fillStyle = '#7a1c2b';
-      ctx.fillText('TO REVEAL THE DATE', canvas.width / 2, canvas.height / 2 + 12);
-      ctx.shadowBlur = 0;
-    }
-
-    initGoldFoil();
-
-    function scratch(e) {
-      if (!isDrawing || isRevealed) return;
-      const rect = canvas.getBoundingClientRect();
-      const scaleX = canvas.width / rect.width;
-      const scaleY = canvas.height / rect.height;
-
-      const clientX = e.touches ? e.touches[0].clientX : e.clientX;
-      const clientY = e.touches ? e.touches[0].clientY : e.clientY;
-
-      const x = (clientX - rect.left) * scaleX;
-      const y = (clientY - rect.top) * scaleY;
-
-      ctx.globalCompositeOperation = 'destination-out';
-      ctx.beginPath();
-      ctx.arc(x, y, 22, 0, Math.PI * 2);
-      ctx.fill();
-
-      scratchedPixels += 80;
-      if (scratchedPixels > totalPixels * 0.28) {
-        revealDateInstant();
-      }
-    }
-
-    canvas.addEventListener('mousedown', (e) => { isDrawing = true; scratch(e); });
-    canvas.addEventListener('mousemove', scratch);
-    window.addEventListener('mouseup', () => { isDrawing = false; });
-
-    canvas.addEventListener('touchstart', (e) => { isDrawing = true; scratch(e); }, { passive: true });
-    canvas.addEventListener('touchmove', scratch, { passive: true });
-    window.addEventListener('touchend', () => { isDrawing = false; });
-
-    function revealDateInstant() {
-      if (isRevealed) return;
-      isRevealed = true;
-      canvas.style.opacity = '0';
-      canvas.style.pointerEvents = 'none';
     }
 
     // ---------------------------------------------------------------------------
