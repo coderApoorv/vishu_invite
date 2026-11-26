@@ -78,30 +78,27 @@
       pointer-events: none;
     }
 
-    /* 3D Event Cards & Realistic Elevation Shadows */
+    /* 3D Semicircular Radial Carousel & Realistic Depth */
     .event-cards-track {
-      perspective: 1200px;
-      -webkit-perspective: 1200px;
+      perspective: 1400px;
+      -webkit-perspective: 1400px;
+      perspective-origin: 50% 60%;
       scroll-snap-type: x mandatory;
       -webkit-overflow-scrolling: touch;
+      padding-top: 1.5rem;
+      padding-bottom: 2rem;
     }
 
     .card-3d {
       transform-style: preserve-3d;
-      transition: transform 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.4s ease;
+      -webkit-transform-style: preserve-3d;
+      transition: transform 0.25s cubic-bezier(0.2, 0.8, 0.2, 1), box-shadow 0.3s ease, opacity 0.3s ease;
+      will-change: transform, box-shadow, opacity;
       box-shadow: 
         0 14px 28px rgba(110, 48, 64, 0.16),
         0 24px 48px -12px rgba(80, 20, 35, 0.22),
         0 4px 12px rgba(0, 0, 0, 0.08);
       border-radius: 1.75rem;
-    }
-
-    .card-3d:hover, .card-3d:active {
-      transform: translateY(-4px) scale(1.015);
-      box-shadow: 
-        0 22px 42px rgba(110, 48, 64, 0.22),
-        0 32px 64px -14px rgba(80, 20, 35, 0.3),
-        0 6px 16px rgba(0, 0, 0, 0.1);
     }
 
     /* Royal Parchment Scroll Paper Styling & Unfurling Animation */
@@ -831,52 +828,44 @@
     }, { passive: true });
 
     // ---------------------------------------------------------------------------
-    // 3.5. Horizontal Event Cards Carousel Controller
+    // 3.5. Semicircular Horizontal Carousel Controller (Cylindrical 3D Arc)
     // ---------------------------------------------------------------------------
-    function scrollEventsCarousel(direction) {
+    function updateSemicircularArc() {
       const carousel = document.getElementById('eventsCarousel');
       if (!carousel) return;
-      const cardWidth = carousel.firstElementChild ? carousel.firstElementChild.getBoundingClientRect().width + 16 : 280;
-      carousel.scrollBy({ left: direction * cardWidth, behavior: 'smooth' });
-    }
-
-    function jumpToCard(index) {
-      const carousel = document.getElementById('eventsCarousel');
-      if (!carousel) return;
-      const cards = carousel.children;
-      if (cards[index]) {
-        cards[index].scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
-      }
-    }
-
-    function updateCarouselIndicators() {
-      const carousel = document.getElementById('eventsCarousel');
-      const dots = document.getElementById('carouselDots');
-      if (!carousel || !dots) return;
 
       const cards = Array.from(carousel.children);
-      const scrollCenter = carousel.scrollLeft + carousel.clientWidth / 2;
+      const viewportWidth = carousel.clientWidth;
+      const carouselCenter = carousel.scrollLeft + viewportWidth / 2;
+      const maxDistance = viewportWidth * 0.85;
 
-      let closestIdx = 0;
-      let minDiff = Infinity;
-
-      cards.forEach((card, idx) => {
+      cards.forEach((card) => {
         const cardCenter = card.offsetLeft + card.clientWidth / 2;
-        const diff = Math.abs(scrollCenter - cardCenter);
-        if (diff < minDiff) {
-          minDiff = diff;
-          closestIdx = idx;
-        }
-      });
+        const offset = cardCenter - carouselCenter;
+        const normalized = Math.max(-1, Math.min(1, offset / maxDistance));
 
-      const dotButtons = dots.children;
-      for (let i = 0; i < dotButtons.length; i++) {
-        if (i === closestIdx) {
-          dotButtons[i].className = "w-2.5 h-2.5 rounded-full transition-all duration-300 bg-[#964860] scale-125";
-        } else {
-          dotButtons[i].className = "w-2.5 h-2.5 rounded-full transition-all duration-300 bg-[#e5c4b0]";
-        }
-      }
+        // Semicircular arc mathematics
+        const rotateY = normalized * 26; // rotate along cylinder Y-axis (degrees)
+        const rotateZ = normalized * -3.5; // subtle tilt on the arc curve
+        const translateZ = (1 - Math.abs(normalized)) * 60 - 60; // center card pops forward, sides recede
+        const translateY = Math.pow(Math.abs(normalized), 1.8) * 22; // gentle parabolic drop on the sides
+        const scale = 1 - Math.abs(normalized) * 0.12; // center card is prominent, sides scale down
+        const opacity = 1 - Math.abs(normalized) * 0.22; // center card fully vivid
+
+        card.style.transform = `perspective(1200px) translateY(${translateY}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) rotateZ(${rotateZ}deg) scale(${scale})`;
+        card.style.opacity = `${opacity}`;
+      });
+    }
+
+    // Attach real-time smooth scroll listener
+    const carouselEl = document.getElementById('eventsCarousel');
+    if (carouselEl) {
+      carouselEl.addEventListener('scroll', () => {
+        window.requestAnimationFrame(updateSemicircularArc);
+      }, { passive: true });
+      window.addEventListener('resize', updateSemicircularArc);
+      // Initial frame render
+      setTimeout(updateSemicircularArc, 150);
     }
 
     // ---------------------------------------------------------------------------
