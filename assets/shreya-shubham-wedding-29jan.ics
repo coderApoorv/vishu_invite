@@ -1,0 +1,21 @@
+BEGIN:VCALENDAR
+VERSION:2.0
+PRODID:-//Shreya and Shubham Wedding//EN
+CALSCALE:GREGORIAN
+METHOD:PUBLISH
+BEGIN:VEVENT
+UID:shreya-shubham-wedding-20270129-vivah-reception@theclarks
+DTSTAMP:20261127T060000Z
+DTSTART:20270129T103000Z
+DTEND:20270129T183000Z
+SUMMARY:Wedding & Reception: Shreya and Shubham
+DESCRIPTION:Together with their families\, Shreya and Shubham invite you to celebrate their wedding.\n\nDate: Friday\, 29th January 2027\nVenue: The Clarks\, Varanasi\n\nEvents:\n- Shubh Vivah: Friday\, 29 Jan\, Baraat 4:00 PM\, Phere 6:00 PM @ The Clarks\n- Royal Reception: Friday\, 29 Jan\, 8:00 PM Onwards @ Grand Heritage Lawn\, The Clarks
+LOCATION:The Clarks\, Mall Road\, Cantonment\, Varanasi\, Uttar Pradesh
+STATUS:CONFIRMED
+BEGIN:VALARM
+TRIGGER:-PT24H
+ACTION:DISPLAY
+DESCRIPTION:Reminder: Shreya and Shubham Wedding & Reception Tomorrow
+END:VALARM
+END:VEVENT
+END:VCALENDAR
