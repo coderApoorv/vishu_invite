@@ -175,7 +175,11 @@
       border-radius: 4px;
     }
   </style>
-</head>
+  <!-- Priority Preloads for Instant Initial Render -->
+    <link rel="preload" as="image" href="assets/template/door.jpeg"/>
+    <link rel="preload" as="image" href="assets/template/hero_bg.jpg"/>
+    <link rel="preload" as="image" href="assets/template/ganesh.png"/>
+  </head>
 <body class="min-h-full flex flex-col bg-[#111111] text-gray-900 justify-center items-center selection:bg-[#964860] selection:text-white">
 
   <!-- Main Mobile Frame Container -->
@@ -184,7 +188,7 @@
     <!-- ========================================================================= -->
     <!-- AUDIO SOUNDTRACK & FLOATING TOGGLE BUTTON                                 -->
     <!-- ========================================================================= -->
-    <audio id="bgMusic" src="assets/template/music.mpeg" preload="auto" loop></audio>
+    <audio id="bgMusic" src="assets/template/music.mpeg" preload="none" loop></audio>
 
     <button id="audioToggleBtn" onclick="toggleAudio()" aria-label="Toggle Background Music" class="fixed top-4 right-4 z-50 flex items-center gap-1.5 bg-[#fff5f7]/90 backdrop-blur-md border border-[#f5cad4] shadow-md rounded-full px-3 py-1.5 text-[#a8435d] hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer select-none">
       <svg id="audioIconMuted" class="w-3.5 h-3.5 text-[#a05267]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -262,7 +266,7 @@
       
       <!-- Floral Arch Background -->
       <div class="absolute inset-0 w-full h-full z-0">
-        <img src="assets/template/hero_bg.png" alt="Wedding Frame Background" class="w-full h-full object-cover object-center pointer-events-none"/>
+        <img src="assets/template/hero_bg.jpg" alt="Wedding Frame Background" class="w-full h-full object-cover object-center pointer-events-none"/>
       </div>
 
       <!-- Sacred Ganesh & Hero Text Content -->
@@ -333,7 +337,7 @@
       
       <!-- Scratch Section Background -->
       <div class="absolute inset-0 w-full h-full z-0">
-        <img src="assets/template/scratch_bg.png" alt="Royal Background" class="w-full h-full object-cover object-center pointer-events-none"/>
+        <img src="assets/template/scratch_bg.jpg" alt="Royal Background" class="w-full h-full object-cover object-center pointer-events-none"/>
       </div>
 
       <div class="w-full max-w-[360px] flex flex-col items-center justify-center gap-3 z-10 text-[#b85a73] my-auto">
@@ -465,7 +469,7 @@
           <!-- Card 1: Shubh Vivah (Baraat and Phere) - 29 Jan @ The Clarks -->
           <div onclick="scrollToEventCard(0)" class="card-3d w-[76vw] max-w-[285px] sm:w-[290px] shrink-0 snap-center relative overflow-hidden bg-[#fff8fa] border border-[#f5cad4]">
             <div class="relative w-full aspect-[9/16] overflow-hidden group">
-              <img src="assets/template/card5.png" alt="Shubh Vivah" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
+              <img src="assets/template/card5.jpg" loading="lazy" decoding="async" alt="Shubh Vivah" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
               
               <!-- Clean Central Ceremony Details with Luminous Backdrop in Sky Above Temple -->
               <div class="absolute top-[11%] sm:top-[12%] inset-x-[4%] flex flex-col items-center justify-center text-center pointer-events-none select-none z-10 px-3 py-2 rounded-3xl" style="background: radial-gradient(ellipse 95% 85% at 50% 50%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.75) 45%, rgba(255, 255, 255, 0.3) 80%, transparent 100%);">
@@ -504,7 +508,7 @@
           <!-- Card 2: Royal Reception - 29 Jan @ The Clarks -->
           <div onclick="scrollToEventCard(1)" class="card-3d w-[76vw] max-w-[285px] sm:w-[290px] shrink-0 snap-center relative overflow-hidden bg-[#fff8fa] border border-[#f5cad4]">
             <div class="relative w-full aspect-[9/16] overflow-hidden group">
-              <img src="assets/template/card6.png" alt="Royal Reception" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
+              <img src="assets/template/card6.jpg" loading="lazy" decoding="async" alt="Royal Reception" class="w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105"/>
               
               <!-- Clean Central Ceremony Details with Luminous Backdrop -->
               <div class="absolute top-[18%] sm:top-[20%] inset-x-[4%] flex flex-col items-center justify-center text-center pointer-events-none select-none z-10 px-3 py-2.5 rounded-3xl" style="background: radial-gradient(ellipse 95% 85% at 50% 50%, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.75) 45%, rgba(255, 255, 255, 0.3) 80%, transparent 100%);">
